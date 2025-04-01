@@ -12,12 +12,29 @@
     border-radius: 8px;
 }
 
+
 .textField:hover {
     border: 1px solid var(--text-black);
 }
 
+
 .textField:hover .labelText {
     color: var(--text-black);
+}
+
+.textField.disabled {
+    border: 1px solid var(--text-gray);
+    cursor: not-allowed;
+}
+
+.textField.disabled:hover {
+    border: 1px solid var(--text-gray);
+    cursor: not-allowed;
+}
+
+.textField.disabled:hover .labelText {
+    color: var(--text-gray);
+    cursor: not-allowed;
 }
 
 .textField.error {
@@ -57,6 +74,11 @@
     font-size: var(--p1-font-size);
     border: none; 
     outline: none; 
+}
+
+.inputText:disabled {
+    color: var(--text-gray);
+    cursor: not-allowed;
 }
 
 .inputText::placeholder {

@@ -1,8 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap');
+
 * {
     font-family: var(--primary-font);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal; 
+}
+
+p, ul, ol, li, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+  list-style: none; 
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  border: none; 
+  background: none; 
+}
+
+img {
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+}
   
