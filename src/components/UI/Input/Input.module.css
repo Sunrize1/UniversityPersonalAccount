@@ -20,7 +20,24 @@
     color: var(--text-black);
 }
 
+.textField.error {
+    border: 1px solid var(--accent-warning); 
+}
   
+  
+.textField.error:hover {
+    border: 1px solid var(--accent-warning); 
+}
+  
+.textField.error .labelText {
+    color: var(--accent-warning); 
+}
+  
+ 
+.textField.error:hover .labelText {
+    color: var(--accent-warning); 
+}
+
 .content {
     display: flex;
     width: 100%;
@@ -46,8 +63,6 @@
     color: var(--text-gray);
 }
 
-
-
 .labelText {
     position: absolute;
     top: -8px; 
@@ -56,4 +71,12 @@
     background: var(--text-white); 
     color: var(--text-gray);
 }
+
+.errorText {
+    position: absolute;
+    bottom: -20px; 
+    left: 16px;
+    color: var(--accent-warning); 
+    font-size: var(--p2-font-size); 
+  }
  
