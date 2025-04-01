@@ -3,17 +3,45 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     position: relative;
     cursor: pointer;
     box-sizing: border-box;
     transition: all 0.2s ease;
   }
+
+  .stateLayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 11px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    isolation: isolate;
+  }
+
+  .hovered.selected .stateLayer {
+    background: rgba(var(--accent-rgb), var(--hover-opacity)); 
+  }
+  
+  .hovered.unselected .stateLayer {
+    background: rgba(var(--text-black-rgb), var(--hover-opacity)); 
+  }
+  
+  .pressed.selected .stateLayer {
+    background: rgba(var(--accent-rgb), var(--pressed-opacity)); 
+  }
+  
+  .pressed.unselected .stateLayer {
+    background: rgba(var(--text-black-rgb), var(--pressed-opacity)); 
+  }
   
   .icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border-radius: 100px;
     position: relative;
     transition: all 0.2s ease;
@@ -30,8 +58,8 @@
   .selected .icon::after {
     content: '';
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: var(--accent); 
     border-radius: 100px;
     top: 50%;

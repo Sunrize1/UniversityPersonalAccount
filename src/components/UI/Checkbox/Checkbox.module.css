@@ -1,0 +1,79 @@
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+  
+  .stateLayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 11px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    isolation: isolate;
+  }
+  
+  .container {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .unselected .containerUnselected {
+    border: 1px solid var(--text-black); 
+  }
+  
+  .selected .containerSelected {
+    background: var(--accent); 
+  }
+  
+  
+  .disabled .containerDisabled {
+    border: none; 
+  }
+  
+  .disabled.selected .containerDisabled {
+    background: var(--accent-disabled); 
+  }
+  
+  .hovered.selected .stateLayer {
+    background: rgba(var(--accent-rgb), var(--hover-opacity)); 
+  }
+  
+  .hovered.unselected .stateLayer {
+    background: rgba(var(--text-black-rgb), var(--hover-opacity)); 
+  }
+  
+  .pressed.selected .stateLayer {
+    background: rgba(var(--accent-rgb), var(--pressed-opacity)); 
+  }
+  
+  .pressed.unselected .stateLayer {
+    background: rgba(var(--text-black-rgb), var(--pressed-opacity)); 
+  }
+  
+  .checkIcon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .hiddenInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }

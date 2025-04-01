@@ -6,9 +6,13 @@ import { Input } from "../../components/UI/Input/Input";
 import { Switch } from "../../components/UI/Switch/Switch";
 import { RadioButton } from "../../components/UI/RadioButton/RadioButton";
 import { useState } from "react";
+import { Checkbox } from "../../components/UI/Checkbox/Checkbox";
 
 export const Login = () => {
     const [selectedValue, setSelectedValue] = useState<string>('option1');
+    const [checked1, setChecked1] = useState(false);
+    const [checked2, setChecked2] = useState(true);
+    const [checked3, setChecked3] = useState(true);
 
     const handleChange = (value: string) => {
         setSelectedValue(value);
@@ -24,7 +28,7 @@ export const Login = () => {
             leftIcon={<CheckIcon></CheckIcon>}
             rightIcon={<ArrowIcon></ArrowIcon>}>
                 Label</FilterChip>
-            <Input label="test"></Input>
+            <Input label="test" placeholder="test"></Input>
             <Switch selected={true} onChange={(selected) => console.log(selected)}></Switch>
             <div style={{ display: 'flex', gap: '20px' }}>
             <RadioButton
@@ -46,6 +50,11 @@ export const Login = () => {
                 selected={selectedValue === 'option3'}
                 onChange={handleChange}
             />
+            </div>
+            <div style={{ display: 'flex', gap: '20px' }}>
+                <Checkbox selected={checked1} onChange={setChecked1} />
+                <Checkbox selected={checked2} onChange={setChecked2} disabled />
+                <Checkbox selected={checked3} onChange={setChecked3}/>
             </div>
         </div>
     );

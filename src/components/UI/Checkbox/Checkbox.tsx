@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import styles from './RadioButton.module.css';
-import { RadioButtonProps } from '../../../types/components/UI/radioButton';
+import styles from './Checkbox.module.css';
+import { CheckboxProps } from '../../../types/components/UI/checkbox';
+import TickIcon from '../../../assets/icons/Interface/white/Check.svg?react';
 
-export const RadioButton = ({ selected = false, disabled = false, name, value, onChange }: RadioButtonProps) => {
+export const Checkbox = ({ selected = false, disabled = false, onChange }: CheckboxProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
 
   const handleClick = () => {
-    if (!disabled && !selected && onChange) {
-      onChange(value);
+    if (!disabled) {
+      const newSelected = !selected;
+      if (onChange) onChange(newSelected);
     }
   };
 
@@ -17,23 +19,23 @@ export const RadioButton = ({ selected = false, disabled = false, name, value, o
   const handleMouseDown = () => !disabled && setIsPressed(true);
   const handleMouseUp = () => setIsPressed(false);
 
-  const radioClasses = [
-    styles.radio,
+  const checkboxClasses = [
+    styles.checkbox,
     selected ? styles.selected : styles.unselected,
     disabled ? styles.disabled : '',
     isHovered && !disabled ? styles.hovered : '',
     isPressed && !disabled ? styles.pressed : '',
   ].filter(Boolean).join(' ');
 
-  const iconClasses = [
-    styles.icon,
-    selected ? styles.iconSelected : styles.iconUnselected,
-    disabled ? styles.iconDisabled : '',
+  const containerClasses = [
+    styles.container,
+    selected ? styles.containerSelected : styles.containerUnselected,
+    disabled ? styles.containerDisabled : '',
   ].filter(Boolean).join(' ');
 
   return (
     <div
-      className={radioClasses}
+      className={checkboxClasses}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -41,17 +43,17 @@ export const RadioButton = ({ selected = false, disabled = false, name, value, o
       onMouseUp={handleMouseUp}
     >
       <div className={styles.stateLayer}>
-        <div className={styles.container}>
-          <div className={iconClasses}></div>
+        <div className={containerClasses}>
+          {selected && (
+            <TickIcon className={styles.checkIcon} width="22" height="22" />
+          )}
         </div>
       </div>
       <input
-        type="radio"
-        name={name}
-        value={value}
+        type="checkbox"
         checked={selected}
         disabled={disabled}
-        onChange={() => onChange && onChange(value)}
+        onChange={() => onChange && onChange(!selected)}
         className={styles.hiddenInput}
       />
     </div>
