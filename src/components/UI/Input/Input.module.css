@@ -1,0 +1,59 @@
+.textField {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+    gap: 10px;
+    width: 100%;
+    height: 56px;
+    border: 1px solid var(--text-gray);
+    border-radius: 8px;
+}
+
+.textField:hover {
+    border: 1px solid var(--text-black);
+}
+
+.textField:hover .labelText {
+    color: var(--text-black);
+}
+
+  
+.content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+  
+.inputText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 19px;
+    color: var(--text-black);
+    font-size: var(--p1-font-size);
+    border: none; 
+    outline: none; 
+}
+
+.inputText::placeholder {
+    color: var(--text-gray);
+}
+
+
+
+.labelText {
+    position: absolute;
+    top: -8px; 
+    left: 12px; 
+    padding: 0 4px; 
+    background: var(--text-white); 
+    color: var(--text-gray);
+}
+ 

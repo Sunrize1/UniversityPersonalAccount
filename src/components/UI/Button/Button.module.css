@@ -1,0 +1,50 @@
+.btn {
+    display: block;
+    cursor: pointer;
+    border: none;
+    font-size: var(--button-font-size);
+    border-radius: 8px;
+    padding: 20px 20px;
+    width: 100%;
+}
+
+.btnPrimary {
+    background-color: var(--accent);
+    color: var(--text-white);
+    transition: background-color 300ms linear;
+}
+
+.btnPrimary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btnPrimary:active {
+    background-color: var(--accent-active);
+}
+
+.btnPrimary:disabled {
+    background-color: var(--accent-disabled);
+    cursor: not-allowed;
+}
+
+.btnOutline {
+    background-color: transparent;
+    outline: 1px solid var(--text-black);
+    color: var(--text-black);
+    transition: border-color 300ms linear, background-color 300ms linear;
+}
+
+.btnOutline:hover {
+    outline: 2px solid var(--text-black);
+}
+
+.btnOutline:active {
+    outline: 3px solid var(--accent-active);
+    color: var(--accent-active);
+}
+
+.btnOutline:disabled {
+    outline: 1px solid var(--accent-disabled);
+    color: var(--accent-disabled);
+    cursor: not-allowed;
+}

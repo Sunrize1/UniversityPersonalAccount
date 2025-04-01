@@ -1,0 +1,65 @@
+.filterChip {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    max-width: 114px;
+    min-height: 32px;
+    padding: 0 20px;
+    border-radius: 8px;
+}
+
+.filterChipPrimary {
+    background-color: var(--accent);
+    color: var(--text-white);
+    transition: background-color 300ms linear;
+}
+
+.filterChipPrimary:hover {
+    background-color: var(--accent-hover);
+}
+
+.filterChipPrimary:active {
+    background-color: var(--accent-active);
+}
+
+.filterChipPrimary:disabled {
+    cursor: not-allowed;
+    outline: none;
+    background-color: var(--accent-disabled);
+    color: var(--text-white);
+}
+
+.filterChipOutline {
+    background-color: transparent;
+    outline: 1px solid var(--accent);
+    color: var(--accent);
+    transition: border-color 300ms linear, background-color 300ms linear;
+}
+
+.filterChipOutline:hover {
+    outline: 2px solid var(--accent);
+}
+
+.filterChipOutline:active {
+    outline: 3px solid var(--accent-active);
+    color: var(--accent-active);
+}
+
+.filterChipOutline:disabled {
+    cursor: not-allowed;
+    outline: none;
+    background-color: var(--accent-disabled);
+    color: var(--text-white);
+}
+
+.leftIcon {
+    align-self: flex-end;
+}
+.rightIcon {
+    align-self: flex-end;
+}
