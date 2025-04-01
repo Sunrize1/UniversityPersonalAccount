@@ -1,0 +1,78 @@
+.radio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .unselected .icon {
+    border: 2px solid var(--text-black); 
+  }
+  
+  .selected .icon {
+    border: 2px solid var(--accent); 
+  }
+  
+  .selected .icon::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--accent); 
+    border-radius: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .disabled .icon {
+    border-color: var(--accent-disabled); 
+    cursor: not-allowed;
+    opacity: 0.38;
+  }
+  
+  .disabled.unselected .icon {
+    border-color: var(--text-gray); 
+  }
+  
+  .disabled.selected .icon::after {
+    background: var(--accent-disabled); 
+  }
+  
+  .hovered .icon {
+    border-color: var(--accent); 
+  }
+  
+  .hovered.unselected .icon {
+    border-color: var(--text-black); 
+  }
+  
+  
+  .pressed .icon {
+    border-color: var(--accent);
+  }
+  
+  .pressed.unselected .icon {
+    border-color: var(--text-black); 
+  }
+  
+  .hiddenInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
