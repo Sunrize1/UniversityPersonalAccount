@@ -7,12 +7,26 @@ import { Switch } from "../../components/UI/Switch/Switch";
 import { RadioButton } from "../../components/UI/RadioButton/RadioButton";
 import { useState } from "react";
 import { Checkbox } from "../../components/UI/Checkbox/Checkbox";
+import { FormProvider, useForm } from "react-hook-form";
 
 export const Login = () => {
     const [selectedValue, setSelectedValue] = useState<string>('option1');
     const [checked1, setChecked1] = useState(false);
     const [checked2, setChecked2] = useState(true);
     const [checked3, setChecked3] = useState(true);
+
+    const methods = useForm({
+        defaultValues: {
+          username: "",
+        },
+        mode: "onChange",
+      });
+      
+    const onSubmit = (data: any) => {
+        console.log(data);
+    };
+
+    const { register } = methods;
 
     const handleChange = (value: string) => {
         setSelectedValue(value);
@@ -21,14 +35,27 @@ export const Login = () => {
 
     return (
         <div>
-            <Button onClick={() => console.log('Login')} variant="primary">ВОЙТИ</Button>
             <FilterChip 
             onClick={() => console.log('Filter chip')} 
             variant="outline" 
-            leftIcon={<CheckIcon></CheckIcon>}
-            rightIcon={<ArrowIcon></ArrowIcon>}>
+            leftIcon={<CheckIcon/>}
+            rightIcon={<ArrowIcon/>}>
                 Label</FilterChip>
-            <Input label="test" placeholder="test"></Input>
+            <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                    <Input
+                    label="Username"
+                        {...register("username", {
+                            required: "Username is required",
+                            minLength: {
+                            value: 3,
+                            message: "Username must be at least 3 characters"
+                            }
+                        })}
+                    />
+                    <Button type="submit" variant="primary">Submit</Button>
+                </form>
+            </FormProvider>
             <Switch selected={true} onChange={(selected) => console.log(selected)}></Switch>
             <div style={{ display: 'flex', gap: '20px' }}>
             <RadioButton

@@ -55,12 +55,20 @@
     color: var(--accent-warning); 
 }
 
+.textField.error .inputText {
+    color: var(--accent-warning); 
+}
+
+.textField.error .inputText::placeholder {
+    color: var(--accent-warning); 
+}
+
 .content {
     display: flex;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-grow: 1;
 }
   
@@ -95,10 +103,14 @@
 }
 
 .errorText {
-    position: absolute;
-    bottom: -20px; 
-    left: 16px;
+    margin: 0px 15px;
     color: var(--accent-warning); 
-    font-size: var(--p2-font-size); 
+    font-size: var(--p1-font-size); 
   }
+
+.closeIcon {
+    cursor: pointer;
+}
+
+
  
