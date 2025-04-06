@@ -4,9 +4,14 @@
     --text-black-rgb: 58, 58, 58;
     --text-gray: #9D9D9D;
     --accent: #375FFF;
+    --accent-transparent: #2196F34D;
     --accent-rgb: 55, 95, 255;
     --accent-hover: #002FEA;
     --accent-active: #204CFF;
+    --accent-success: #39882C;
+    --accent-success-transparent: #39882C4D;
+    --accent-warning-yellow: #E78400;
+    --accent-warning-yellow-transparent: #E784004D;
     --accent-disabled: #97A9F1;
     --accent-warning-dark: #FF5757;
     --accent-warning: #EB5757;

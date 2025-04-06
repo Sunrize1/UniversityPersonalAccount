@@ -1,7 +1,17 @@
-.NotificationPopup {
+.NotificationPopupWrapper {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.NotificationPopup {
+  position: relative;
   width: 260px;
   height: 96px;
   border-radius: 8px;
@@ -17,11 +27,30 @@
     justify-content: space-between;
 }
 
-.popupHeader.warning {
+.popupHeader.error {
     background-color: var(--accent-warning-transparent); ;
     color: var(--accent-warning-dark);
     
 }
+
+.popupHeader.success {
+    background-color: var(--accent-success-transparent); ;
+    color: var(--accent-success);
+    
+}
+
+.popupHeader.warning {
+    background-color: var(--accent-warning-yellow-transparent); ;
+    color: var(--accent-warning-yellow);
+    
+}
+
+.popupHeader.info {
+    background-color: var(--accent-transparent); ;
+    color: var(--accent);
+    
+}
+
 
 .popupTitleWrapper {
     display: flex;
@@ -39,4 +68,23 @@
 .popupText {
     text-align: center;
     font-size: var(--p2-font-size);
+}
+
+.closeIcon {
+    cursor: pointer;
+}
+
+.animateSlideIn {
+    animation: slideIn 0.3s ease-in-out;
+  }
+  
+@keyframes slideIn {
+from {
+    transform: translateX(100%);
+    opacity: 0;
+}
+to {
+    transform: translateX(0);
+    opacity: 1;
+}
 }
