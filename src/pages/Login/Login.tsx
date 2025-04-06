@@ -9,9 +9,13 @@ import { Container } from '../../components/UI/Container/Container';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loginThunk } from '../../store/userSlice/userThunks';
 import { NotificationPopup } from '../../components/common/NotificationPopup/NotificationPopup';
+import { showNotification } from '../../utils/notification';
+import { NotificationTypeEnum } from '../../types/redux/NotificationTypeEnum';
+import { StatusEnum } from '../../types/redux/StatusEnum';
 
 export const Login = () => {
     const dispatch = useAppDispatch();
+    const status = useAppSelector(state => state.user.status);
     const methods = useForm<LoginInput>({
         defaultValues: {
             rememberMe: false,
@@ -22,13 +26,14 @@ export const Login = () => {
 
     const onSubmit: SubmitHandler<LoginInput> = async (data) =>  {
         try {
-            const resultAction = await dispatch(loginThunk(data));
-            
-            
-            console.log('Login successful', resultAction);
-            
+            await dispatch(loginThunk(data));
+            if(status === StatusEnum.succeeded) {
+                showNotification(dispatch, 'Успешный вход', NotificationTypeEnum.SUCCESS, 5000);
+            } else {
+                showNotification(dispatch, 'Неверный логин или пароль', NotificationTypeEnum.ERROR, 5000);
+            }
           } catch (err) {
-            console.log(err)
+            showNotification(dispatch, 'Ошибка входа', NotificationTypeEnum.ERROR, 5000);
           } 
     }
     

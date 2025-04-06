@@ -11,7 +11,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { uiSlice } from "./uiSlice/uiSlice";
+import { notificationSlice } from "./notificationSlice/notificationSlice";
 
 
 const persistConfig = {
@@ -22,7 +22,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     user: userSlice.reducer,
-    ui: uiSlice.reducer
+    notification: notificationSlice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
