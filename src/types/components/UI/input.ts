@@ -4,5 +4,4 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
     helperText?: string;
     clearable?: boolean;
     variant?: 'primary' | 'outline';
-    [key: string]: any;
 }

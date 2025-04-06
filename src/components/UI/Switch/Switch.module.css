@@ -10,70 +10,84 @@
     box-sizing: border-box;
     cursor: pointer;
     transition: background-color 0.2s ease;
-  }
+}
+
+.switchContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  gap: 10px;
+}
+
+.label {
+  align-self: center;
+  font-size: var(--p2-font-size);
+  color: var(--text-gray);
+}
   
-  .selected {
-    background: var(--accent); 
-    justify-content: flex-end; 
-  }
+.selected {
+  background: var(--accent); 
+  justify-content: flex-end; 
+}
   
-  .unselected {
-    background: var(--text-gray);
-  }
-  
-  .disabled.selected {
-    background: var(--text-gray);
-    cursor: not-allowed;
-  }
-  
-  .disabled.unselected {
-    background: var(--text-gray);
-    cursor: not-allowed;
-  }
-  
- 
-  .hovered.selected {
-    background: var(--accent); 
-  }
-  
-  .hovered.unselected {
-    background: var(--text-gray);
-  }
-  
-  .pressed.selected {
-    background: var(--accent);
-  }
-  
-  .pressed.unselected {
-    background: var(--text-gray);
-  }
-  
-  .handle {
-    width: 17px;
-    height: 17px;
-    background: var(--text-white);
-    border-radius: 24px;
-    transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
-  }
-  
-  .handleSelected {
-    transform: translateX(0); 
-  }
-  
-  .handleUnselected {
-    transform: translateX(0); 
-  }
-  
-  .handleDisabled {
-    opacity: 0.8;
-  }
-  
-  .handleHovered {
-    width: 17px;
-    height: 17px;
-  }
-  
-  .handlePressed {
-    width: 19px;
-    height: 19px;
-  }
+.unselected {
+  background: var(--text-gray);
+}
+
+.disabled.selected {
+  background: var(--text-gray);
+  cursor: not-allowed;
+}
+
+.disabled.unselected {
+  background: var(--text-gray);
+  cursor: not-allowed;
+}
+
+
+.hovered.selected {
+  background: var(--accent); 
+}
+
+.hovered.unselected {
+  background: var(--text-gray);
+}
+
+.pressed.selected {
+  background: var(--accent);
+}
+
+.pressed.unselected {
+  background: var(--text-gray);
+}
+
+.handle {
+  width: 17px;
+  height: 17px;
+  background: var(--text-white);
+  border-radius: 24px;
+  transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.handleSelected {
+  transform: translateX(0); 
+}
+
+.handleUnselected {
+  transform: translateX(0); 
+}
+
+.handleDisabled {
+  opacity: 0.8;
+}
+
+.handleHovered {
+  width: 17px;
+  height: 17px;
+}
+
+.handlePressed {
+  width: 19px;
+  height: 19px;
+}

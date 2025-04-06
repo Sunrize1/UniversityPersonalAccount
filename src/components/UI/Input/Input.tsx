@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ].filter(Boolean).join(' ');
 
     return (
-      <>
+      <div>
       <div className={textFieldClasses}>
         {label && (
             <label className={styles.labelText} htmlFor={name}>
@@ -61,11 +61,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
       </div>
-      {error && (
-        <div>
+      <div className={error ? styles.errorTextVisible : styles.errorTextHidden}>
           <span className={styles.errorText}>{error}</span>
-        </div>
-      )}
-    </>
+      </div>
+    </div>
     )
   })

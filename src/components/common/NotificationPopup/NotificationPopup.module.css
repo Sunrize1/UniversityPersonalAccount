@@ -1,0 +1,42 @@
+.NotificationPopup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 260px;
+  height: 96px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popupHeader {
+    border-radius: 8px 8px 0 0;
+    padding: 11px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popupHeader.warning {
+    background-color: var(--accent-warning-transparent); ;
+    color: var(--accent-warning-dark);
+    
+}
+
+.popupTitleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.popupContent {
+    display: flex;
+    align-items: center;
+    padding: 11px 27px;
+}
+
+.popupText {
+    text-align: center;
+    font-size: var(--p2-font-size);
+}

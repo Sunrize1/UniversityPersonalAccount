@@ -1,88 +1,72 @@
-import { Button } from "../../components/UI/Button/Button";
-import { FilterChip } from "../../components/UI/FilterChip/FilterChip";
-import CheckIcon from '../../assets/icons/Interface/red/Check.svg?react';
-import ArrowIcon from '../../assets/icons/Arrow/red/Caret_Down_MD.svg?react';
-import { Input } from "../../components/UI/Input/Input";
-import { Switch } from "../../components/UI/Switch/Switch";
-import { RadioButton } from "../../components/UI/RadioButton/RadioButton";
-import { useState } from "react";
-import { Checkbox } from "../../components/UI/Checkbox/Checkbox";
-import { FormProvider, useForm } from "react-hook-form";
+import GroupImage from '../../assets/images/Group.svg?react'
+import styles from './Login.module.css';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { LoginInput } from '../../types/components/forms/LoginInput';
+import { Input } from '../../components/UI/Input/Input';
+import { Button } from '../../components/UI/Button/Button';
+import { Switch } from '../../components/UI/Switch/Switch';
+import { Container } from '../../components/UI/Container/Container';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { loginThunk } from '../../store/userSlice/userThunks';
+import { NotificationPopup } from '../../components/common/NotificationPopup/NotificationPopup';
 
 export const Login = () => {
-    const [selectedValue, setSelectedValue] = useState<string>('option1');
-    const [checked1, setChecked1] = useState(false);
-    const [checked2, setChecked2] = useState(true);
-    const [checked3, setChecked3] = useState(true);
-
-    const methods = useForm({
+    const dispatch = useAppDispatch();
+    const methods = useForm<LoginInput>({
         defaultValues: {
-          username: "",
-        },
-        mode: "onChange",
-      });
-      
-    const onSubmit = (data: any) => {
-        console.log(data);
-    };
+            rememberMe: false,
+        }
+    }
+    );
+    const { register, handleSubmit } = methods;
 
-    const { register } = methods;
-
-    const handleChange = (value: string) => {
-        setSelectedValue(value);
-        console.log('Selected:', value);
-    };
+    const onSubmit: SubmitHandler<LoginInput> = async (data) =>  {
+        try {
+            const resultAction = await dispatch(loginThunk(data));
+            
+            
+            console.log('Login successful', resultAction);
+            
+          } catch (err) {
+            console.log(err)
+          } 
+    }
+    
 
     return (
-        <div>
-            <FilterChip 
-            onClick={() => console.log('Filter chip')} 
-            variant="outline" 
-            leftIcon={<CheckIcon/>}
-            rightIcon={<ArrowIcon/>}>
-                Label</FilterChip>
-            <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <Input
-                    label="Username"
-                        {...register("username", {
-                            required: "Username is required",
-                            minLength: {
-                            value: 3,
-                            message: "Username must be at least 3 characters"
-                            }
-                        })}
-                    />
-                    <Button type="submit" variant="primary">Submit</Button>
-                </form>
-            </FormProvider>
-            <Switch selected={true} onChange={(selected) => console.log(selected)}></Switch>
-            <div style={{ display: 'flex', gap: '20px' }}>
-            <RadioButton
-                name="group1"
-                value="option1"
-                selected={selectedValue === 'option1'}
-                onChange={handleChange}
-            />
-            <RadioButton
-                name="group1"
-                value="option2"
-                selected={selectedValue === 'option2'}
-                onChange={handleChange}
-                disabled
-            />
-            <RadioButton
-                name="group1"
-                value="option3"
-                selected={selectedValue === 'option3'}
-                onChange={handleChange}
-            />
+        <Container>
+            <div className={styles.wrapper}>
+                <div className={styles.image}>
+                    <GroupImage/>
+                </div>
+                <div className={styles.form}>
+                    <h1 className={styles.title}>Вход в аккаунт</h1>
+                    <FormProvider {...methods}>
+                        <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)} >
+                            <Input label='Электронная почта'   {...register("email", {
+                                    required: "Email is required",
+                                    minLength: {
+                                        value: 3,
+                                        message: "Username must be at least 3 characters"
+                                    }
+                                })}
+                                type='email'/>
+                            <Input label='Пароль'  {...register("password", {
+                                    required: "Password is required",
+                                    minLength: {
+                                        value: 3,
+                                        message: "Username must be at least 3 characters"
+                                    }
+                                    
+                                })}
+                                type="password"/>
+                            <Switch name="rememberMe" label='Запомнить меня' />
+                            <Button type="submit" >ВОЙТИ</Button>
+                        </form>
+                    </FormProvider>
+                </div>
             </div>
-            <div style={{ display: 'flex', gap: '20px' }}>
-                <Checkbox selected={checked1} onChange={setChecked1} />
-                <Checkbox selected={checked2} onChange={setChecked2} disabled />
-                <Checkbox selected={checked3} onChange={setChecked3}/>
-            </div>
-        </div>
+            <NotificationPopup></NotificationPopup>
+        </Container>
     );
 }

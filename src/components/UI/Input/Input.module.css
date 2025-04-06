@@ -103,10 +103,18 @@
 }
 
 .errorText {
-    margin: 0px 15px;
+    margin-left:15px;
     color: var(--accent-warning); 
     font-size: var(--p1-font-size); 
-  }
+}
+
+.errorTextVisible {
+    display: flex;;
+}
+
+.errorTextHidden {
+    visibility: hidden;
+}
 
 .closeIcon {
     cursor: pointer;
