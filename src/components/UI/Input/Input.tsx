@@ -5,6 +5,7 @@ import DeleteIconBlack from '../../../assets/icons/Edit/black/Close_Circle.svg?r
 import DeleteIconRed from '../../../assets/icons/Edit/red/Close_Icon_Red.svg?react';
 import { forwardRef } from "react";
 import { useFormContext } from "react-hook-form";
+import { FormattedMessage } from "react-intl";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, disabled, name, clearable = true, ...rest }, ref) => {
@@ -38,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className={textFieldClasses}>
         {label && (
             <label className={styles.labelText} htmlFor={name}>
-              {label}
+              <FormattedMessage id={label}/>
             </label>
           )}
         <div className={styles.content}>
@@ -62,7 +63,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
       </div>
       <div className={error ? styles.errorTextVisible : styles.errorTextHidden}>
-          <span className={styles.errorText}>{error}</span>
+          <span className={styles.errorText}>{error ? <FormattedMessage id={error}/> : ''}</span>
       </div>
     </div>
     )

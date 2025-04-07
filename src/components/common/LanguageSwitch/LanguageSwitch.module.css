@@ -1,0 +1,68 @@
+.languageSwitchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.languageName {
+    align-self: flex-start;
+}
+
+.currentLanguage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 0.5rem;
+}
+
+.flagIcon {
+    display: flex;
+    flex-direction: row;
+}
+
+.openIcon {
+    cursor: pointer;
+    user-select: none;
+}
+
+.languageList {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 147px;
+    height: 84px;
+    background-color: var(--text-white);
+    border-radius: 8px;
+    padding: 0 20px;
+}
+
+.languageList.hidden {
+    display: none;
+}
+
+.languageItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.languageItemDivider {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--text-gray);
+    align-items: center;
+    padding: 10px 0;
+    gap: 0.5rem;
+    cursor: pointer;
+}

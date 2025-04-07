@@ -12,17 +12,19 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { notificationSlice } from "./notificationSlice/notificationSlice";
+import { languageSlice } from "./languageSlice/languageSlice";
 
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['user'], 
+    whitelist: ['user','language'], 
 };
 
 const rootReducer = combineReducers({
     user: userSlice.reducer,
-    notification: notificationSlice.reducer
+    notification: notificationSlice.reducer,
+    language: languageSlice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

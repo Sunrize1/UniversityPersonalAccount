@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import styles from "./Switch.module.css";
 import { SwitchProps } from "../../../types/components/UI/switch";
+import { FormattedMessage } from "react-intl";
 
 export const Switch = ({ name, label, disabled = false, onChange }: SwitchProps) => {
   const { watch, setValue } = useFormContext();
@@ -56,7 +57,7 @@ export const Switch = ({ name, label, disabled = false, onChange }: SwitchProps)
         <div className={handleClasses}></div>
       </div>
       {label && (
-        <div className={styles.label}>{label}</div> 
+        <div className={styles.label}><FormattedMessage id={label}/></div> 
       )}
     </div>
   );

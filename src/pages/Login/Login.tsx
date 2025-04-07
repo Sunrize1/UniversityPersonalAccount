@@ -8,10 +8,10 @@ import { Switch } from '../../components/UI/Switch/Switch';
 import { Container } from '../../components/UI/Container/Container';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loginThunk } from '../../store/userSlice/userThunks';
-import { NotificationPopup } from '../../components/common/NotificationPopup/NotificationPopup';
 import { showNotification } from '../../utils/notification';
 import { NotificationTypeEnum } from '../../types/redux/NotificationTypeEnum';
 import { StatusEnum } from '../../types/redux/StatusEnum';
+import { FormattedMessage } from 'react-intl';
 
 export const Login = () => {
     const dispatch = useAppDispatch();
@@ -45,33 +45,32 @@ export const Login = () => {
                     <GroupImage/>
                 </div>
                 <div className={styles.form}>
-                    <h1 className={styles.title}>Вход в аккаунт</h1>
+                    <h1 className={styles.title}><FormattedMessage id='login'/></h1>
                     <FormProvider {...methods}>
                         <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)} >
-                            <Input label='Электронная почта'   {...register("email", {
-                                    required: "Email is required",
+                            <Input label='email'   {...register("email", {
+                                    required: "emailIsRequired",
                                     minLength: {
                                         value: 3,
-                                        message: "Username must be at least 3 characters"
+                                        message: "emailValidation"
                                     }
                                 })}
                                 type='email'/>
-                            <Input label='Пароль'  {...register("password", {
-                                    required: "Password is required",
+                            <Input label='password'  {...register("password", {
+                                    required: "passwordIsRequired",
                                     minLength: {
                                         value: 3,
-                                        message: "Username must be at least 3 characters"
+                                        message: "passwordValidation"
                                     }
                                     
                                 })}
                                 type="password"/>
-                            <Switch name="rememberMe" label='Запомнить меня' />
-                            <Button type="submit" >ВОЙТИ</Button>
+                            <Switch name="rememberMe" label='rememberMe' />
+                            <Button className={styles.formButton} type="submit" >enter</Button>
                         </form>
                     </FormProvider>
                 </div>
             </div>
-            <NotificationPopup></NotificationPopup>
         </Container>
     );
 }
