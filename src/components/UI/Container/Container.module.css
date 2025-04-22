@@ -1,24 +1,21 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     padding: 0 20px;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1600px;
 }
 
-@media (max-width: 1086px) {
+@media (max-width: 1536px) {
     .container {
-        max-width: 900px; 
-        padding: 15px;    
+        max-width: 1400px; 
+        padding: 0 20px;    
     }
 }
 
 @media (max-width: 768px) {
     .container {
         max-width: 700px;  
-        padding: 10px;    
+        padding: 0 10px;    
         flex-direction: column; 
     }
 }
@@ -26,6 +23,6 @@
 @media (max-width: 480px) {
     .container {
         max-width: 400px;
-        padding: 8px;     
+        padding: 0 8px;     
     }
 }

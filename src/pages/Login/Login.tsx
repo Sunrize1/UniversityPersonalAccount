@@ -12,10 +12,11 @@ import { showNotification } from '../../utils/notification';
 import { NotificationTypeEnum } from '../../types/redux/NotificationTypeEnum';
 import { StatusEnum } from '../../types/redux/StatusEnum';
 import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const dispatch = useAppDispatch();
-    const status = useAppSelector(state => state.user.status);
+    const navigate = useNavigate();
     const methods = useForm<LoginInput>({
         defaultValues: {
             rememberMe: false,
@@ -26,9 +27,10 @@ export const Login = () => {
 
     const onSubmit: SubmitHandler<LoginInput> = async (data) =>  {
         try {
-            await dispatch(loginThunk(data));
-            if(status === StatusEnum.succeeded) {
+            const result = await dispatch(loginThunk(data)).unwrap();
+            if(result.loginSucceeded) {
                 showNotification(dispatch, 'Успешный вход', NotificationTypeEnum.SUCCESS, 5000);
+                navigate('/profile');
             } else {
                 showNotification(dispatch, 'Неверный логин или пароль', NotificationTypeEnum.ERROR, 5000);
             }

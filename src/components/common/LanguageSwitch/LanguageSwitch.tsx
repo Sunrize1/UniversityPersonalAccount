@@ -4,11 +4,11 @@ import EnglandFlag from '../../../assets/icons/Language/English.svg?react'
 import ArrowDownIcon from '../../../assets/icons/Arrow/black/Caret_Down_MD.svg?react'
 import { LanguageEnum } from '../../../types/redux/LanguageEnum';
 import styles from './LanguageSwitch.module.css';
-import { setLanguage } from '../../../store/languageSlice/languageSlice';
-import { useEffect, useState } from 'react';
+import { setLanguage } from '../../../store/userSlice/userSlice';
+import { useState } from 'react';
 
 export const LanguageSwitch = () => {
-    const currentLanguage = useAppSelector(state => state.language.language);
+    const currentLanguage = useAppSelector(state => state.user.language);
     const dispatch = useAppDispatch();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,6 +27,8 @@ export const LanguageSwitch = () => {
         dispatch(setLanguage(language));
         setIsOpen(false);
     }
+
+    
 
 
     return (
