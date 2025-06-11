@@ -99,6 +99,7 @@ export const messages = {
     "educationDirection": "Direction",
     "educationProfile": "Profile",
     "course": "Course",
+    "exp": "Expirience",
     "group": "Group",
     "work": "Work",
     "employment": "Type of employment",
