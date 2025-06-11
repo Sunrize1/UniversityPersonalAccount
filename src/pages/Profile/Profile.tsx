@@ -92,7 +92,7 @@ export const Profile = () => {
                   <FormattedMessage id="gender" defaultMessage="Пол" />
                 </p>
                 <p className={'p1' + ' ' + styles.value}>
-                  <FormattedMessage id={user?.gender} defaultMessage='NotDefined'/>
+                {user?.gender}
                 </p>
               </div>
               <div className={styles.listItem}>
@@ -126,7 +126,7 @@ export const Profile = () => {
             {user?.contacts.map((contact) => (
               <div key={contact.type} className={styles.listItem}>
                 <p className={'p2' + ' ' + styles.key1}>
-                  <FormattedMessage id={contact.type} defaultMessage={contact.type} />
+                {contact.type}
                 </p>
                 <p className={'p1' + ' ' + styles.value}>
                   {contact.value}
