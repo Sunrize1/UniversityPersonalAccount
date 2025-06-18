@@ -58,8 +58,8 @@
 }
 
 .leftIcon {
-    align-self: flex-end;
+    align-self: center;
 }
 .rightIcon {
-    align-self: flex-end;
+    align-self: center;
 }

@@ -1,6 +1,7 @@
 import { FilterChipProps } from "../../../types/components/UI/filterChip"
 import styles from './FilterChip.module.css';
 import typography from '../../../styles/typography.module.css';
+import { FormattedMessage } from "react-intl";
 
 
 export const FilterChip = ({children, variant, leftIcon, rightIcon, ...rest}: FilterChipProps) => {
@@ -13,7 +14,7 @@ export const FilterChip = ({children, variant, leftIcon, rightIcon, ...rest}: Fi
     return (
         <button className={chipClasses} {...rest}>
             {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
-            <span>{children}</span>
+            <span><FormattedMessage id={children} /></span>
             {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
         </button>
     )

@@ -1,0 +1,175 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  background: var(--text-white);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0 32px;
+  gap: 16px;
+  width: 100%;
+  min-height: 102px;
+  border-bottom: 1px solid var(--text-gray);
+  border-radius: 8px 8px 0 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 8px;
+  flex: 1;
+  max-width: 350px;
+  height: 102px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.tabActive {
+  border-bottom: 2px solid var(--accent);
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  width: 100%;
+  max-width: 305px;
+  min-height: 62px;
+  flex: 1;
+}
+
+.institute {
+  width: 100%;
+  margin: 0 0 4px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tabActive .institute {
+  color: var(--accent);
+}
+
+.tab:not(.tabActive) .institute {
+  color: var(--text-p2);
+}
+
+.level,
+.status {
+  margin: 2px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.tabActive .level,
+.tabActive .status {
+  color: var(--accent);
+}
+
+.tab:not(.tabActive) .level,
+.tab:not(.tabActive) .status {
+  color: var(--text-p2);
+}
+
+.educationInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 32px;
+  gap: 24px;
+  width: 100%;
+  min-height: 220px;
+  transition: all 0.2s ease-in-out;
+}
+
+.educationDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background: var(--text-white);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  min-height: 44px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  flex: 1;
+  min-height: 44px;
+}
+
+.label {
+  color: var(--text-p2);
+  margin: 0;
+  width: 100%;
+}
+
+.value {
+  color: var(--text-black);
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  border-top: 1px solid var(--text-gray);
+  margin: 8px 0;
+}
+
+
+
+
+@media (max-width: 900px) {
+  .tabsContainer,
+  .educationInfo {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .row {
+    gap: 12px;
+  }
+
+  .column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}

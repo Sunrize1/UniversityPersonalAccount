@@ -1,0 +1,20 @@
+.rolePicker {
+    align-self: flex-start;
+}
+
+.roleSelector {
+    width: 100%;
+    align-self: flex-start;
+    display: none;
+}
+
+@media (max-width: 600px) {
+  .rolePicker {
+    display: none;
+  }
+
+  .roleSelector {
+    margin-top: 16px;
+    display: block;
+  }
+} 

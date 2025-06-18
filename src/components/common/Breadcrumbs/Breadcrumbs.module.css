@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 12px 0;
+  
+  width: 100%;
+  min-height: auto;
+  
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.breadcrumbsNav {
+  display: flex;
+  width: 100%;
+}
+
+.breadcrumbsList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+  list-style: none;
+  
+  width: 100%;
+  min-height: auto;
+  
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.breadcrumbItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  
+  min-height: auto;
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.breadcrumbText {
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: var(--text-primary);
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  min-width: 0;
+  word-wrap: break-word;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbActive {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  color: var(--text-gray);
+  font-size: 14px;
+  
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 10px 0;
+  }
+  
+  .breadcrumbsList {
+    gap: 6px;
+  }
+  
+  .breadcrumbItem {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 8px 0;
+  }
+  
+  .breadcrumbsList {
+    gap: 4px;
+  }
+  
+  .breadcrumbItem {
+    gap: 4px;
+  }
+  
+  .separator {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 6px 0;
+  }
+} 

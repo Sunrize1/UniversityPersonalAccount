@@ -55,7 +55,64 @@ export const messages = {
     "present": "по настоящее время",
     "Male": "Мужчина",
     "Female": "Женщина",
-    "NotDefined": 'Не определен'
+    "NotDefined": 'Не определен',
+
+    //CERTIFICATIONORDER
+    "/certificate-order": "Справки",
+    "order": "Заказать",
+    "orderCertificate": "Заказать справку",
+    "ordering": "Заказываю...",
+    "certificateKind": "Вид справки",
+    "certificateType": "Тип справки",
+    "receiveType": "Вид справки",
+    "userType": "Тип пользователя",
+    "selectRolePlaceholder": "Выберите роль",
+    "selectCertificateTypePlaceholder": "Выбрать тип справки",
+    "selectReceiveTypePlaceholder": "Выбрать способ получения",
+    "noCertificatesYet": "У вас пока нет справок",
+    "certificateFrom": "Справка от:",
+    "certificateTypeLabel": "Тип справки",
+    "certificateKindLabel": "Вид справки",
+    "downloadCertificate": "Справку",
+    "downloadSignature": "Подпись",
+    
+    // Certificate statuses
+    "certificateStatusCreated": "Создана",
+    "certificateStatusInProcess": "В обработке",
+    "certificateStatusFinished": "Готова",
+    
+    // Certificate types
+    "certificateTypeForPlaceWhereNeeded": "По месту требования",
+    "certificateTypePensionForKazakhstan": "Для пенсии в Казахстане",
+    "certificateTypeForPlaceOfWork": "По месту работы",
+    "certificateTypeForExperience": "О стаже",
+    "certificateTypeForVisa": "Для визы",
+    "certificateTypeForWorkBookCopy": "Копия трудовой книжки",
+    
+    // Receive types
+    "receiveTypeElectronic": "Электронная",
+    "receiveTypePaper": "Бумажная",
+    
+    // Form labels
+    "educationLevelLabel": "Уровень образования",
+    "positionLabel": "Должность",
+    "statusLabel": "Статус",
+    "rateLabel": "Ставка",
+    "facultyLabel": "Факультет",
+    "workPlaceLabel": "Место работы",
+    "directionLabel": "Направление",
+    "positionTypeLabel": "Тип должности",
+    "groupLabel": "Группа",
+    "employmentTypeLabel": "Вид занятости",
+
+    //ROLES
+    "student": "Студент",
+    "employee": "Сотрудник",
+
+    //BREADCRUMBS
+    "main": "Главная",
+    "certificates": "Справки",
+
   },
   [LOCALES.ENGLISH]: {
     // LOGIN
@@ -111,6 +168,61 @@ export const messages = {
     "present": "Present",
     "Male": "Male",
     "Female": "Female",
-    "NotDefined": 'Not defined'
+    "NotDefined": 'Not defined',
+
+    //CERTIFICATIONORDER
+    "/certificate-order": "Certifications",
+    "order": "Order",
+    "orderCertificate": "Order certificate",
+    "ordering": "Ordering...",
+    "certificateKind": "Certificate kind",
+    "certificateType": "Certificate type",
+    "receiveType": "Receive type",
+    "userType": "User type",
+    "selectRolePlaceholder": "Select role",
+    "selectCertificateTypePlaceholder": "Select certificate type",
+    "selectReceiveTypePlaceholder": "Select receive type",
+    "noCertificatesYet": "You don't have any certificates yet",
+    "certificateFrom": "Certificate from:",
+    "certificateTypeLabel": "Certificate type",
+    "certificateKindLabel": "Certificate kind",
+    "downloadCertificate": "Certificate",
+    "downloadSignature": "Signature",
+    
+    // Certificate statuses
+    "certificateStatusCreated": "Created",
+    "certificateStatusInProcess": "In Process",
+    "certificateStatusFinished": "Finished",
+    
+    // Certificate types
+    "certificateTypeForPlaceWhereNeeded": "For place where needed",
+    "certificateTypePensionForKazakhstan": "For pension in Kazakhstan",
+    "certificateTypeForPlaceOfWork": "For place of work",
+    "certificateTypeForExperience": "For experience",
+    "certificateTypeForVisa": "For visa",
+    "certificateTypeForWorkBookCopy": "Work book copy",
+    
+    // Receive types
+    "receiveTypeElectronic": "Electronic",
+    "receiveTypePaper": "Paper",
+    
+    // Form labels
+    "educationLevelLabel": "Education level",
+    "positionLabel": "Position",
+    "statusLabel": "Status",
+    "rateLabel": "Rate",
+    "facultyLabel": "Faculty",
+    "workPlaceLabel": "Work place",
+    "directionLabel": "Direction",
+    "positionTypeLabel": "Position type",
+    "groupLabel": "Group",
+    "employmentTypeLabel": "Employment type",
+    //ROLES
+    "student": "Student",
+    "employee": "Employee",
+
+    //BREADCRUMBS
+    "main": "Main",
+    "certificates": "Certificates",
   },
 };

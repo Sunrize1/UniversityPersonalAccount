@@ -1,0 +1,140 @@
+.certificatesList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 32px;
+  width: 100%;
+  min-height: 200px;
+  background: var(--text-white);
+  transition: all 0.2s ease-in-out;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 160px;
+  text-align: center;
+  color: var(--text-p2);
+}
+
+.certificateItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 0;
+  gap: 16px;
+  width: 100%;
+  border-bottom: 1px solid var(--text-gray);
+}
+
+.certificateItem:last-child {
+  border-bottom: none;
+}
+
+.certificateContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+}
+
+.certificateTitle {
+  color: var(--text-black);
+  margin: 0 0 4px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-weight: 500;
+  font-size: var(--p1-font-size);
+  flex: 1;
+}
+
+.certificateInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 2px;
+}
+
+.certificateDate {
+  color: var(--text-p2);
+  margin: 0;
+  word-wrap: break-word;
+  font-size: var(--p2-font-size);
+}
+
+.certificateActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.certificateActionsButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusBadge {
+  margin-left: auto;
+}
+
+.statusBadgeMobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .certificatesList {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .certificateItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .certificateActions {
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .statusBadge {
+    display: none;
+  }
+
+  .statusBadgeMobile {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .statusBadge {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 375px) {
+  .certificateActions {
+    gap: 0px;
+  }
+} 

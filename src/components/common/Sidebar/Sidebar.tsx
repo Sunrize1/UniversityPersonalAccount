@@ -7,6 +7,7 @@ import { API_BASE_URL } from '../../../api/instance';
 import { setIsSidebarHidden, toggleIsSidebarActive } from '../../../store/UISlice/UISlice';
 import { FormattedMessage } from 'react-intl';
 import { Spinner } from '../../UI/Spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
@@ -16,7 +17,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
   const isSidebarActive = useAppSelector(State => State.UISlice.isSidebarActive);
   const [isOpen, setIsOpen] = useState(false);
   const user = useAppSelector(state => state.user.user)
-
+  const navigate = useNavigate();
   const avatarUrl = user?.avatar?.id ? `${API_BASE_URL}/files/${user.avatar.id}` : null;
 
   const toggleSidebar = () => {
@@ -47,10 +48,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
     isSidebarActive ? styles.rootFixed : styles.root
   ].filter(Boolean).join(' ')
 
-  const handleNavigateClick = () => {
+  const handleNavigateClick = (path: string) => {
     if(isSidebarActive) {
       dispatch(toggleIsSidebarActive());
     }
+    handleNavigation(path);
+  }
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
   }
 
   return (
@@ -79,12 +85,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
         {menuItems.map((item) => (
           <div
             key={item.id}
-            onClick={handleNavigateClick}
+            onClick={() => handleNavigateClick(item.label)}
             className={`${styles.menuItem} ${!isOpen ? styles.menuItemClosed : ''} ${item.active ? styles.active : ''}`}
           >
             <div className={styles.icon}>
               <div className={`${styles.vector} ${item.active ? styles.vectorActive : ''}`}>
-                {item.icon}
+                {item.active ? item.activeIcon : item.basicIcon}
               </div>
             </div>
             {isOpen && (

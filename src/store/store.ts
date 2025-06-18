@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { notificationSlice } from "./notificationSlice/notificationSlice";
 import { UISlice } from "./UISlice/UISlice";
+import { breadcrumbsSlice } from "./breadcrumbsSlice/breadcrumbsSlice";
 
 
 const persistConfig = {
@@ -24,7 +25,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     user: userSlice.reducer,
     notification: notificationSlice.reducer,
-    UISlice: UISlice.reducer
+    UISlice: UISlice.reducer,
+    breadcrumbs: breadcrumbsSlice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

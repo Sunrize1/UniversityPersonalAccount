@@ -19,7 +19,7 @@
     align-self: flex-start;
 }
 
-@media (max-width: 1536px) {
+@media (max-width: 1200px) {
     .headerContainer {
         max-width: 1400px; 
         padding: 20px;    
@@ -27,16 +27,23 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .headerContainer {
-        max-width: 700px;  
+        max-width: 850px;  
         padding: 10px;    
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .headerContainer {
-        max-width: 400px;
+        max-width: 550px;
         padding: 8px;     
+    }
+}
+
+@media (max-width: 375px) {
+    .headerContainer {
+        max-width: 350px;
+        padding: 4px;     
     }
 }

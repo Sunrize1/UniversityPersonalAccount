@@ -1,0 +1,31 @@
+.certificateOrder {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+  contain: layout;
+}
+
+
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.infoContainer {
+  flex: 1;
+  opacity: 1;
+  width: 100%;
+  transform: translateZ(0);
+}
+
+
+
+@media (max-width: 600px) {
+  .certificateOrder {
+    flex-direction: column;
+  }
+}
