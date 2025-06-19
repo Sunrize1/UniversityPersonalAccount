@@ -5,6 +5,8 @@ import BlackCertificateIcon from './assets/icons/Icon/Icon/Menu/black/Certificat
 import BlueProfileIcon from './assets/icons/Icon/Icon/Menu/red/User.svg?react';
 import BlueAdministratorIcon from './assets/icons/Icon/Icon/Menu/red/Administrator.svg?react';
 import BlueCertificateIcon from './assets/icons/Icon/Icon/Menu/red/Certificate.svg?react';
+import BlackLinkIcon from './assets/icons/Icon/Icon/Menu/black/Link.svg?react';
+import BlueLinkIcon from './assets/icons/Icon/Icon/Menu/red/Link.svg?react';
 import { LanguageEnum } from "./types/redux/LanguageEnum";
 import { useAppSelector } from "./store/hooks";
 import { LOCALES } from "./i18n/locales";
@@ -17,6 +19,7 @@ import { Sidebar } from './components/common/Sidebar/Sidebar';
 import styles from './App.module.css'; 
 import { Header } from './components/common/Header/Header';
 import { CertificateOrder } from './pages/CertificateOrder/CertificateOrder';
+import { Links } from './pages/Links/Links';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
@@ -49,6 +52,13 @@ export const AppRouter = () => {
       activeIcon: <BlueCertificateIcon />,
       active: location.pathname === '/certificate-order',
     },
+    {
+      id: 'links',
+      label: '/links',
+      basicIcon: <BlackLinkIcon />,
+      activeIcon: <BlueLinkIcon />,
+      active: location.pathname === '/links',
+    }
   ];
 
   return (
@@ -61,6 +71,7 @@ export const AppRouter = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/certificate-order" element={<CertificateOrder />} />
+            <Route path="/links" element={<Links />} />
           </Routes>
           <NotificationPopup />
         </main>

@@ -113,6 +113,18 @@ export const messages = {
     "main": "Главная",
     "certificates": "Справки",
 
+    //LINKS
+    "/links": "Полезные сервисы",
+    "links": "Полезные сервисы",
+    "forAll": "Для всех",
+    "forStudents": "Для студентов",
+    "forEmployees": "Для сотрудников",
+    "termsOfDistribution": "Условия предоставления",
+    "noImage": "Нет изображения",
+    "noLinksFound": "Полезные сервисы не найдены",
+    "noLinksFoundText": "Попробуйте изменить фильтры или обратитесь к администратору",
+    "goToService": "Перейти на сайт",
+
   },
   [LOCALES.ENGLISH]: {
     // LOGIN
@@ -224,5 +236,17 @@ export const messages = {
     //BREADCRUMBS
     "main": "Main",
     "certificates": "Certificates",
+
+    //LINKS
+    "/links": "Useful services",
+    "links": "Useful services",
+    "forAll": "For All",
+    "forStudents": "For Students",
+    "forEmployees": "For Employees",
+    "termsOfDistribution": "Terms of Distribution",
+    "noImage": "No image",
+    "noLinksFound": "No useful services found",
+    "noLinksFoundText": "Try changing filters or contact administrator",
+    "goToService": "Go to service",
   },
 };

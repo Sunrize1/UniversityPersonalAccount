@@ -2,6 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { RolePicker } from '../RolePicker/RolePicker';
 import { Select } from '../../UI/Select/Select';
 import styles from './RoleSelector.module.css';
+import { useEffect } from 'react';
 
 interface RoleOption {
   id: string;
@@ -28,8 +29,14 @@ export const RoleSelector = ({
     }
   });
 
+  useEffect(() => {
+    methods.setValue('role', selectedRole);
+  }, [selectedRole, methods]);
+
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onRoleChange(event.target.value);
+    const newRole = event.target.value;
+    methods.setValue('role', newRole);
+    onRoleChange(newRole);
   };
 
   if (!hasMultipleRoles) {

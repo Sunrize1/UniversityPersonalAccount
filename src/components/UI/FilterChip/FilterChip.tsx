@@ -4,11 +4,12 @@ import typography from '../../../styles/typography.module.css';
 import { FormattedMessage } from "react-intl";
 
 
-export const FilterChip = ({children, variant, leftIcon, rightIcon, ...rest}: FilterChipProps) => {
+export const FilterChip = ({children, variant, leftIcon, rightIcon, className, ...rest}: FilterChipProps) => {
     const chipClasses = [
         styles.filterChip,
         typography.p2,
-        variant === 'primary' ? styles.filterChipPrimary : styles.filterChipOutline
+        variant === 'primary' ? styles.filterChipPrimary : styles.filterChipOutline,
+        className
     ].join(' ');
 
     return (

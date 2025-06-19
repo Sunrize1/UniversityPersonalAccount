@@ -28,6 +28,10 @@
   color: var(--text-p2);
 }
 
+.filterChip {
+  max-width: 157px;
+}
+
 .certificateItem {
   display: flex;
   flex-direction: row;
@@ -117,19 +121,12 @@
     width: 100%;
     flex-direction: row;
   }
-
-  .statusBadge {
-    display: none;
-  }
-
-  .statusBadgeMobile {
-    display: block;
-  }
 }
 
 @media (max-width: 600px) {
   .statusBadge {
     align-self: flex-start;
+    justify-self: flex-start;
   }
 }
 

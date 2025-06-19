@@ -6,4 +6,5 @@ export interface FilterChipProps extends React.ButtonHTMLAttributes<HTMLButtonEl
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
     variant?: 'primary' | 'outline';
+    className?: string;
 }

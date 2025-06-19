@@ -63,11 +63,11 @@ export const CertificatesList = ({
             <div className={styles.certificateActionsButtons}>
               {certificate.status === CertificateStatus.Finished && certificate.certificateFile && (
                 <>
-                  <FilterChip leftIcon={<DownloadIconBlue/>} onClick={() => onDownload(certificate.id, 'certificate')}>
+                  <FilterChip className={styles.filterChip} leftIcon={<DownloadIconBlue/>} onClick={() => onDownload(certificate.id, 'certificate')}>
                     downloadCertificate
                   </FilterChip>
                   {certificate.signatureFile && (
-                    <FilterChip leftIcon={<DownloadIconWhite/>} variant='primary' onClick={() => onDownload(certificate.id, 'signature')}>
+                    <FilterChip className={styles.filterChip} leftIcon={<DownloadIconWhite/>} variant='primary' onClick={() => onDownload(certificate.id, 'signature')}>
                       downloadSignature
                     </FilterChip>
                   )}
