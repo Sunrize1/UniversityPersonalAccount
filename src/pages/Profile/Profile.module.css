@@ -29,6 +29,11 @@
     object-fit: contain;
     border-radius: 8px;
     background: var(--text-gray);
+    cursor: pointer;
+}
+
+.avatar:hover {
+    opacity: 0.8;
 } 
 
 .userName {

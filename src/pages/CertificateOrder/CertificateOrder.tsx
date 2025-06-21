@@ -2,7 +2,6 @@ import { Container } from "../../components/UI/Container/Container";
 import { Breadcrumbs } from "../../components/common/Breadcrumbs/Breadcrumbs";
 import { useEffect, useState } from "react";
 import { useBreadcrumbs } from "../../hooks/useBreadcrumbs";
-import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { CertificateOrderInfo } from "../../components/common/CertificateOrder/CertificateOrderInfo";
 import { RoleSelector } from "../../components/common/RoleSelector/RoleSelector";
 import styles from "./CertificateOrder.module.css";
@@ -13,7 +12,6 @@ import { useProfileData } from "../../hooks/useProfileData";
 import { mapEducationToTabInfo, mapPostToTabInfo } from "../../utils/dataMappers";
 
 export const CertificateOrder = () => {
-  useAuthRedirect();
   const { setBreadcrumbItems } = useBreadcrumbs();
   const [isInfoOpen, setIsInfoOpen] = useState(true);
   

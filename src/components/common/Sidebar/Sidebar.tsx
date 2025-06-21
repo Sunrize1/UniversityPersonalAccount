@@ -1,6 +1,6 @@
 import { SidebarProps } from '../../../types/components/common/SidebarProps';
 import ToggleSidebarIcon from '../../../assets/icons/Icon/Icon/Menu/red/toggleSidebar.svg?react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { API_BASE_URL } from '../../../api/instance';
@@ -8,6 +8,7 @@ import { setIsSidebarHidden, toggleIsSidebarActive } from '../../../store/UISlic
 import { FormattedMessage } from 'react-intl';
 import { Spinner } from '../../UI/Spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from '../Logout/Logout';
 
 
 export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
@@ -15,18 +16,39 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
   const [isAvatarLoading, setIsAvatarLoading] = useState(true);
   const isSidebarHidden = useAppSelector(state => state.UISlice.isSidebarHidden);
   const isSidebarActive = useAppSelector(State => State.UISlice.isSidebarActive);
+  const [isLogoutMenuOpen, setIsLogoutMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const user = useAppSelector(state => state.user.user)
   const navigate = useNavigate();
   const avatarUrl = user?.avatar?.id ? `${API_BASE_URL}/files/${user.avatar.id}` : null;
-
+  const containerRef = useRef<HTMLDivElement>(null);
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsLogoutMenuOpen(false);
+      }
+    };
+
+    if (isLogoutMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLogoutMenuOpen]);
+
   const handleAvatarLoad = () => {
     setIsAvatarLoading(false);
   };
+
+  const handleAvatarClick = () => {
+    setIsLogoutMenuOpen(!isLogoutMenuOpen);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,7 +84,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
     <div 
       className={sidebarClasses}
     >
-      <div className={styles.avatarContainer}>
+      <div className={styles.avatarContainer} ref={containerRef}>
       {avatarUrl ? (
          <>
          {isAvatarLoading && <Spinner />}
@@ -70,6 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
            className={styles.avatar}
            src={avatarUrl}
            alt='avatar'
+           onClick={() => isAvatarLoading ? null : handleAvatarClick()}
            onLoad={handleAvatarLoad}
            style={{ opacity: isAvatarLoading ? 0 : 1 }}
            loading="lazy"
@@ -78,6 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
         ) : (
          <div className={styles.avatar} />
         )}
+        {isLogoutMenuOpen && <Logout />}
       </div>
 
       <div className={styles.menuContainer}>

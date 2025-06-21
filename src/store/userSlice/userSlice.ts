@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserState } from "../../types/redux/userState";
 import { StatusEnum } from "../../types/redux/StatusEnum";
-import { fetchProfileThunk, loginThunk, refreshTokensThunk } from "./userThunks";
+import { fetchProfileThunk, loginThunk, logoutThunk, refreshTokensThunk } from "./userThunks";
 import { LanguageEnum } from "../../types/redux/LanguageEnum";
 
 const initialState: UserState = {
@@ -73,6 +73,19 @@ export const userSlice = createSlice({
                 state.user = null;
                 state.accessToken = '';
                 state.refreshToken = '';
+            })
+
+            .addCase(logoutThunk.fulfilled, (state) => {
+                state.user = null;
+                state.accessToken = '';
+                state.refreshToken = '';
+                state.status = StatusEnum.idle;
+            })
+            .addCase(logoutThunk.rejected, (state) => {
+                state.user = null;
+                state.accessToken = '';
+                state.refreshToken = '';
+                state.status = StatusEnum.idle;
             });
     
     }

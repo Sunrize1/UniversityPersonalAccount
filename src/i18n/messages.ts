@@ -12,6 +12,7 @@ export const messages = {
     "passwordValidation": "Пароль должен содержать не менее 3 символов",
     "rememberMe": "Запомнить меня",
     "enter": "Войти",
+    "logout": "Выйти",
 
     // PROFILE
     "/login": " ",
@@ -194,9 +195,15 @@ export const messages = {
     // EVENT REGISTRATION MODAL
     "eventRegistration": "Регистрация на мероприятие",
     "save": "Сохранить",
+    "back": "Назад",
     "fullName": "ФИО",
     "phone": "Телефон",
     "additionalInformation": "Дополнительная информация",
+    
+    // AVATAR UPDATE MODAL
+    "updateAvatar": "Обновить аватар",
+    "selectImage": "Выберите изображение для аватара",
+    "zoom": "Масштаб:",
     "register": "Зарегистрироваться",
     "cancel": "Отмена",
     "nameIsRequired": "ФИО обязательно для заполнения",
@@ -214,7 +221,7 @@ export const messages = {
     "passwordValidation": "Password must be at least 3 characters long",
     "rememberMe": "Remember me",
     "enter": "ENTER",
-
+    "logout": "Exit",
     // PROFILE
     "/login": " ",
     "/profile": "Profile",

@@ -6,17 +6,18 @@ import { Input } from '../../components/UI/Input/Input';
 import { Button } from '../../components/UI/Button/Button';
 import { Switch } from '../../components/UI/Switch/Switch';
 import { Container } from '../../components/UI/Container/Container';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { loginThunk } from '../../store/userSlice/userThunks';
 import { showNotification } from '../../utils/notification';
 import { NotificationTypeEnum } from '../../types/redux/NotificationTypeEnum';
-import { StatusEnum } from '../../types/redux/StatusEnum';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+    
     const methods = useForm<LoginInput>({
         defaultValues: {
             rememberMe: false,
@@ -30,7 +31,7 @@ export const Login = () => {
             const result = await dispatch(loginThunk(data)).unwrap();
             if(result.loginSucceeded) {
                 showNotification(dispatch, 'Успешный вход', NotificationTypeEnum.SUCCESS, 5000);
-                navigate('/profile');
+                navigate('/profile', { replace: true });
             } else {
                 showNotification(dispatch, 'Неверный логин или пароль', NotificationTypeEnum.ERROR, 5000);
             }

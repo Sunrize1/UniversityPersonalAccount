@@ -3,7 +3,6 @@ import { Breadcrumbs } from "../../components/common/Breadcrumbs/Breadcrumbs"
 import { Container } from "../../components/UI/Container/Container"
 import { LinksList } from "../../components/common/LinksList/LinkList"
 import { useBreadcrumbs } from "../../hooks/useBreadcrumbs";
-import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { getUsefulServices } from "../../api/requests/getUsefulServices";
 import { UsefulService, UsefulServiceCategory, Pagination } from "../../types/api/UsefulServicesResponse";
 import styles from "./Links.module.css";
@@ -13,7 +12,6 @@ import { showNotification } from "../../utils/notification";
 import { NotificationTypeEnum } from "../../types/redux/NotificationTypeEnum";
 
 export const Links = () => {
-    useAuthRedirect();
     const dispatch = useAppDispatch();
     const { setBreadcrumbItems } = useBreadcrumbs();
     const user = useAppSelector((state) => state.user.user);

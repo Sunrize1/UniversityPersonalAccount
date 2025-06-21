@@ -7,6 +7,7 @@ import { ProfileResponse } from '../../types/api/profileResponse';
 import { getProfile } from '../../api/requests/getProfile';
 import { RefreshResponse } from '../../types/api/refreshResponse';
 import { refreshAccessToken } from '../../api/requests/refreshToken';
+import { logout } from '../../api/requests/logout';
 
 export const loginThunk = createAsyncThunk<
     loginResponse,           
@@ -60,6 +61,25 @@ export const fetchProfileThunk = createAsyncThunk<
             return response.data;
         } catch (error: any) {
             const errorMessage = error.response?.data?.message || 'Ошибка при получении данных профиля';
+            return rejectWithValue(errorMessage);
+        }
+    }
+)
+
+export const logoutThunk = createAsyncThunk<
+    void,
+    void,
+    {
+        state: RootState,
+        rejectValue: string;
+    }
+>(
+    'user/logout',
+    async (_, { rejectWithValue }) => {
+        try {
+            await logout();
+        } catch (error: any) {
+            const errorMessage = error.response?.data?.message || 'Ошибка при выходе из системы';
             return rejectWithValue(errorMessage);
         }
     }

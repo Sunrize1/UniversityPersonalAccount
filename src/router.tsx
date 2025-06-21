@@ -24,14 +24,16 @@ import { CertificateOrder } from './pages/CertificateOrder/CertificateOrder';
 import { Links } from './pages/Links/Links';
 import { Events } from './pages/Events/Events';
 import { EventDetails } from './pages/Events/EventDetails/EventDetails';
+import { ProtectedRoute } from './components/common/ProtectedRoute/ProtectedRoute';
+import { useAuth } from './hooks/useAuth';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
   const locale = language === LanguageEnum.RUSSIAN ? LOCALES.RUSSIAN : LOCALES.ENGLISH;
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
-  const token = useAppSelector(state => state.user.accessToken)
-  const shouldSidebarRender = (token && !(location.pathname == '/login'))
+  const shouldSidebarRender = (isAuthenticated && !(location.pathname == '/login'))
 
   const getPageTitle = (pathname: string) => {
     if (pathname.startsWith('/events/')) {
@@ -80,18 +82,32 @@ export const AppRouter = () => {
   ];
 
   return (
-    <IntlProvider locale={locale} messages={messages[locale]} defaultLocale={LOCALES.RUSSIAN}>
+    <IntlProvider locale={locale} messages={messages[locale] as Record<string, string>} defaultLocale={LOCALES.RUSSIAN}>
       <div className={styles.appContainer}>
         {shouldSidebarRender && <Sidebar menuItems={menuItems} />}
         <main className={styles.mainContent}>
           <Header title={getPageTitle(location.pathname)}></Header>
           <Routes>
-            <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/certificate-order" element={<CertificateOrder />} />
-            <Route path="/links" element={<Links />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetails />} />
+            
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } />
+            <Route path="/certificate-order" element={
+              <ProtectedRoute>
+                <CertificateOrder />
+              </ProtectedRoute>
+            } />
+            <Route path="/links" element={
+              <ProtectedRoute>
+                <Links />
+              </ProtectedRoute>
+            } />
+            
           </Routes>
           <NotificationPopup />
         </main>

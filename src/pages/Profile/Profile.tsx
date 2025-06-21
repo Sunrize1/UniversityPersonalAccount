@@ -4,19 +4,19 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import styles from './Profile.module.css';
 import { fetchProfileThunk } from "../../store/userSlice/userThunks";
 import { StatusEnum } from "../../types/redux/StatusEnum";
-import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { API_BASE_URL } from "../../api/instance";
 import { ProfileInfo } from "../../components/common/ProfileInfo/ProfileInfo";
 import { FormattedMessage } from "react-intl";
 import { Spinner } from "../../components/UI/Spinner/Spinner";
+import { AvatarUpdateModal } from "../../components/common/AvatarUpdateModal/AvatarUpdateModal";
 
 export const Profile = () => {
-  useAuthRedirect();
 
   const dispatch = useAppDispatch();
   const [isAvatarLoading, setIsAvatarLoading] = useState(true);
   const { user, status, accessToken } = useAppSelector((state) => state.user);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
 
   const avatarUrl = user?.avatar?.id ? `${API_BASE_URL}/files/${user.avatar.id}` : null;
 
@@ -78,10 +78,14 @@ export const Profile = () => {
                 onError={handleAvatarError}
                 style={{ opacity: isAvatarLoading ? 0 : 1 }}
                 loading="lazy"
+                onClick={() => setIsAvatarModalOpen(true)}
               />
             </>
             ) : (
-              <div className={styles.avatar} />
+              <div 
+                className={styles.avatar} 
+                onClick={() => setIsAvatarModalOpen(true)}
+              />
             )}
           </div>
           <div className={styles.infoBlock + ' ' + styles.personalData}>
@@ -144,6 +148,11 @@ export const Profile = () => {
           <ProfileInfo />
         </div>
       </div>
+      
+      <AvatarUpdateModal
+        isOpen={isAvatarModalOpen}
+        onClose={() => setIsAvatarModalOpen(false)}
+      />
     </Container>
   );
 };
