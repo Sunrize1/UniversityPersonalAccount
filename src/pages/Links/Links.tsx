@@ -46,7 +46,7 @@ export const Links = () => {
         try {
             const response = await getUsefulServices(category, page, 10);
             setLinks(response.data.results);
-            setPagination(response.data.pagination);
+            setPagination(response.data.metaData);
         } catch (error) {
             showNotification(dispatch, "Ошибка при загрузке полезных сервисов", NotificationTypeEnum.ERROR, 5000);
             setLinks([]);

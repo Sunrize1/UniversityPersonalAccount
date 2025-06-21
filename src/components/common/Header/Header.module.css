@@ -16,7 +16,9 @@
 }
 
 .rightSide {
-    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 1200px) {

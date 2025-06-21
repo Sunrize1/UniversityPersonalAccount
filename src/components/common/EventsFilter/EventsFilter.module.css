@@ -1,0 +1,42 @@
+.eventsFilter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--text-white);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.nameSearch {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.searchButton {
+    width: 250px;
+    align-self: flex-start;
+}
+
+.datePicker {
+    max-width: 383px;
+}
+
+@media (max-width: 600px) {
+    .datePicker {
+        max-width: 100%;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .nameSearch {
+        flex-direction: column;
+    }
+
+    .searchButton {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}

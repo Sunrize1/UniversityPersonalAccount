@@ -35,7 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ].filter(Boolean).join(' ');
 
     return (
-      <div>
+      <div className={styles.inputContainer}>
       <div className={textFieldClasses}>
         {label && (
             <label className={styles.labelText} htmlFor={name}>

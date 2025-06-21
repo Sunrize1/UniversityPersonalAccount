@@ -19,7 +19,7 @@ export enum UsefulServiceCategory {
 
 export type UsefulServicesResponse = {
     results: UsefulService[];
-    pagination: Pagination;
+    metaData: Pagination;
 }
 
 export type Pagination = {

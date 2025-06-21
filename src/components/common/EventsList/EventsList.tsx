@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
-import { LinksListProps } from '../../../types/components/common/LinksTypes';
-import { LinkCard } from '../LinkCard/LinkCard';
+import { EventsListProps } from '../../../types/components/common/EventTypes';
+import { EventCard } from '../EventCard/EventCard';
 import { Pagination } from '../../UI/Pagination/Pagination';
 import { Spinner } from '../../UI/Spinner/Spinner';
-import styles from './LinkList.module.css';
+import styles from './EventsList.module.css';
 
-export const LinksList: FC<LinksListProps> = ({ 
-  links, 
+export const EventsList: FC<EventsListProps> = ({ 
+  events, 
   pagination, 
-  onLinkClick, 
+  onEventClick, 
   onPageChange,
   isLoading = false 
 }) => {
@@ -23,13 +23,15 @@ export const LinksList: FC<LinksListProps> = ({
     );
   }
 
-  if (links.length === 0) {
+  if (events.length === 0) {
     return (
       <div className={styles.container}>
         <div className={styles.emptyState}>
-          <h3 className={styles.emptyStateTitle}>{intl.formatMessage({ id: 'noLinksFound' })}</h3>
+          <h3 className={styles.emptyStateTitle}>
+            {intl.formatMessage({ id: 'noEventsFound' })}
+          </h3>
           <p className={styles.emptyStateText}>
-            {intl.formatMessage({ id: 'noLinksFoundText' })}
+            {intl.formatMessage({ id: 'noEventsFoundText' })}
           </p>
         </div>
       </div>
@@ -38,12 +40,12 @@ export const LinksList: FC<LinksListProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.linksList}>
-        {links.map((link) => (
-          <LinkCard 
-            key={link.id} 
-            link={link} 
-            onLinkClick={onLinkClick}
+      <div className={styles.eventsList}>
+        {events.map((event) => (
+          <EventCard 
+            key={event.id} 
+            event={event} 
+            onClick={onEventClick}
           />
         ))}
       </div>

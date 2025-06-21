@@ -12,6 +12,9 @@
     border-radius: 8px;
 }
 
+.inputContainer {
+    width: 100%;
+}
 
 .textField:hover {
     border: 1px solid var(--text-black);
