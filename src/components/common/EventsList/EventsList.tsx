@@ -17,7 +17,7 @@ export const EventsList: FC<EventsListProps> = ({
 
   if (isLoading) {
     return (
-      <div className={styles.container}>
+      <div className={styles.loadingContainer}>
         <Spinner />
       </div>
     );

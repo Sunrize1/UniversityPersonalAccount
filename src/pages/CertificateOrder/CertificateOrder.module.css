@@ -4,6 +4,7 @@
   gap: 24px;
   width: 100%;
   contain: layout;
+  min-height: 400px; 
 }
 
 .loadingContainer {
@@ -11,6 +12,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 400px; 
 }
 
 .infoContainer {

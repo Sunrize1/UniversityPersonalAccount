@@ -24,7 +24,11 @@
 @media (max-width: 1200px) {
     .headerContainer {
         max-width: 1400px; 
-        padding: 20px;    
+        padding: 20px; 
+    }
+
+    .rightSide{
+        align-self: flex-start;
     }
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import { Breadcrumbs } from "../../components/common/Breadcrumbs/Breadcrumbs";
 import { useBreadcrumbs } from "../../hooks/useBreadcrumbs";
 import { Container } from "../../components/UI/Container/Container";
@@ -19,6 +20,7 @@ import styles from "./Events.module.css";
 export const Events = () => {
     const dispatch = useAppDispatch();
     const intl = useIntl();
+    const navigate = useNavigate();
     const { accessToken } = useAppSelector((state) => state.user);
     const { setBreadcrumbItems } = useBreadcrumbs();
     
@@ -35,12 +37,12 @@ export const Events = () => {
         setBreadcrumbItems([
           {
             id: "home",
-            label: "main",
+            label: "Главная",
             path: "/"
           },
           {
             id: "events",
-            label: "events",
+            label: "Мероприятия",
             path: "/events"
           }
         ]);
@@ -107,6 +109,7 @@ export const Events = () => {
     }, [accessToken]);
 
     const handleEventClick = (event: EventDto) => {
+      navigate(`/events/${event.id}`);
     };
 
     const handlePageChange = (page: number) => {

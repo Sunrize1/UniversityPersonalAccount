@@ -65,8 +65,19 @@
   transition: color 0.2s ease;
 }
 
+.breadcrumbLink {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.breadcrumbLink:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
 .breadcrumbActive {
-  color: var(--text-primary);
+  color: var(--accent);
   font-weight: 500;
 }
 

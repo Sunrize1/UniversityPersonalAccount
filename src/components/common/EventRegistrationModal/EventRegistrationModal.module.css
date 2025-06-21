@@ -1,0 +1,102 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 40px 40px;
+  gap: 24px;
+  isolation: isolate;
+  position: relative;
+  max-width: 550px;
+  width: 90vw;
+  background: var(--surface-secondary);
+  border-radius: 8px;
+}
+
+.closeButton {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 24px;
+  top: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 500;
+  font-size: var(--h3-font-size);
+  line-height: 120%;
+  text-align: center;
+  color: var(--text-black);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.submitButton {
+  background: var(--accent);
+  border-radius: 8px;
+  font-size: var(--button-font-size);
+  text-transform: uppercase;
+  color: var(--text-white);
+  border: none;
+}
+
+.submitButton:hover {
+  background: var(--accent-hover);
+}
+
+.submitButton:disabled {
+  background: var(--accent-disabled);
+}
+
+.cancelButton {
+  border: 1px solid var(--text-black);
+  border-radius: 8px;
+  background: transparent;
+  font-size: var(--button-font-size);
+  text-transform: uppercase;
+  color: var(--text-black);
+}
+
+.cancelButton:hover {
+  background: rgba(var(--text-black-rgb), var(--hover-opacity));
+} 
+
+
+
+@media (max-width: 375px) {
+  .buttons {
+    flex-direction: column;
+  }
+}

@@ -30,12 +30,12 @@ export const Links = () => {
                 setBreadcrumbItems([
             {
                 id: "home",
-                label: "main",
+                label: "Главная",
                 path: "/"
             },
             {
                 id: "links",
-                label: "/links",
+                label: "Полезные сервисы",
                 path: "/links"
             }
         ]);

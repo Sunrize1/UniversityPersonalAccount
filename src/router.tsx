@@ -23,6 +23,7 @@ import { Header } from './components/common/Header/Header';
 import { CertificateOrder } from './pages/CertificateOrder/CertificateOrder';
 import { Links } from './pages/Links/Links';
 import { Events } from './pages/Events/Events';
+import { EventDetails } from './pages/Events/EventDetails/EventDetails';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
@@ -31,6 +32,13 @@ export const AppRouter = () => {
 
   const token = useAppSelector(state => state.user.accessToken)
   const shouldSidebarRender = (token && !(location.pathname == '/login'))
+
+  const getPageTitle = (pathname: string) => {
+    if (pathname.startsWith('/events/')) {
+      return '/events';
+    }
+    return pathname;
+  };
   
 
   const menuItems = [
@@ -67,7 +75,7 @@ export const AppRouter = () => {
       label: '/events',
       basicIcon: <BlackMapIcon />,
       activeIcon: <BlueMapIcon />,
-      active: location.pathname === '/events',
+      active: location.pathname === '/events' || location.pathname.startsWith('/events/'),
     }
   ];
 
@@ -76,13 +84,14 @@ export const AppRouter = () => {
       <div className={styles.appContainer}>
         {shouldSidebarRender && <Sidebar menuItems={menuItems} />}
         <main className={styles.mainContent}>
-          <Header title={location.pathname}></Header>
+          <Header title={getPageTitle(location.pathname)}></Header>
           <Routes>
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/certificate-order" element={<CertificateOrder />} />
             <Route path="/links" element={<Links />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetails />} />
           </Routes>
           <NotificationPopup />
         </main>

@@ -56,6 +56,7 @@ export const messages = {
     "Male": "Мужчина",
     "Female": "Женщина",
     "NotDefined": 'Не определен',
+    "socialMedia": "Социальные сети",
 
     //CERTIFICATIONORDER
     "/certificate-order": "Справки",
@@ -165,6 +166,42 @@ export const messages = {
     "weekdaySaturday": "Сб",
     "weekdaySunday": "Вс",
 
+    //EVENT DETAILS
+    "error": "Ошибка",
+    "errorLoadingEvent": "Ошибка загрузки мероприятия",
+    "eventNotFound": "Мероприятие не найдено",
+    "backToEvents": "Вернуться к мероприятиям",
+    "eventLocation": "Место проведения",
+    "eventAuthor": "Организатор",
+    "eventDescription": "Описание",
+    "eventParticipants": "Участники",
+    "eventTypeOpen": "Открытое",
+    "eventTypeClose": "Закрытое",
+    "eventAuditoryAll": "Для всех",
+    "eventAuditoryStudents": "Для студентов",
+    "eventAuditoryEmployees": "Для сотрудников",
+    "registrationDeadline": "Регистрация до",
+    "participate": "Буду участвовать",
+    "cancelParticipation": "Участвую",
+    "joinOnline": "Присоединиться онлайн",
+    "moreParticipants": "ещё",
+    "openInMaps": "Открыть в картах",
+    "getDirections": "Построить маршрут",
+    "showMap": "Показать карту",
+    "eventLocationDescription": "Нажмите на кнопки выше, чтобы открыть местоположение в картах",
+    "eventLink": "Ссылка на мероприятие",
+
+    // EVENT REGISTRATION MODAL
+    "eventRegistration": "Регистрация на мероприятие",
+    "save": "Сохранить",
+    "fullName": "ФИО",
+    "phone": "Телефон",
+    "additionalInformation": "Дополнительная информация",
+    "register": "Зарегистрироваться",
+    "cancel": "Отмена",
+    "nameIsRequired": "ФИО обязательно для заполнения",
+    "phoneIsRequired": "Номер телефона обязателен для заполнения",
+
   },
   [LOCALES.ENGLISH]: {
     // LOGIN
@@ -221,7 +258,6 @@ export const messages = {
     "Male": "Male",
     "Female": "Female",
     "NotDefined": 'Not defined',
-
     //CERTIFICATIONORDER
     "/certificate-order": "Certifications",
     "order": "Order",
@@ -291,6 +327,7 @@ export const messages = {
 
     //EVENTS
     "/events": "Events",
+    
     "events": "Events",
     "eventDates": "Event dates",
     "eventFormat": "Event format",
@@ -329,5 +366,40 @@ export const messages = {
     "weekdaySaturday": "Sa",
     "weekdaySunday": "Su",
 
+    //EVENT DETAILS
+    "error": "Error",
+    "errorLoadingEvent": "Error loading event",
+    "eventNotFound": "Event not found",
+    "backToEvents": "Back to events",
+    "eventLocation": "Event location",
+    "eventAuthor": "Organizer",
+    "eventDescription": "Event description",
+    "eventParticipants": "Participants",
+    "eventTypeOpen": "Open",
+    "eventTypeClose": "Closed",
+    "eventAuditoryAll": "For everyone",
+    "eventAuditoryStudents": "For students",
+    "eventAuditoryEmployees": "For employees",
+    "registrationDeadline": "Registration until",
+    "participate": "Participate",
+    "cancelParticipation": "Participating",
+    "joinOnline": "Join online",
+    "moreParticipants": "more",
+    "openInMaps": "Open in maps",
+    "getDirections": "Get directions",
+    "showMap": "Show map",
+    "eventLocationDescription": "Click buttons above to open location in maps",
+    "eventLink": "Event link",
+
+    // EVENT REGISTRATION MODAL
+    "eventRegistration": "Event Registration",
+    "save": "Save",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "additionalInformation": "Additional Information",
+    "register": "Register",
+    "cancel": "Cancel",
+    "nameIsRequired": "Full name is required",
+    "phoneIsRequired": "Phone is required",
   },
 };

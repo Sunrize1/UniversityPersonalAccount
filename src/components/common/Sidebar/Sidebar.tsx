@@ -31,7 +31,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
   useEffect(() => {
     const handleResize = () => {
       const shouldHide = window.innerWidth < 1200;
-      setIsOpen(!shouldHide);
       dispatch(setIsSidebarHidden(shouldHide));
     };
 

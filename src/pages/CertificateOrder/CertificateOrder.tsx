@@ -27,12 +27,12 @@ export const CertificateOrder = () => {
     setBreadcrumbItems([
       {
         id: "home",
-        label: "main",
+        label: "Главная",
         path: "/"
       },
       {
         id: "certificates",
-        label: "certificates",
+        label: "Справки",
         path: "/certificates"
       }
     ]);

@@ -126,7 +126,7 @@ export const Profile = () => {
             {user?.contacts.map((contact) => (
               <div key={contact.type} className={styles.listItem}>
                 <p className={'p2' + ' ' + styles.key1}>
-                {contact.type}
+               <FormattedMessage id={contact.type} defaultMessage={contact.type} />
                 </p>
                 <p className={'p1' + ' ' + styles.value}>
                   {contact.value}

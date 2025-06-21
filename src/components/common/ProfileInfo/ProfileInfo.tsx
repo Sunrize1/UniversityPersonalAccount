@@ -47,7 +47,6 @@ export const ProfileInfo = () => {
         }
       } catch (error) {
         showNotification(dispatch, 'Ошибка загрузки данных', NotificationTypeEnum.ERROR, 5000);
-        console.error('Ошибка загрузки данных:', error);
       }
     };
     fetchData();

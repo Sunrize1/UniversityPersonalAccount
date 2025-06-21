@@ -6,5 +6,7 @@
   .mainContent {
     flex: 1;
     transition: margin-left 0.3s ease;
-  }
+    overflow-y: scroll; 
+    height: 100vh; 
+}
   
