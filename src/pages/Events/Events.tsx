@@ -118,8 +118,8 @@ export const Events = () => {
 
   return (
     <Container>
-        <Breadcrumbs/>
         <div className={styles.content}>
+        <Breadcrumbs/>
             <EventsFilter onSearch={handleSearch} isLoading={isLoading} />
             <EventsList 
             events={events}

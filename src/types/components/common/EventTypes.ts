@@ -13,3 +13,13 @@ export interface EventsListProps {
   onPageChange?: (page: number) => void;
   isLoading?: boolean;
 } 
+
+export interface EventsFilterForm {
+  name: string;
+  date: string;
+}
+
+export interface EventsFilterProps {
+  onSearch: (filters: { name: string; eventDate: string }) => void;
+  isLoading?: boolean;
+}

@@ -23,18 +23,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0;
-  margin: 0;
   gap: 8px;
   list-style: none;
-  
+  flex-wrap: wrap;
   width: 100%;
   min-height: auto;
   
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
 .breadcrumbItem {

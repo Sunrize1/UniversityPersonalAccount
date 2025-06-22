@@ -26,6 +26,11 @@ import { Events } from './pages/Events/Events';
 import { EventDetails } from './pages/Events/EventDetails/EventDetails';
 import { ProtectedRoute } from './components/common/ProtectedRoute/ProtectedRoute';
 import { useAuth } from './hooks/useAuth';
+import { NotFoundPage } from './pages/Error/404/404';
+import { ServerErrorPage } from './pages/Error/500/500';
+import { Admin } from './pages/Admin/Admin';
+import { AdminUsers } from './pages/Admin/Users/AdminUsers';
+import { UserDetails } from './components/common/UserDetails/UserDetails';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
@@ -33,7 +38,11 @@ export const AppRouter = () => {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
 
-  const shouldSidebarRender = (isAuthenticated && !(location.pathname == '/login'))
+  const isErrorPage = location.pathname === '/500' || 
+                     !(['/login', '/events', '/profile', '/certificates', '/usefulservices', '/admin', '/admin/users'].some(path => 
+                       location.pathname === path || location.pathname.startsWith(path + '/')));
+
+  const shouldSidebarRender = (isAuthenticated && !(location.pathname === '/login') && !isErrorPage)
 
   const getPageTitle = (pathname: string) => {
     if (pathname.startsWith('/events/')) {
@@ -59,18 +68,18 @@ export const AppRouter = () => {
       active: location.pathname === '/admin',
     },
     {
-      id: 'certificate-order',
-      label: '/certificate-order',
+      id: 'certificates',
+      label: '/certificates',
       basicIcon: <BlackCertificateIcon />,
       activeIcon: <BlueCertificateIcon />,
-      active: location.pathname === '/certificate-order',
+      active: location.pathname === '/certificates',
     },
     {
-      id: 'links',
-      label: '/links',
+      id: 'usefulservices',
+      label: '/usefulservices',
       basicIcon: <BlackLinkIcon />,
       activeIcon: <BlueLinkIcon />,
-      active: location.pathname === '/links',
+      active: location.pathname === '/usefulservices',
     },
     {
       id: 'events',
@@ -86,7 +95,7 @@ export const AppRouter = () => {
       <div className={styles.appContainer}>
         {shouldSidebarRender && <Sidebar menuItems={menuItems} />}
         <main className={styles.mainContent}>
-          <Header title={getPageTitle(location.pathname)}></Header>
+          {!isErrorPage && <Header title={getPageTitle(location.pathname)}></Header>}
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/events" element={<Events />} />
@@ -97,16 +106,35 @@ export const AppRouter = () => {
                 <Profile />
               </ProtectedRoute>
             } />
-            <Route path="/certificate-order" element={
+            <Route path="/certificates" element={
               <ProtectedRoute>
                 <CertificateOrder />
               </ProtectedRoute>
             } />
-            <Route path="/links" element={
+            <Route path="/usefulservices" element={
               <ProtectedRoute>
                 <Links />
               </ProtectedRoute>
             } />
+            <Route path="/admin" element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/users" element={
+              <ProtectedRoute>
+                <AdminUsers />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/users/:id" element={
+              <ProtectedRoute>
+                <UserDetails />
+              </ProtectedRoute>
+            } />
+
+            
+            <Route path="/500" element={<ServerErrorPage />} />
+            <Route path="*" element={<NotFoundPage />} />
             
           </Routes>
           <NotificationPopup />

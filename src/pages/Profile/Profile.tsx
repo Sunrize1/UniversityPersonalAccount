@@ -92,35 +92,35 @@ export const Profile = () => {
             <h3><FormattedMessage id="personalData" defaultMessage="Личные данные" /></h3>
             <div className={styles.listContainer}>
               <div className={styles.listItem}>
-                <p className={'p2' + ' ' + styles.key1}>
+                <p className={styles.key1}>
                   <FormattedMessage id="gender" defaultMessage="Пол" />
                 </p>
-                <p className={'p1' + ' ' + styles.value}>
-                {user?.gender}
+                <p className={styles.value}>
+                {user?.gender ? user.gender : '-'}
                 </p>
               </div>
               <div className={styles.listItem}>
-                <p className={'p2' + ' ' + styles.key1}>
+                <p className={styles.key1}>
                   <FormattedMessage id="birthDate" defaultMessage="Дата рождения" />
                 </p>
-                <p className={'p1' + ' ' + styles.value}>
-                  {user?.birthDate.toString()}
+                <p className={styles.value}>
+                  {user?.birthDate ? user.birthDate.toString() : '-'}
                 </p>
               </div>
               <div className={styles.listItem}>
-                <p className={'p2' + ' ' + styles.key1}>
+                <p className={styles.key1}>
                   <FormattedMessage id="citizenship" defaultMessage="Гражданство" />
                 </p>
-                <p className={'p1' + ' ' + styles.value}>
-                  {user?.citizenship.name}
+                <p className={styles.value}>
+                  { user?.citizenship ? user.citizenship.name : '-'}
                 </p>
               </div>
               <div className={styles.listItem}>
-                <p className={'p2' + ' ' + styles.key1}>
+                <p className={styles.key1}>
                   <FormattedMessage id="email" defaultMessage="Email" />
                 </p>
-                <p className={'p1' + ' ' + styles.value}>
-                  {user?.email}
+                <p className={styles.value}>
+                  {user?.email ? user.email : '-'}
                 </p>
               </div>
             </div>
@@ -129,10 +129,10 @@ export const Profile = () => {
             <h3><FormattedMessage id="contacts" defaultMessage="Контакты" /></h3>
             {user?.contacts.map((contact) => (
               <div key={contact.type} className={styles.listItem}>
-                <p className={'p2' + ' ' + styles.key1}>
+                <p className={styles.key1}>
                <FormattedMessage id={contact.type} defaultMessage={contact.type} />
                 </p>
-                <p className={'p1' + ' ' + styles.value}>
+                <p className={styles.value}>
                   {contact.value}
                 </p>
               </div>

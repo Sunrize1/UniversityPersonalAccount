@@ -1,14 +1,11 @@
 import { FC, useMemo } from 'react';
-import { Pagination as PaginationType } from '../../../types/api/UsefulServicesResponse';
 import styles from './Pagination.module.css';
 
 import ChevronLeftIcon from '../../../assets/icons/Arrow/black/Chevron_Left_MD.svg?react';
 import ChevronRightIcon from '../../../assets/icons/Arrow/black/Chevron_Right_MD.svg?react';
+import { PaginationProps } from '../../../types/components/UI/pagination';
 
-interface PaginationProps {
-  pagination: PaginationType;
-  onPageChange: (page: number) => void;
-}
+
 
 export const Pagination: FC<PaginationProps> = ({ 
   pagination, 

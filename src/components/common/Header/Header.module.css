@@ -1,21 +1,42 @@
 .headerContainer {
     position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
     margin: 0 auto;
     padding: 20px;
     max-width: 1600px;
+    gap: 16px;
 }
 
-.leftSide {
+.headerContainer.withHamburger {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "hamburger . language"
+        "title title title";
+}
+
+.headerContainer.withoutHamburger {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto;
+    grid-template-areas: "title language";
+    align-items: center;
+}
+
+.hamburgerIcon {
+    grid-area: hamburger;
+    cursor: pointer;
     display: flex;
-    gap: 24px;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.rightSide {
+.pageTitle {
+    grid-area: title;
+    margin: 0;
+}
+
+.languageSwitch {
+    grid-area: language;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,12 +47,7 @@
         max-width: 1400px; 
         padding: 20px; 
     }
-
-    .rightSide{
-        align-self: flex-start;
-    }
 }
-
 
 @media (max-width: 900px) {
     .headerContainer {

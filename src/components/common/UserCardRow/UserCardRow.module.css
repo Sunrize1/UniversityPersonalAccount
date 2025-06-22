@@ -1,0 +1,36 @@
+.userCardRow {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 24px;
+    gap: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.rowTitle {
+    font-size: var(--p2-font-size);
+    color: var(--text-p2);
+}
+
+.rowValue {
+    font-size: var(--p2-font-size);
+    color: var(--text-black);
+}
+
+
+.userCardRow:hover {
+    border-left: 2px solid var(--accent);
+    background-color: rgba(var(--text-black-rgb), var(--hover-opacity));
+}
+
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

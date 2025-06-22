@@ -75,7 +75,7 @@ export const CertificatesList = ({
               )}
             </div>
             <Badge className={styles.statusBadge} variant={getStatusVariant(certificate.status)}>
-              <p><FormattedMessage id={getStatusText(certificate.status)} /></p>
+              <FormattedMessage id={getStatusText(certificate.status)} />
             </Badge>
           </div>
         </div>

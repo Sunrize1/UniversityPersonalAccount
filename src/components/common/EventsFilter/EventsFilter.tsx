@@ -4,16 +4,7 @@ import { Button } from '../../UI/Button/Button';
 import { DatePicker } from '../../UI/DatePicker/DatePicker';
 import { Input } from '../../UI/Input/Input';
 import styles from './EventsFilter.module.css';
-
-interface EventsFilterForm {
-    name: string;
-    date: string;
-}
-
-interface EventsFilterProps {
-    onSearch: (filters: { name: string; eventDate: string }) => void;
-    isLoading?: boolean;
-}
+import { EventsFilterForm, EventsFilterProps } from '../../../types/components/common/EventTypes';
 
 export const EventsFilter = ({ onSearch, isLoading = false }: EventsFilterProps) => {
     const intl = useIntl();

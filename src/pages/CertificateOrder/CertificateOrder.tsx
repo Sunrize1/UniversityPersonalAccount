@@ -26,7 +26,7 @@ export const CertificateOrder = () => {
       {
         id: "home",
         label: "Главная",
-        path: "/"
+        path: "/events"
       },
       {
         id: "certificates",

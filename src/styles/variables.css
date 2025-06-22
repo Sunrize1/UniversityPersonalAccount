@@ -21,6 +21,7 @@
     --accent-warning-transparent: #FF57574D;
     --accent-dark-red: #861F41;
     --hover-opacity: 0.08;
+    --text-black-opacity: 0.4;
     --pressed-opacity: 0.15;
     --background-color: #EFEFEF;
     --badge-gray: #9C9C9C;
@@ -34,7 +35,7 @@
     --datepicker-scroll-track: transparent;
 
     /*typography*/
-    --primary-font: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --primary-font: 'Raleway', sans-serif;
     --h1-font-size: 40px;
     --h2-font-size: 32px;
     --h3-font-size: 20px;

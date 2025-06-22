@@ -60,7 +60,7 @@ export const messages = {
     "socialMedia": "Социальные сети",
 
     //CERTIFICATIONORDER
-    "/certificate-order": "Справки",
+    "/certificates": "Справки",
     "order": "Заказать",
     "orderCertificate": "Заказать справку",
     "ordering": "Заказываю...",
@@ -116,8 +116,7 @@ export const messages = {
     "certificates": "Справки",
 
     //LINKS
-    "/links": "Полезные сервисы",
-    "links": "Полезные сервисы",
+    "/usefulservices": "Полезные сервисы",
     "forAll": "Для всех",
     "forStudents": "Для студентов",
     "forEmployees": "Для сотрудников",
@@ -199,15 +198,26 @@ export const messages = {
     "fullName": "ФИО",
     "phone": "Телефон",
     "additionalInformation": "Дополнительная информация",
+
+    // ERROR PAGES
+    "backToHome": "Вернуться на главную",
+  
     
     // AVATAR UPDATE MODAL
     "updateAvatar": "Обновить аватар",
     "selectImage": "Выберите изображение для аватара",
     "zoom": "Масштаб:",
-    "register": "Зарегистрироваться",
-    "cancel": "Отмена",
-    "nameIsRequired": "ФИО обязательно для заполнения",
-    "phoneIsRequired": "Номер телефона обязателен для заполнения",
+
+    //ADMIN
+    "/admin/users": "Администрирование",
+    "users": "Пользователи",
+    "serviceDescription": "Равным образом постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание существенных финансовых и административных условий. ",
+    "usefulServices": "Полезные сервисы",
+
+    //ADMIN USERS
+    "nameLabel": "Введите ФИО",
+    "noUsersFound": "Пользователи не найдены",
+    "noUsersFoundText": "Попробуйте изменить фильтры или обратитесь к администратору"
 
   },
   [LOCALES.ENGLISH]: {
@@ -225,7 +235,7 @@ export const messages = {
     // PROFILE
     "/login": " ",
     "/profile": "Profile",
-    "/admin" : "Admin",
+    "/admin" : "Administration",
     "loading": "Loading...",
     "avatarAlt": "avatar",
     "personalData": "Personal Data",
@@ -265,8 +275,9 @@ export const messages = {
     "Male": "Male",
     "Female": "Female",
     "NotDefined": 'Not defined',
+    "socialMedia": "Social Media",
     //CERTIFICATIONORDER
-    "/certificate-order": "Certifications",
+    "/certificates": "Certifications",
     "order": "Order",
     "orderCertificate": "Order certificate",
     "ordering": "Ordering...",
@@ -321,8 +332,7 @@ export const messages = {
     "certificates": "Certificates",
 
     //LINKS
-    "/links": "Useful services",
-    "links": "Useful services",
+    "/usefulservices": "Useful services",
     "forAll": "For All",
     "forStudents": "For Students",
     "forEmployees": "For Employees",
@@ -403,10 +413,31 @@ export const messages = {
     "save": "Save",
     "fullName": "Full Name",
     "phone": "Phone",
+    "back": "Back",
     "additionalInformation": "Additional Information",
     "register": "Register",
     "cancel": "Cancel",
     "nameIsRequired": "Full name is required",
     "phoneIsRequired": "Phone is required",
+
+     // ERROR PAGES
+     "backToHome": "Back to home",
+
+
+    // AVATAR UPDATE MODAL
+    "updateAvatar": "Update avatar",
+    "selectImage": "Select image for avatar",
+    "zoom": "Zoom:",
+
+    // ADMIN
+    "/admin/users": "Administration",
+    "users": "Users",
+    "serviceDescription": "Similarly, the constant quantitative growth and the scope of our activity largely determines the creation of significant financial and administrative conditions. ",
+    "usefulServices": "Useful services",
+
+    //ADMIN USERS
+    "nameLabel": "Name",
+    "noUsersFound": "No users found",
+    "noUsersFoundText": "Try changing filters or contact administrator"
   },
 };

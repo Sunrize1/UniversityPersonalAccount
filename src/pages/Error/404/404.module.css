@@ -1,0 +1,76 @@
+.container {
+  background: var(--background-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.mainContent {
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.errorNumber {
+  font-family: 'Roboto', sans-serif;
+  font-variant-numeric: lining-nums;
+  font-size: 380px;
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+}
+
+.descriptionLink {
+  color: var(--accent);
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 735px;
+}
+
+.button {
+  z-index: 100;
+  width: 293px;
+  height: 60px;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  max-width: 465px;
+  margin-top: 105px;
+}
+
+
+.errorStripe {
+  position: fixed;
+}
+
+.errorStripeTop {
+  left: 650px;
+  z-index: 10;
+}
+
+.errorStripeBottom {
+  left: 400px;
+}
+
+
+

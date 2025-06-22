@@ -8,6 +8,14 @@
     border-radius: 8px;
 }
 
+.label {
+  color: var(--text-p2);
+}
+
+.boldText {
+  font-weight: 600;
+}
+
 .tabs {
     display: flex;
     align-items: flex-end;

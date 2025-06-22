@@ -9,13 +9,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-.loadingContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100%;
-  min-height: 100%;
-}
 
 .emptyState {
   display: flex;

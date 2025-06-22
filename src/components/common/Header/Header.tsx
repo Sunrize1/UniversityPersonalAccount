@@ -23,19 +23,23 @@ export const Header = ({title} : HeaderProps) => {
         dispatch(toggleIsSidebarActive());
     }
 
+    const containerClass = isSidebarHidden 
+        ? `${styles.headerContainer} ${styles.withHamburger}`
+        : `${styles.headerContainer} ${styles.withoutHamburger}`;
+
     return (
-        <div className={styles.headerContainer}>
-            <div className={styles.leftSide}>
-                {isSidebarHidden && (
-                    <div className={styles.hamburgerIcon} onClick={handleHamburgerClick}>
-                        <HamburgerIcon/>
-                    </div>
-                )}
+        <div className={containerClass}>
+            {isSidebarHidden && (
+                <div className={styles.hamburgerIcon} onClick={handleHamburgerClick}>
+                    <HamburgerIcon/>
+                </div>
+            )}
+            {title && (
                 <h1 className={styles.pageTitle}>
-                    {title && <FormattedMessage id={title}></FormattedMessage>}
+                    <FormattedMessage id={title}></FormattedMessage>
                 </h1>
-            </div>
-            <div className={styles.rightSide}>
+            )}
+            <div className={styles.languageSwitch}>
                 <LanguageSwitch/>
             </div>
         </div>

@@ -64,10 +64,10 @@ export const ProfileInfo = () => {
           <div key={entry.id} className={styles.educationBlock}>
             <div className={styles.header}>
               <div className={styles.educationLevel}>
-                <h4>{entry.educationLevel.name}</h4>
+                <h4 className={styles.boldText}>{entry.educationLevel.name}</h4>
               </div>
               <div className={styles.educationStatus}>
-                <h4>{entry.educationStatus.name}</h4>
+                <h4 className={styles.boldText}>{entry.educationStatus.name}</h4>
                 <button onClick={() => toggleExpand(entry.id)} className={styles.toggleButton}>
                   {expanded[entry.id] ? <ArrowUpIcon /> : <ArrowDownIcon />}
                 </button>
@@ -77,11 +77,11 @@ export const ProfileInfo = () => {
             <div className={`${styles.details} ${expanded[entry.id] ? styles.expanded : ''}`}>
               <div className={styles.row}>
                 <div className={styles.column}>
-                  <p className={'p2' + ' ' + styles.label}><FormattedMessage id="educationYears" /></p>
+                  <p className={styles.label}><FormattedMessage id="educationYears" /></p>
                   <p className={styles.value}>{entry.educationYears.name}</p>
                 </div>
                 <div className={styles.column}>
-                  <p className={'p2' + ' ' + styles.label}><FormattedMessage id="creditBookNumber" /></p>
+                  <p className={styles.label}><FormattedMessage id="creditBookNumber" /></p>
                   <p className={styles.value}>{entry.creditBooknumber}</p>
                 </div>
               </div>
@@ -89,41 +89,41 @@ export const ProfileInfo = () => {
 
               <div className={styles.row}>
                 <div className={styles.column}>
-                  <p className={'p2' + ' ' + styles.label}><FormattedMessage id="educationForm" /></p>
+                  <p className={styles.label}><FormattedMessage id="educationForm" /></p>
                   <p className={styles.value}>{entry.educationForm.name}</p>
                 </div>
                 <div className={styles.column}>
-                  <p className={'p2' + ' ' + styles.label}><FormattedMessage id="educationBase" /></p>
+                  <p className={styles.label}><FormattedMessage id="educationBase" /></p>
                   <p className={styles.value}>{entry.educationBase.name}</p>
                 </div>
               </div>
               <hr className={styles.line} />
 
               <div className={styles.column}>
-                <p className={'p2' + ' ' + styles.label}><FormattedMessage id="faculty" /></p>
+                <p className={styles.label}><FormattedMessage id="faculty" /></p>
                 <p className={styles.value}>{entry.faculty.name}</p>
               </div>
               <hr className={styles.line} />
 
               <div className={styles.column}>
-                <p className={'p2' + ' ' + styles.label}><FormattedMessage id="educationDirection" /></p>
+                <p className={ styles.label}><FormattedMessage id="educationDirection" /></p>
                 <p className={styles.value}>{entry.educationDirection.name}</p>
               </div>
               <hr className={styles.line} />
 
               <div className={styles.column}>
-                <p className={'p2' + ' ' + styles.label}><FormattedMessage id="educationProfile" /></p>
+                <p className={styles.label}><FormattedMessage id="educationProfile" /></p>
                 <p className={styles.value}>{entry.educationProfile.name}</p>
               </div>
               <hr className={styles.line} />
 
               <div className={styles.row}>
                 <div className={styles.column}>
-                  <p className={'p2' + ' ' + styles.label}><FormattedMessage id="course" /></p>
+                  <p className={styles.label}><FormattedMessage id="course" /></p>
                   <p className={styles.value}>{entry.course}</p>
                 </div>
                 <div className={styles.column}>
-                  <p className={'p2' + ' ' + styles.label}><FormattedMessage id="group" /></p>
+                  <p className={styles.label}><FormattedMessage id="group" /></p>
                   <p className={styles.value}>{entry.group.name}</p>
                 </div>
               </div>

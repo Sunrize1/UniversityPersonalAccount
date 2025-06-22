@@ -1,0 +1,23 @@
+.nameSearch {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.button {
+    width: 260px;
+    height: 49px;
+}
+
+
+@media(max-width: 600px) {
+    .nameSearch {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

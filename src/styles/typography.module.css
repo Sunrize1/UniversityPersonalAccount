@@ -22,20 +22,15 @@ h4 {
     font-weight: 500; 
 }
 
-.p1 {
+p {
     color: var(--text-black);
     font-size: var(--p1-font-size);
     font-weight: 500; 
 }
 
-.p2 {
-    color: var(--text-p2);
-    font-size: var(--p2-font-size);
+a {
+    color: var(--text-black);
+    font-size: var(--p1-font-size);
     font-weight: 500; 
-}
-
-.buttonText {
-    font-size: var(--button-font-size);
-    font-weight: 400; 
 }
 

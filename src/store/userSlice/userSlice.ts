@@ -32,6 +32,7 @@ export const userSlice = createSlice({
             })
             .addCase(loginThunk.fulfilled, (state, action) => {
                 if (action.payload.loginSucceeded) {
+                    state.user = null;
                     state.status = StatusEnum.succeeded;
                     state.accessToken = action.payload.accessToken;
                     state.refreshToken = action.payload.refreshToken;

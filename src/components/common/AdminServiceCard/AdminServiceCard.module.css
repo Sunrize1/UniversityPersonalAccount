@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--text-white);
+    padding: 24px;
+    gap: 17px;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.cardTitle {
+    align-self: flex-start;
+}
+
+.cardHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon svg {
+    width: 27px;
+    height: 27px;
+}

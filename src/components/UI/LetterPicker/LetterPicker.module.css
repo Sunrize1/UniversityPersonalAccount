@@ -1,0 +1,73 @@
+.letterPicker {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.letterPickerExpandIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selectedLetter {
+    text-align: center;
+     font-size: 24px;
+     min-width: 31px;
+     border-radius: 50%;
+     height: 31px;
+     color: var(--accent-dark-red);
+     cursor: default;
+}
+
+.inactiveLetter {
+    text-align: center;
+    font-size: 24px;
+    min-width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.letter {
+    text-align: center;
+    font-size: 24px;
+    min-width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.letter:hover {
+    background: var(--accent-transparent);
+  }
+  
+.letter.active {
+    color: var(--accent-dark-red);
+  }
+
+
+.leftButton {
+    cursor: pointer;
+    min-width: 31px;
+    height: 31px;
+    border-radius: 50%;
+
+}
+
+.rightButton {
+    cursor: pointer;
+    min-width: 31px;
+    height: 31px;
+    border-radius: 50%;
+
+}
+
+
+.leftButton:hover, .rightButton:hover {
+    background: var(--accent-transparent);
+  }
