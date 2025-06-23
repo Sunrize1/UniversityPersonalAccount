@@ -1,7 +1,7 @@
 import { api } from "../instance";
 import { UsefulServiceCategory, UsefulServicesResponse } from "../../types/api/UsefulServicesResponse";
 
-export function getUsefulServices(usefulServiceCategory: UsefulServiceCategory, pageNumber: number, pageSize: number) {
+export function getUsefulServices(pageNumber: number, pageSize: number, usefulServiceCategory?: UsefulServiceCategory) {
     return api.get<UsefulServicesResponse>('UsefulServices', {
         params: {
             category: usefulServiceCategory,

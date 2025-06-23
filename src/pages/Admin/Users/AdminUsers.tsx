@@ -51,7 +51,6 @@ export const AdminUsers = () => {
 
     const handleSearch = (filters: { name: string; email: string; filterLastName: string }) => {
         setFilters(filters);
-        fetchUsers()
     }
 
     useEffect(() => {

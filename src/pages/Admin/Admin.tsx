@@ -32,18 +32,10 @@ export const Admin = () => {
 
     useEffect(() => {
         setBreadcrumbItems([
-          {
-            id: "home",
-            label: "Главная",
-            path: "/events"
-          },
-          {
-            id: "admin",
-            label: "Администрирование",
-            path: "/admin"
-          }
+            {id: 'main', label: "Главная", path: "/events"},
+            { id: 'admin', label: 'Администрирование', path: '/admin' },
         ]);
-      }, [setBreadcrumbItems]);
+    }, [setBreadcrumbItems]);
 
     const services = [
         {
@@ -58,7 +50,7 @@ export const Admin = () => {
             name: intl.formatMessage({ id: 'usefulServices' }),
             description: intl.formatMessage({id: 'serviceDescription'}),
             icon: <LinkIcon />,
-            onClick: () => navigate('/admin/useful-services')
+            onClick: () => navigate('/admin/usefulservices')
         },
         {
             id: 3,

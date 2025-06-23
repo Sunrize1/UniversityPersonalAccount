@@ -42,7 +42,7 @@ export const Links = () => {
     const fetchLinks = async (page: number = 1, category: UsefulServiceCategory = UsefulServiceCategory.ForAll) => {
         setIsLoading(true);
         try {
-            const response = await getUsefulServices(category, page, 10);
+            const response = await getUsefulServices(page, 10, category);
             setLinks(response.data.results);
             setPagination(response.data.metaData);
         } catch (error) {

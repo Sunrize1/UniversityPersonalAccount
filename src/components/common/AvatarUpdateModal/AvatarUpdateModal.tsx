@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import Cropper from 'react-easy-crop';
 import { FormattedMessage } from 'react-intl';
 import { Button } from '../../UI/Button/Button';
-import { Spinner } from '../../UI/Spinner/Spinner';
 import { uploadFile } from '../../../api/requests/uploadFile';
 import { updateAvatar } from '../../../api/requests/avatarUpdate';
 import { useAppDispatch } from '../../../store/hooks';

@@ -1,0 +1,84 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.modal {
+    position: relative;
+    background: var(--text-white);
+    border-radius: 8px;
+    padding: 0;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px var(--datepicker-shadow), 0 10px 10px -5px var(--datepicker-shadow);
+}
+
+.formFields {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+.closeButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-p2);
+    padding: 4px;
+    border-radius: 8px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.closeButton:hover {
+    color: var(--text-black);
+    background-color: var(--surface-secondary);
+}
+
+.content {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 40px;
+}
+
+.title {
+    align-self: center;
+    margin-top: 30px;
+}
+
+.footer {
+    display: flex;
+    gap: 12px;
+}
+
+.footer button {
+    min-width: 100px;
+    max-height: 49px;
+}
+
+@media (max-width: 600px) {
+
+
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer button {
+        width: 100%;
+    }
+}

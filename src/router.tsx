@@ -30,7 +30,8 @@ import { NotFoundPage } from './pages/Error/404/404';
 import { ServerErrorPage } from './pages/Error/500/500';
 import { Admin } from './pages/Admin/Admin';
 import { AdminUsers } from './pages/Admin/Users/AdminUsers';
-import { UserDetails } from './components/common/UserDetails/UserDetails';
+import { UserDetails } from './pages/Admin/Users/UserDetails/UserDetails';
+import { UsefulServices } from './pages/Admin/UsefulServices/UsefulServices';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
@@ -47,6 +48,9 @@ export const AppRouter = () => {
   const getPageTitle = (pathname: string) => {
     if (pathname.startsWith('/events/')) {
       return '/events';
+    }
+    if(pathname.startsWith('/admin')) {
+      return '/admin'
     }
     return pathname;
   };
@@ -65,7 +69,7 @@ export const AppRouter = () => {
       label: '/admin',
       basicIcon: <BlackAdministratorIcon />,
       activeIcon: <BlueAdministratorIcon />,
-      active: location.pathname === '/admin',
+      active: location.pathname === '/admin' || location.pathname.startsWith('/admin/'),
     },
     {
       id: 'certificates',
@@ -131,7 +135,11 @@ export const AppRouter = () => {
                 <UserDetails />
               </ProtectedRoute>
             } />
-
+            <Route path='/admin/usefulservices' element={
+              <ProtectedRoute>
+                <UsefulServices/>
+              </ProtectedRoute>
+            }/>
             
             <Route path="/500" element={<ServerErrorPage />} />
             <Route path="*" element={<NotFoundPage />} />

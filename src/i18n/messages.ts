@@ -217,7 +217,23 @@ export const messages = {
     //ADMIN USERS
     "nameLabel": "Введите ФИО",
     "noUsersFound": "Пользователи не найдены",
-    "noUsersFoundText": "Попробуйте изменить фильтры или обратитесь к администратору"
+    "noUsersFoundText": "Попробуйте изменить фильтры или обратитесь к администратору",
+
+
+    //ADMIN USEFULSERVICES
+    "description": "Описание",
+    "link": "Ссылка",
+    "type": "Тип",
+    "ForAll": "Для всех",
+    "Student": "Студент",
+    "Employee": "Сотрудник",
+    "addService": "Добавить сервис",
+    "addUsefulService": "Добавление сервиса",
+    "editUsefulService": "Редактирование сервиса",
+    "title": "Название сервиса",
+    "category": "Тип",
+    "cancel": "Отменить"
+
 
   },
   [LOCALES.ENGLISH]: {
@@ -438,6 +454,19 @@ export const messages = {
     //ADMIN USERS
     "nameLabel": "Name",
     "noUsersFound": "No users found",
-    "noUsersFoundText": "Try changing filters or contact administrator"
+    "noUsersFoundText": "Try changing filters or contact administrator",
+
+    //ADMIN USEFULSERVICES
+    "description": "Description",
+    "link": "Link",
+    "type": "Type",
+    "ForAll": "For all",
+    "Student": "Student",
+    "Employee": "Employee",
+    "addService": "Add service",
+    "addUsefulService": "Add service",
+    "editUsefulService": "Edit service",
+    "title": "Title",
+    "category": "Type",
   },
 };

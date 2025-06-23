@@ -58,8 +58,12 @@
 }
 
 .leftIcon {
+    display: flex;
+    align-items: center;
     align-self: center;
 }
 .rightIcon {
+    display: flex;
+    align-items: center;
     align-self: center;
 }

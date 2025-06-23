@@ -32,7 +32,7 @@ export const LetterPicker = ({ letters, onLetterClick }: LetterPickerProps) => {
 
     return (
         <div className={styles.letterPicker}>
-            <button disabled={!isOpen} className={styles.leftButton} onClick={handlePreviousClick}><ChevronLeftIcon /></button>
+            <button type="button" disabled={!isOpen} className={styles.leftButton} onClick={handlePreviousClick}><ChevronLeftIcon /></button>
             {isOpen ? letters.map((letter, index) => (
                 currentLetterIndex === index ? (
                     <span className={styles.selectedLetter} key={letter}>{letter}</span>
@@ -46,7 +46,7 @@ export const LetterPicker = ({ letters, onLetterClick }: LetterPickerProps) => {
                     <MinusIcon /> 
                     <span className={styles.inactiveLetter}> {letters[letters.length - 1]}</span>
                  </div>}
-            <button disabled={!isOpen} className={styles.rightButton} onClick={handleNextClick}><ChevronRightIcon /></button>
+            <button type="button" disabled={!isOpen} className={styles.rightButton} onClick={handleNextClick}><ChevronRightIcon /></button>
         </div>
     )
 }
