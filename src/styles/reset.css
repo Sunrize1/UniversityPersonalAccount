@@ -18,11 +18,15 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-weight: normal; 
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 p, ul, ol, li, blockquote {
     margin: 0;
     padding: 0;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 ul, ol {
@@ -32,6 +36,8 @@ ul, ol {
 a {
   text-decoration: none; 
   color: inherit; 
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 button, input, select, textarea {

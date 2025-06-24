@@ -6,10 +6,6 @@ export const messages = {
     "login": "Вход в аккаунт",
     "email": "Электронная почта",
     "password": "Пароль",
-    "emailIsRequired": "Электронная почта обязательна",
-    "passwordIsRequired": "Пароль обязателен",
-    "emailValidation": "Электронная почта должна содержать не менее 3 символов",
-    "passwordValidation": "Пароль должен содержать не менее 3 символов",
     "rememberMe": "Запомнить меня",
     "enter": "Войти",
     "logout": "Выйти",
@@ -201,11 +197,13 @@ export const messages = {
 
     // ERROR PAGES
     "backToHome": "Вернуться на главную",
+
+    //IMAGE INPUT
+    "uploadImage" : "Загрузить изображение",
   
     
     // AVATAR UPDATE MODAL
     "updateAvatar": "Обновить аватар",
-    "selectImage": "Выберите изображение для аватара",
     "zoom": "Масштаб:",
 
     //ADMIN
@@ -232,7 +230,23 @@ export const messages = {
     "editUsefulService": "Редактирование сервиса",
     "title": "Название сервиса",
     "category": "Тип",
-    "cancel": "Отменить"
+    "cancel": "Отменить",
+    "update": "Обновить",
+    
+    // Validation errors
+    "titleRequired": "Название обязательно",
+    "titleMinLength": "Название должно содержать минимум 3 символа",
+    "titleMaxLength": "Название не должно превышать 100 символов",
+    "linkRequired": "Ссылка обязательна",
+    "linkInvalid": "Введите корректную ссылку",
+    "categoryRequired": "Категория обязательна",
+    "descriptionMaxLength": "Описание не должно превышать 500 символов",
+    "termsMaxLength": "Условия не должны превышать 300 символов",
+    "emailIsRequired": "Электронная почта обязательна",
+    "passwordIsRequired": "Пароль обязателен",
+    "emailValidation": "Электронная почта должна содержать не менее 3 символов",
+    "passwordValidation": "Пароль должен содержать не менее 3 символов",
+    "noSpacesAllowed": "Пробелы не допускаются",
 
 
   },
@@ -241,10 +255,6 @@ export const messages = {
     "login": "Log in",
     "email": "Email",
     "password": "Password",
-    "emailIsRequired": "Email is required",
-    "passwordIsRequired": "Password is required",
-    "emailValidation": "Email must be at least 3 characters long",
-    "passwordValidation": "Password must be at least 3 characters long",
     "rememberMe": "Remember me",
     "enter": "ENTER",
     "logout": "Exit",
@@ -439,10 +449,12 @@ export const messages = {
      // ERROR PAGES
      "backToHome": "Back to home",
 
+     //IMAGE INPUT
+    "uploadImage" : "Upload image",
+
 
     // AVATAR UPDATE MODAL
     "updateAvatar": "Update avatar",
-    "selectImage": "Select image for avatar",
     "zoom": "Zoom:",
 
     // ADMIN
@@ -468,5 +480,20 @@ export const messages = {
     "editUsefulService": "Edit service",
     "title": "Title",
     "category": "Type",
+    
+    // Validation errors
+    "titleRequired": "Title is required",
+    "titleMinLength": "Title must contain at least 3 characters",
+    "titleMaxLength": "Title must not exceed 100 characters",
+    "linkRequired": "Link is required",
+    "linkInvalid": "Please enter a valid link",
+    "categoryRequired": "Category is required",
+    "descriptionMaxLength": "Description must not exceed 500 characters",
+    "termsMaxLength": "Terms must not exceed 300 characters",
+    "emailIsRequired": "Email is required",
+    "passwordIsRequired": "Password is required",
+    "emailValidation": "Email must be at least 3 characters long",
+    "passwordValidation": "Password must be at least 3 characters long",
+    "noSpacesAllowed": "Spaces are not allowed",
   },
 };

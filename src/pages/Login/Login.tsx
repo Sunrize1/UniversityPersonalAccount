@@ -20,11 +20,14 @@ export const Login = () => {
     
     const methods = useForm<LoginInput>({
         defaultValues: {
+            email: '',
+            password: '',
             rememberMe: false,
-        }
+        },
+        mode: 'onChange'
     }
     );
-    const { register, handleSubmit } = methods;
+    const { register, handleSubmit, formState: { isValid, isSubmitting } } = methods;
 
     const onSubmit: SubmitHandler<LoginInput> = async (data) =>  {
         try {
@@ -51,25 +54,35 @@ export const Login = () => {
                     <h1 className={styles.title}><FormattedMessage id='login'/></h1>
                     <FormProvider {...methods}>
                         <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)} >
-                            <Input label='email'   {...register("email", {
+                            <Input {...register("email", {
                                     required: "emailIsRequired",
                                     minLength: {
                                         value: 3,
                                         message: "emailValidation"
+                                    },
+                                    pattern: {
+                                        value: /^\S*$/,
+                                        message: "noSpacesAllowed"
                                     }
                                 })}
+                                label='email'
                                 type='email'/>
-                            <Input label='password'  {...register("password", {
+                            <Input  {...register("password", {
                                     required: "passwordIsRequired",
                                     minLength: {
                                         value: 3,
                                         message: "passwordValidation"
+                                    },
+                                    pattern: {
+                                        value: /^\S*$/,
+                                        message: "noSpacesAllowed"
                                     }
                                     
                                 })}
+                                label='password'
                                 type="password"/>
                             <Switch name="rememberMe" label='rememberMe' />
-                            <Button className={styles.formButton} type="submit" >enter</Button>
+                            <Button className={styles.formButton} disabled={!isValid || isSubmitting } type="submit" >enter</Button>
                         </form>
                     </FormProvider>
                 </div>

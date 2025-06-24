@@ -11,7 +11,9 @@ import { NotificationTypeEnum } from "../../../types/redux/NotificationTypeEnum"
 import { FormattedMessage } from "react-intl";
 import PlusIcon from '../../../assets/icons/Edit/red/Add_Plus.svg?react'
 import { FilterChip } from "../../../components/UI/FilterChip/FilterChip";
-import { AddUsefulServiceModal } from "../../../components/common/AddUsefulServiceModal/AddUsefulServiceModal";
+import { UsefulServiceModal } from "../../../components/common/UsefulServiceModal/UsefulServiceModal";
+import { EditCreateUsefulServiceRequest } from "../../../types/api/CreateUsefulServiceRequest";
+import { FileDto } from "../../../types/api/certificateTypes";
 import styles from "./UsefulServices.module.css"
 
 export const UsefulServices = () => {
@@ -22,6 +24,9 @@ export const UsefulServices = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingService, setEditingService] = useState<EditCreateUsefulServiceRequest | null>(null);
+    const [editingServiceId, setEditingServiceId] = useState<string | undefined>(undefined);
+    const [editingServiceImage, setEditingServiceImage] = useState<FileDto | null>(null);
 
     useEffect(() => {
         setBreadcrumbItems([
@@ -52,16 +57,46 @@ export const UsefulServices = () => {
     };
 
     const handleOpenModal = () => {
+        setEditingService(null);
+        setEditingServiceId(undefined);
+        setEditingServiceImage(null);
         setIsModalOpen(true);
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
+        setEditingService(null);
+        setEditingServiceId(undefined);
+        setEditingServiceImage(null);
     };
 
-    const handleServiceCreated = () => {
+    const handleServiceCreatedOrUpdated = () => {
+        setIsModalOpen(false);
+        setEditingService(null);
+        setEditingServiceId(undefined);
+        setEditingServiceImage(null);
         fetchLinks(currentPage);
     };
+
+    const handleServiceDeleted = () => {
+        fetchLinks(currentPage);
+    }
+
+    const handleEditService = (service: UsefulService) => {
+        const serviceData: EditCreateUsefulServiceRequest = {
+            title: service.title,
+            category: service.category,
+            description: service.description,
+            link: service.link,
+            termsOfDisctribution: service.termsOfDisctribution,
+            logoId: service.logo?.id || ''
+        };
+        
+        setEditingService(serviceData);
+        setEditingServiceId(service.id);
+        setEditingServiceImage(service.logo);
+        setIsModalOpen(true);
+    }
 
     useEffect(() => {
         fetchLinks(currentPage);
@@ -78,14 +113,18 @@ export const UsefulServices = () => {
                     isLoading={isLoading}
                     pagination={pagination}
                     onPageChange={handlePageChange}
+                    onAction={handleServiceDeleted}
+                    onEdit={handleEditService}
                 />
             </div>
             
-            <AddUsefulServiceModal
+            <UsefulServiceModal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                serviceData={null}
-                image={null}
+                onServciceCreated={handleServiceCreatedOrUpdated}
+                serviceData={editingService}
+                image={editingServiceImage}
+                serviceId={editingServiceId}
             />
         </Container>
     )

@@ -18,35 +18,38 @@
     padding: 0;
     max-width: 700px;
     width: 90%;
-    max-height: 80vh;
-    overflow: hidden;
+    max-height: 85vh;
+    overflow: auto;
     box-shadow: 0 20px 25px -5px var(--datepicker-shadow), 0 10px 10px -5px var(--datepicker-shadow);
 }
 
 .formFields {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
 }
 
 
 .closeButton {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
+    top: 24px;
+    right: 24px;
+    width: 34px;
+    height: 34px;
     font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     color: var(--text-p2);
     padding: 4px;
-    border-radius: 8px;
+    border-radius: 50%;
     transition: color 0.2s, background-color 0.2s;
 }
 
 .closeButton:hover {
     color: var(--text-black);
-    background-color: var(--surface-secondary);
+    background: rgba(var(--text-black-rgb), var(--hover-opacity));
 }
 
 .content {

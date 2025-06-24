@@ -13,14 +13,22 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(var(--text-black-rgb), 0.5);
+  border: 1px solid rgba(var(--text-black-rgb), var(--text-black-opacity));
   background: transparent;
   border-radius: 8px;
   transition: border-color 0.2s ease;
 }
 
+.textField:hover{
+  border-color: var(--text-black);
+}
+
+.textField:hover .labelText {
+  color: var(--text-black)
+}
+
 .textField:focus-within {
-  border-color: var(--accent);
+  border-color: var(--text-black);
 }
 
 .textField.error {
@@ -38,11 +46,7 @@
   top: -8px;
   left: 12px;
   padding: 0 4px;
-  font-family: var(--primary-font);
-  font-weight: 500;
-  font-size: var(--p2-font-size);
-  line-height: 120%;
-  color: var(--text-p2);
+  color: var(--text-gray);
   background-color: var(--text-white);
   z-index: 1;
 }

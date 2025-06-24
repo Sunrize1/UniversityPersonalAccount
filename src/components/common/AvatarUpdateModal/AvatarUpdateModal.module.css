@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .modal {
@@ -34,17 +34,22 @@
 .closeButton {
   background: none;
   border: none;
+  width: 34px;
+  height: 34px;
   font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   color: var(--text-p2);
   padding: 4px;
-  border-radius: 8px;
+  border-radius: 50%;
   transition: color 0.2s, background-color 0.2s;
 }
 
 .closeButton:hover {
   color: var(--text-black);
-  background-color: var(--surface-secondary);
+  background: rgba(var(--text-black-rgb), var(--hover-opacity));
 }
 
 .content {
@@ -59,19 +64,6 @@
   margin-bottom: 20px;
 }
 
-.fileInput {
-  width: 100%;
-  padding: 12px;
-  border: 2px dashed var(--text-gray);
-  border-radius: 8px;
-  background-color: var(--surface-secondary);
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-
-.fileInput:hover {
-  border-color: var(--accent);
-}
 
 .cropStep {
   display: flex;

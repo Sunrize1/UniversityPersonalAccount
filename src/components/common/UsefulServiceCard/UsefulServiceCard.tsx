@@ -7,9 +7,15 @@ import ArrowUp from '../../../assets/icons/Arrow/black/Caret_Up_MD.svg?react'
 import ArrowDown from '../../../assets/icons/Arrow/black/Caret_Down_MD.svg?react'
 import styles from './UsefulServiceCard.module.css'
 import { useEffect, useState } from 'react';
+import { deleteUsefulService } from '../../../api/requests/deleteUsefulService';
+import { useAppDispatch } from '../../../store/hooks';
+import { showNotification } from '../../../utils/notification';
+import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
+import { UsefulServiceCardProps } from '../../../types/components/common/UsefulServicesProps';
 
-export const UsefulServiceCard = ({link}: LinkCardProps) => {
+export const UsefulServiceCard = ({link, onAction, onEdit}: UsefulServiceCardProps) => {
     const intl = useIntl()
+    const dispatch = useAppDispatch()
     const [isHidden, setIsHidden] = useState<boolean>(true);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -27,6 +33,22 @@ export const UsefulServiceCard = ({link}: LinkCardProps) => {
       return () => window.removeEventListener('resize', handleResize);
     }, [isSmallScreen]);
 
+    const handleDeleteButtonClick = async () => {
+      try {
+        const data = await deleteUsefulService(link.id)
+        showNotification(dispatch, 'Полезный сервис успешно удален', NotificationTypeEnum.SUCCESS, 5000);
+        if(onAction) onAction();
+      } catch (error) {
+        showNotification(dispatch, 'Ошибка при удалении полезного сервиса', NotificationTypeEnum.ERROR, 5000);
+      }
+
+    }
+
+    const handleEditButtonClick = () => {
+      if (onEdit) {
+        onEdit(link);
+      }
+    }
 
     const handleExpandButtonClick = () => {
       setIsHidden(!isHidden);
@@ -59,8 +81,8 @@ export const UsefulServiceCard = ({link}: LinkCardProps) => {
 
           {isSmallScreen && (
           <div className={styles.actions}>
-            <button><EditIcon/></button>
-            <button><DeleteIcon/></button>
+            <button className={styles.actionButton} onClick={handleEditButtonClick}><EditIcon/></button>
+            <button className={styles.actionButton} onClick={handleDeleteButtonClick}><DeleteIcon/></button>
           </div>
         )}
         </div>
@@ -102,8 +124,8 @@ export const UsefulServiceCard = ({link}: LinkCardProps) => {
 
         {!isSmallScreen && (
           <div className={styles.actions}>
-            <button><EditIcon/></button>
-            <button><DeleteIcon/></button>
+            <button className={styles.actionButton} onClick={handleEditButtonClick}><EditIcon/></button>
+            <button className={styles.actionButton} onClick={handleDeleteButtonClick}><DeleteIcon/></button>
           </div>
         )}
 

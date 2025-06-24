@@ -1,7 +1,7 @@
-import styles from './AddUsefulServiceModal.module.css'
+import styles from './UsefulServiceModal.module.css'
 import CloseIcon  from '../../../assets/icons/Interface/black/Close_MD.svg?react';
-import { FormattedMessage } from 'react-intl';
-import { AddUsefulServiceModalProps } from '../../../types/components/common/AddUsefulServiceModalProps';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { UsefulServiceModalProps } from '../../../types/components/common/UsefulServiceModalProps';
 import { Button } from '../../UI/Button/Button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Input } from '../../UI/Input/Input';
@@ -10,12 +10,18 @@ import { Textarea } from '../../UI/Textarea/Textarea';
 import { UsefulServiceCategory } from '../../../types/api/UsefulServicesResponse';
 import { EditCreateUsefulServiceRequest } from '../../../types/api/CreateUsefulServiceRequest';
 import { createUsefulService } from '../../../api/requests/createUsefulService';
+import { updateUsefulService } from '../../../api/requests/updateUsefulService';
 import { useAppDispatch } from '../../../store/hooks';
 import { showNotification } from '../../../utils/notification';
 import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
+import { uploadFile } from '../../../api/requests/uploadFile';
+import { useState, useEffect } from 'react';
+import { ImageInput } from '../../UI/ImageInput/ImageInput';
 
-export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : AddUsefulServiceModalProps) => {
+export const UsefulServiceModal = ({isOpen, onClose, onServciceCreated, serviceData, image, serviceId} : UsefulServiceModalProps) => {
     const dispatch = useAppDispatch();
+    
+    const isEditMode = !!serviceData && !!serviceId;
     
     const methods = useForm<EditCreateUsefulServiceRequest>({
         defaultValues: {
@@ -29,7 +35,27 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
         mode: 'onChange'
     });
 
-    const { handleSubmit, formState: { isValid, isSubmitting }, register, reset } = methods;
+    const { handleSubmit, formState: { isValid, isSubmitting }, register, reset, setValue } = methods;
+
+    const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
+
+    useEffect(() => {
+        if (serviceData) {
+            setValue('title', serviceData.title || '', { shouldValidate: true });
+            setValue('category', serviceData.category || UsefulServiceCategory.ForAll, { shouldValidate: true });
+            setValue('description', serviceData.description || '', { shouldValidate: true });
+            setValue('link', serviceData.link || '', { shouldValidate: true });
+            setValue('termsOfDisctribution', serviceData.termsOfDisctribution || '', { shouldValidate: true });
+            setValue('logoId', serviceData.logoId || '', { shouldValidate: true });
+        } else {
+            setValue('title', '', { shouldValidate: true });
+            setValue('category', UsefulServiceCategory.ForAll, { shouldValidate: true });
+            setValue('description', '', { shouldValidate: true });
+            setValue('link', '', { shouldValidate: true });
+            setValue('termsOfDisctribution', '', { shouldValidate: true });
+            setValue('logoId', '', { shouldValidate: true });
+        }
+    }, [serviceData, setValue]);
 
     const categoryOptions = [
         { value: UsefulServiceCategory.ForAll, label: 'ForAll' },
@@ -39,18 +65,39 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
 
     const onSubmit = async (data: EditCreateUsefulServiceRequest) => {
         try {
-            await createUsefulService(data);
-            showNotification(dispatch, 'Полезный сервис успешно создан', NotificationTypeEnum.SUCCESS, 5000);
+            let logoId = data.logoId;
+            if (selectedFile) {
+                const response = await uploadFile(selectedFile);
+                logoId = response.data.id;
+            }
+            
+            if (isEditMode && serviceId) {
+                await updateUsefulService({ ...data, logoId }, serviceId);
+                showNotification(dispatch, 'Полезный сервис успешно обновлен', NotificationTypeEnum.SUCCESS, 5000);
+            } else {
+                await createUsefulService({ ...data, logoId });
+                showNotification(dispatch, 'Полезный сервис успешно создан', NotificationTypeEnum.SUCCESS, 5000);
+            }
+            
             reset();
-            onClose();
+            setSelectedFile(undefined);
+            onServciceCreated();
         } catch (error) {
-            showNotification(dispatch, 'Ошибка при создании полезного сервиса', NotificationTypeEnum.ERROR, 5000);
+            const action = isEditMode ? 'обновлении' : 'создании';
+            showNotification(dispatch, `Ошибка при ${action} полезного сервиса`, NotificationTypeEnum.ERROR, 5000);
         }
     };
 
     const handleClose = () => {
         reset();
         onClose();
+    };
+
+    const handleImageChange = (file?: File) => {
+        setSelectedFile(file);
+        if (!file) {
+            setValue('logoId', '', { shouldValidate: true });
+        }
     };
 
     if (!isOpen) return null;
@@ -63,21 +110,23 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
                 </button>
                 <div className={styles.content}>
                      <h3 className={styles.title}>
-                        <FormattedMessage id="addUsefulService" defaultMessage="Добавить полезный сервис" />
+                        <FormattedMessage 
+                            id={isEditMode ? "editUsefulService" : "addUsefulService"} 
+                        />
                     </h3>
                     <FormProvider {...methods}>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className={styles.formFields}>
                                 <Input
                                     {...register('title', {
-                                        required: 'Название обязательно',
+                                        required: 'titleRequired',
                                         minLength: {
                                             value: 3,
-                                            message: 'Название должно содержать минимум 3 символа'
+                                            message: 'titleMinLength'
                                         },
                                         maxLength: {
                                             value: 100,
-                                            message: 'Название не должно превышать 100 символов'
+                                            message: 'titleMaxLength'
                                         }
                                     })}
                                     name="title"
@@ -87,10 +136,10 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
 
                                 <Input
                                     {...register('link', {
-                                        required: 'Ссылка обязательна',
+                                        required: 'linkRequired',
                                         pattern: {
                                             value: /^https?:\/\/.+/,
-                                            message: 'Введите корректную ссылку'
+                                            message:'linkInvalid'
                                         }
                                     })}
                                     name="link"
@@ -101,7 +150,7 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
 
                                 <Select
                                     {...register('category', {
-                                        required: 'Категория обязательна'
+                                        required: 'categoryRequired'
                                     })}
                                     name="category"
                                     label="category"
@@ -111,14 +160,10 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
 
                                 <Textarea
                                     {...register('description', {
-                                        required: 'Описание обязательно',
-                                        minLength: {
-                                            value: 10,
-                                            message: 'Описание должно содержать минимум 10 символов'
-                                        },
+                                        required: false,
                                         maxLength: {
                                             value: 500,
-                                            message: 'Описание не должно превышать 500 символов'
+                                            message: 'descriptionMaxLength'
                                         }
                                     })}
                                     name="description"
@@ -129,14 +174,10 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
 
                                 <Textarea
                                     {...register('termsOfDisctribution', {
-                                        required: 'Условия распространения обязательны',
-                                        minLength: {
-                                            value: 5,
-                                            message: 'Условия должны содержать минимум 5 символов'
-                                        },
+                                        required: false,
                                         maxLength: {
                                             value: 300,
-                                            message: 'Условия не должны превышать 300 символов'
+                                            message: 'termsMaxLength'
                                         }
                                     })}
                                     name="termsOfDisctribution"
@@ -144,6 +185,11 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
                                     placeholder=""
                                     rows={3}
                                 />
+
+                                <ImageInput 
+                                    onFileChange={handleImageChange}
+                                    name={image ? image.name + "." + image.extension : undefined}
+                                 />
                             </div>
                         </form>
                     </FormProvider>
@@ -153,7 +199,7 @@ export const AddUsefulServiceModal = ({isOpen, onClose, serviceData, image} : Ad
                             onClick={handleSubmit(onSubmit)}
                             disabled={!isValid || isSubmitting}
                         >
-                            save
+                            {isEditMode ? 'update' : 'save'}
                         </Button>
 
                         <Button

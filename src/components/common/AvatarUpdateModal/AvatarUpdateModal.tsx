@@ -16,6 +16,8 @@ import {
 } from '../../../types/components/common/AvatarUpdateModalTypes';
 import styles from './AvatarUpdateModal.module.css';
 import CloseIcon  from '../../../assets/icons/Interface/black/Close_MD.svg?react';
+import { ImageInput } from '../../UI/ImageInput/ImageInput';
+
 const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const image = new Image();
@@ -73,8 +75,7 @@ export const AvatarUpdateModal: React.FC<AvatarUpdateModalProps> = ({
   const [isUploading, setIsUploading] = useState(false);
   const [step, setStep] = useState<AvatarUpdateStep>('select');
 
-  const handleFileSelect = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const handleFileSelect = useCallback((file?: File) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -149,17 +150,8 @@ export const AvatarUpdateModal: React.FC<AvatarUpdateModalProps> = ({
         <div className={styles.content}>
           {step === 'select' && (
             <div className={styles.selectStep}>
-              <p>
-                <FormattedMessage 
-                  id="selectImage" 
-                  defaultMessage="Выберите изображение для аватара" 
-                />
-              </p>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileSelect}
-                className={styles.fileInput}
+              <ImageInput
+                onFileChange={handleFileSelect}
               />
             </div>
           )}

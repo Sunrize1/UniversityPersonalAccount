@@ -5,14 +5,16 @@ import { Spinner } from "../../UI/Spinner/Spinner";
 import styles from './UsefulServicesCardsList.module.css'
 import { UsefulServiceCard } from "../UsefulServiceCard/UsefulServiceCard";
 import { Pagination } from "../../UI/Pagination/Pagination";
+import { UsefulServiceCardListProps } from "../../../types/components/common/UsefulServicesProps";
 
 
-export const UsefulServicesCardsList: FC<LinksListProps> = ({ 
+export const UsefulServicesCardsList: FC<UsefulServiceCardListProps> = ({ 
     links, 
     pagination, 
-    onLinkClick, 
+    onAction, 
     onPageChange,
-    isLoading = false 
+    isLoading = false,
+    onEdit
   }) => {
     const intl = useIntl();
   
@@ -44,7 +46,8 @@ export const UsefulServicesCardsList: FC<LinksListProps> = ({
             <UsefulServiceCard
             key={link.id} 
             link={link} 
-            onLinkClick={onLinkClick}
+            onAction={onAction}
+            onEdit={onEdit}
           />
           ))}
         </div>
