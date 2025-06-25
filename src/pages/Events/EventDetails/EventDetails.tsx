@@ -47,7 +47,6 @@ export const EventDetails: FC = () => {
             const participationResponse = await isUserParticipating(id);
             setIsParticipating(participationResponse.data.isParticipating);
           } catch (participationError) {
-            console.error('Error checking participation:', participationError);
           }
         }
       } catch (err) {

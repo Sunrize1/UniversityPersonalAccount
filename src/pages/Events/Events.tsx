@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Breadcrumbs } from "../../components/common/Breadcrumbs/Breadcrumbs";
 import { useBreadcrumbs } from "../../hooks/useBreadcrumbs";
 import { Container } from "../../components/UI/Container/Container";
@@ -21,6 +21,7 @@ export const Events = () => {
     const dispatch = useAppDispatch();
     const intl = useIntl();
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
     const { accessToken } = useAppSelector((state) => state.user);
     const { setBreadcrumbItems } = useBreadcrumbs();
     
@@ -28,10 +29,12 @@ export const Events = () => {
     const [pagination, setPagination] = useState<Pagination | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [filters, setFilters] = useState({
-        name: '',
-        eventDate: ''
+    
+    const getFiltersFromParams = () => ({
+        name: searchParams.get('name') || '',
+        eventDate: searchParams.get('date') || ''
     });
+    const [filters, setFilters] = useState(getFiltersFromParams());
 
     useEffect(() => {
         setBreadcrumbItems([
@@ -48,7 +51,7 @@ export const Events = () => {
         ]);
       }, [setBreadcrumbItems]);
 
-    const fetchEvents = async (page: number = 1) => {
+    const fetchEvents = async (page: number = 1, urlFilters = filters) => {
       setIsLoading(true);
       try {
         const timezoneOffset = new Date().getTimezoneOffset();
@@ -56,9 +59,9 @@ export const Events = () => {
         let response;
 
         if (accessToken) {
-          response = await getEventsAuth(filters.name, filters.eventDate, timezoneOffset, page, pageSize, '');
+          response = await getEventsAuth(urlFilters.name, urlFilters.eventDate, timezoneOffset, page, pageSize, '');
         } else {
-          response = await getEventsPublic(filters.name, filters.eventDate, timezoneOffset, page, pageSize, '');
+          response = await getEventsPublic(urlFilters.name, urlFilters.eventDate, timezoneOffset, page, pageSize, '');
         }
 
         const eventsResponse: EventsResponse = response.data;
@@ -76,37 +79,17 @@ export const Events = () => {
     const handleSearch = (searchFilters: { name: string; eventDate: string }) => {
       setFilters(searchFilters);
       setCurrentPage(1);
-      fetchEventsWithFilters(1, searchFilters);
-    };
-
-    const fetchEventsWithFilters = async (page: number, searchFilters: { name: string; eventDate: string }) => {
-      setIsLoading(true);
-      try {
-        const timezoneOffset = new Date().getTimezoneOffset();
-        const pageSize = 10;
-        let response;
-
-        if (accessToken) {
-          response = await getEventsAuth(searchFilters.name, searchFilters.eventDate, timezoneOffset, page, pageSize, '');
-        } else {
-          response = await getEventsPublic(searchFilters.name, searchFilters.eventDate, timezoneOffset, page, pageSize, '');
-        }
-
-        const eventsResponse: EventsResponse = response.data;
-        setEvents(eventsResponse.results);
-        setPagination(eventsResponse.metaData);
-        setCurrentPage(page);
-        
-      } catch (error) {
-        showNotification(dispatch, intl.formatMessage({ id: 'eventsLoadError' }), NotificationTypeEnum.ERROR, 5000);
-      } finally {
-        setIsLoading(false);
-      }
+      const params: any = {};
+      if (searchFilters.name) params.name = searchFilters.name;
+      if (searchFilters.eventDate) params.date = searchFilters.eventDate;
+      setSearchParams(params);
     };
 
     useEffect(() => {
-      fetchEvents();
-    }, [accessToken]);
+      const urlFilters = getFiltersFromParams();
+      setFilters(urlFilters);
+      fetchEvents(1, urlFilters);
+    }, [searchParams, accessToken]);
 
     const handleEventClick = (event: EventDto) => {
       navigate(`/events/${event.id}`);
@@ -120,7 +103,7 @@ export const Events = () => {
     <Container>
         <div className={styles.content}>
         <Breadcrumbs/>
-            <EventsFilter onSearch={handleSearch} isLoading={isLoading} />
+            <EventsFilter onSearch={handleSearch} isLoading={isLoading} filterValues={{ name: filters.name, date: filters.eventDate }} />
             <EventsList 
             events={events}
             pagination={pagination || undefined}

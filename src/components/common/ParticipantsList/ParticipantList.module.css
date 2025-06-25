@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tabs {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    gap: 8px;
+    border-bottom: 1px solid var(--surface-tertiary);
+    border-radius: 8px 8px 0 0;
+}
+
+.tab {
+    padding: 20px 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.activeTab {
+    color: var(--accent);
+    border-bottom: 3px solid var(--accent);
+}
+
+.participantsList {
+   display: flex;
+   flex-direction: column;
+   gap: 14px
+}

@@ -1,0 +1,22 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0px;
+    border-bottom: 1px solid var(--surface-tertiary);
+}
+
+.label {
+    font-size: var(--p2-font-size);
+    color: var(--text-p2);
+}
+
+.text {
+    font-size: var(--p2-font-size);
+}
+
+.additionalInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

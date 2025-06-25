@@ -5,9 +5,9 @@ import { DatePicker } from '../../UI/DatePicker/DatePicker';
 import { Input } from '../../UI/Input/Input';
 import styles from './EventsFilter.module.css';
 import { EventsFilterForm, EventsFilterProps } from '../../../types/components/common/EventTypes';
+import { useEffect } from 'react';
 
-export const EventsFilter = ({ onSearch, isLoading = false }: EventsFilterProps) => {
-    const intl = useIntl();
+export const EventsFilter = ({ onSearch, isLoading = false, filterValues }: EventsFilterProps) => {
     const methods = useForm<EventsFilterForm>({
         defaultValues: {
             name: '',
@@ -16,6 +16,13 @@ export const EventsFilter = ({ onSearch, isLoading = false }: EventsFilterProps)
     });
 
     const { register, handleSubmit, setValue } = methods;
+
+    useEffect(() => {
+        if (filterValues) {
+            setValue('name', filterValues.name || '');
+            setValue('date', filterValues.date || '');
+        }
+    }, [filterValues, setValue]);
 
     const onSubmit: SubmitHandler<EventsFilterForm> = (data: EventsFilterForm) => {
         onSearch({
@@ -48,7 +55,7 @@ export const EventsFilter = ({ onSearch, isLoading = false }: EventsFilterProps)
                     </div>
                     <DatePicker 
                         label="eventDateLabel" 
-                        placeholder={intl.formatMessage({ id: 'eventDatePlaceholder' })} 
+                        placeholder={'eventDatePlaceholder'} 
                         onChange={handleDateChange}
                         className={styles.datePicker}
                     />

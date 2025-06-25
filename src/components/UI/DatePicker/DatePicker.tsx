@@ -290,7 +290,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               type="text"
               className={styles.inputText}
               value={formatDate(isOpen ? tempSelectedDate : selectedDate)}
-              placeholder={placeholder}
+              placeholder={intl.formatMessage( {id: placeholder}) }
               readOnly
               disabled={disabled}
               name={name}

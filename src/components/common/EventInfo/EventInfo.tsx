@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedDate } from 'react-intl';
 import { EventFullDto, EventFormat } from '../../../types/api/eventsTypes';
 import { Button } from '../../UI/Button/Button';
 import { API_BASE_URL } from '../../../api/instance';
@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
 import { innerEventRegister } from '../../../api/requests/innerEventRegister';
 import { EventRegistrationModal } from '../EventRegistrationModal/EventRegistrationModal';
+import dayjs from 'dayjs';
+import { ReactNode } from 'react';
 
 interface EventInfoProps {
   event: EventFullDto;
@@ -31,31 +33,37 @@ export const EventInfo: FC<EventInfoProps> = ({
 
   const isAuthenticated = useAppSelector(state => !!state.user.accessToken);
 
-  const formatDate = (dateTimeFrom: string, dateTimeTo: string, isTimeFromNeeded: boolean, isTimeToNeeded: boolean) => {
-    const fromDate = new Date(dateTimeFrom);
-    const toDate = new Date(dateTimeTo);
-    
-    const formatTime = (date: Date) => 
-      date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-    
-    const formatDateOnly = (date: Date) => 
-      date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
-
-    const isSameDay = fromDate.toDateString() === toDate.toDateString();
-
+  const formatDate = (
+    dateTimeFrom: string,
+    dateTimeTo: string,
+    isTimeFromNeeded: boolean,
+    isTimeToNeeded: boolean
+  ): ReactNode => {
+    const from = dayjs(dateTimeFrom);
+    const to = dayjs(dateTimeTo);
+    const isSameDay = from.isSame(to, 'day');
     if (isSameDay) {
-      const dateStr = formatDateOnly(fromDate);
-      if (isTimeFromNeeded && isTimeToNeeded) {
-        return `${dateStr} (${formatTime(fromDate)} - ${formatTime(toDate)})`;
-      } else if (isTimeFromNeeded) {
-        return `${dateStr} (${formatTime(fromDate)})`;
-      } else {
-        return dateStr;
-      }
+      return <>
+        <FormattedDate value={dateTimeFrom} year="numeric" month="2-digit" day="2-digit" />
+        {isTimeFromNeeded && isTimeToNeeded && (
+          <> ({from.format('HH:mm')} - {to.format('HH:mm')})</>
+        )}
+        {isTimeFromNeeded && !isTimeToNeeded && (
+          <> ({from.format('HH:mm')})</>
+        )}
+      </>;
     } else {
-      const fromStr = `${formatDateOnly(fromDate)}${isTimeFromNeeded ? ` (${formatTime(fromDate)})` : ''}`;
-      const toStr = `${formatDateOnly(toDate)}${isTimeToNeeded ? ` (${formatTime(toDate)})` : ''}`;
-      return `${fromStr} - ${toStr}`;
+      return <>
+        <FormattedDate value={dateTimeFrom} year="numeric" month="2-digit" day="2-digit" />
+        {isTimeFromNeeded && (
+          <> ({from.format('HH:mm')})</>
+        )}
+        {' - '}
+        <FormattedDate value={dateTimeTo} year="numeric" month="2-digit" day="2-digit" />
+        {isTimeToNeeded && (
+          <> ({to.format('HH:mm')})</>
+        )}
+      </>;
     }
   };
 
@@ -156,7 +164,7 @@ export const EventInfo: FC<EventInfoProps> = ({
                     {intl.formatMessage({ id: 'registrationDeadline' })}
                   </span>
                   <span className={styles.infoValue}>
-                    {new Date(event.registrationLastDate).toLocaleDateString('ru-RU')}
+                    <FormattedDate value={event.registrationLastDate} year="numeric" month="2-digit" day="2-digit" />
                   </span>
                 </div>
               </div>
@@ -171,9 +179,9 @@ export const EventInfo: FC<EventInfoProps> = ({
               </span>
               <span className={styles.infoValue}>
                 {formatDate(
-                  event.dateTimeFrom, 
-                  event.dateTimeTo, 
-                  event.isTimeFromNeeded, 
+                  event.dateTimeFrom,
+                  event.dateTimeTo,
+                  event.isTimeFromNeeded,
                   event.isTimeToNeeded
                 )}
               </span>

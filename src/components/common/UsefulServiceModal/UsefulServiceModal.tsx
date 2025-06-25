@@ -30,7 +30,7 @@ export const UsefulServiceModal = ({isOpen, onClose, onServciceCreated, serviceD
             description: serviceData?.description || '',
             link: serviceData?.link || '',
             termsOfDisctribution: serviceData?.termsOfDisctribution || '',
-            logoId: serviceData?.logoId || ''
+            logoId: serviceData?.logoId || null
         },
         mode: 'onChange'
     });
@@ -46,21 +46,21 @@ export const UsefulServiceModal = ({isOpen, onClose, onServciceCreated, serviceD
             setValue('description', serviceData.description || '', { shouldValidate: true });
             setValue('link', serviceData.link || '', { shouldValidate: true });
             setValue('termsOfDisctribution', serviceData.termsOfDisctribution || '', { shouldValidate: true });
-            setValue('logoId', serviceData.logoId || '', { shouldValidate: true });
+            setValue('logoId', serviceData.logoId || null, { shouldValidate: true });
         } else {
             setValue('title', '', { shouldValidate: true });
             setValue('category', UsefulServiceCategory.ForAll, { shouldValidate: true });
             setValue('description', '', { shouldValidate: true });
             setValue('link', '', { shouldValidate: true });
             setValue('termsOfDisctribution', '', { shouldValidate: true });
-            setValue('logoId', '', { shouldValidate: true });
+            setValue('logoId', null, { shouldValidate: true });
         }
     }, [serviceData, setValue]);
 
     const categoryOptions = [
         { value: UsefulServiceCategory.ForAll, label: 'ForAll' },
-        { value: UsefulServiceCategory.Students, label: 'Student' },
-        { value: UsefulServiceCategory.Employees, label: 'Employee' }
+        { value: UsefulServiceCategory.Students, label: 'Students' },
+        { value: UsefulServiceCategory.Employees, label: 'Employees' }
     ];
 
     const onSubmit = async (data: EditCreateUsefulServiceRequest) => {

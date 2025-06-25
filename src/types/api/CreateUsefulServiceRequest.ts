@@ -6,5 +6,5 @@ export type EditCreateUsefulServiceRequest = {
     description: string,
     link: string,
     termsOfDisctribution: string,
-    logoId: string
+    logoId: string | null
 }

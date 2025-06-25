@@ -5,8 +5,9 @@ import { Input } from "../../UI/Input/Input";
 import { Button } from "../../UI/Button/Button";
 import { useIntl } from "react-intl";
 import { LetterPicker } from "../../UI/LetterPicker/LetterPicker";
+import { useEffect } from "react";
 
-export const UsersFilter = ({ onSearch, isLoading = false }: UsersFilterProps) => {
+export const UsersFilter = ({ onSearch, isLoading = false, filterValues }: UsersFilterProps) => {
     const intl = useIntl();
     const methods = useForm<UsersFilterForm>({
         defaultValues: {
@@ -24,6 +25,14 @@ export const UsersFilter = ({ onSearch, isLoading = false }: UsersFilterProps) =
          'Э', 'Ю', 'Я'];
 
     const { register, handleSubmit, setValue } = methods;
+
+    useEffect(() => {
+        if (filterValues) {
+            setValue('name', filterValues.name || '');
+            setValue('email', filterValues.email || '');
+            setValue('filterLastName', filterValues.filterLastName || '');
+        }
+    }, [filterValues, setValue]);
 
     const onSubmit: SubmitHandler<UsersFilterForm> = (data: UsersFilterForm) => {
         onSearch({
@@ -52,7 +61,7 @@ export const UsersFilter = ({ onSearch, isLoading = false }: UsersFilterProps) =
                             {isLoading ? "searching" : "searchButton" }
                         </Button>
                     </div>
-                    <LetterPicker letters={letters} onLetterClick={handleLetterClick} />
+                    <LetterPicker letters={letters} onLetterClick={handleLetterClick} selectedLetter={methods.getValues('filterLastName')} />
                 </form>
             </FormProvider>
         </div>

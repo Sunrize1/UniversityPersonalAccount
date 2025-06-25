@@ -1,0 +1,159 @@
+.adminEventCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 32px;
+  width: 100%;
+  min-height: 235px;
+  background: var(--text-white);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adminEventCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stateLayer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 0;
+  gap: 16px;
+  width: 100%;
+}
+
+.imageContainer {
+  width: 254px;
+  height: 187px;
+  border-radius: 8px;
+  background: #eaeaea;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.eventImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.eventImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-p2);
+  font-size: 16px;
+  background: var(--surface-tertiary);
+  border-radius: 8px;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+
+.metaGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.metaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  flex: 1;
+}
+
+.metaRow{
+  display: flex;
+  flex-direction: Row;
+  flex: 1;
+  border-bottom: 1px solid var(--surface-tertiary);
+
+}
+
+.metaRow:last-child {
+  border: none;
+}
+
+.metaLabel {
+  color: var(--text-p2);
+  font-size: var(--text-p2);
+}
+
+.metaValue {
+  font-size: var(--text-p1);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background:  var(--surface-tertiary);
+}
+
+.footerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.actionButton:hover {
+  background: rgba(var(--text-black-rgb), var(--hover-opacity));
+}
+
+
+@media (max-width: 600px) {
+  .stateLayer {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    width: 100%;
+  }
+} 

@@ -27,12 +27,22 @@
 }
 
 .success {
+  background: var(--accent-success);
+  color: var(--text-white);
+}
+
+.success-light {
   background: var(--accent-success-light);
   color: var(--text-white);
 }
 
 .warning {
   background: var(--accent-warning-yellow-light);
+  color: var(--text-white);
+}
+
+.black {
+  background: var(--text-black);
   color: var(--text-white);
 }
 

@@ -4,7 +4,7 @@ import { UsefulServicesCardsList } from "../../../components/common/UsefulServic
 import { Container } from "../../../components/UI/Container/Container"
 import { useAppDispatch } from "../../../store/hooks";
 import { useBreadcrumbs } from "../../../hooks/useBreadcrumbs";
-import { Pagination, UsefulService } from "../../../types/api/UsefulServicesResponse";
+import { Pagination, UsefulService, UsefulServiceCategory } from "../../../types/api/UsefulServicesResponse";
 import { getUsefulServices } from "../../../api/requests/getUsefulServices";
 import { showNotification } from "../../../utils/notification";
 import { NotificationTypeEnum } from "../../../types/redux/NotificationTypeEnum";
@@ -39,7 +39,7 @@ export const UsefulServices = () => {
     const fetchLinks = async (page: number = 1) => {
         setIsLoading(true);
         try {
-            const response = await getUsefulServices( page, 10);
+            const response = await getUsefulServices( page, 10,[UsefulServiceCategory.ForAll, UsefulServiceCategory.Students, UsefulServiceCategory.Employees]);
             setLinks(response.data.results);
             setPagination(response.data.metaData);
         } catch (error) {

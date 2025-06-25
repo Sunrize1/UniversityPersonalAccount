@@ -23,6 +23,11 @@ export interface UsersFilterForm {
 export interface UsersFilterProps {
     onSearch: (filters: { name: string; email: string; filterLastName: string }) => void;
     isLoading?: boolean;
+    filterValues?: {
+        name: string;
+        email: string;
+        filterLastName: string;
+    };
 }
 
 

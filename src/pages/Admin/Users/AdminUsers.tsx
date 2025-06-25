@@ -10,22 +10,23 @@ import { Container } from "../../../components/UI/Container/Container";
 import styles from './AdminUsers.module.css';
 import { Breadcrumbs } from "../../../components/common/Breadcrumbs/Breadcrumbs";
 import { UsersList } from "../../../components/common/UsersList/UsersList";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { UsersFilter } from "../../../components/common/UsersFilter/UsersFilter";
 
 export const AdminUsers = () => {
     const { setBreadcrumbItems } = useBreadcrumbs();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [users, setUsers] = useState<ProfileShortDto[]>([]);
     const [pagination, setPagination] = useState<Pagination | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [filters, setFilters] = useState({
-        name: '',
-        email: '',
-        filterLastName: ''
+    const getFiltersFromParams = () => ({
+        name: searchParams.get('name') || '',
+        email: searchParams.get('email') || '',
+        filterLastName: searchParams.get('filterLastName') || ''
     });
+    const [filters, setFilters] = useState(getFiltersFromParams());
 
     useEffect(() => {
         setBreadcrumbItems([
@@ -35,10 +36,10 @@ export const AdminUsers = () => {
         ]);
     }, [setBreadcrumbItems]);
 
-    const fetchUsers = async (page: number = 1) => {
+    const fetchUsers = async (page: number = 1, urlFilters = filters) => {
         setIsLoading(true);
         try {
-            const response = await getUsersForAdmin( filters.email, filters.name, filters.filterLastName, page, 9);
+            const response = await getUsersForAdmin( urlFilters.email, urlFilters.name, urlFilters.filterLastName, page, 9);
             const usersResponse: AdminUsersResponse = response.data;
             setUsers(usersResponse.results);
             setPagination(usersResponse.metaData);
@@ -51,11 +52,18 @@ export const AdminUsers = () => {
 
     const handleSearch = (filters: { name: string; email: string; filterLastName: string }) => {
         setFilters(filters);
+        const params: any = {};
+        if (filters.name) params.name = filters.name;
+        if (filters.email) params.email = filters.email;
+        if (filters.filterLastName) params.filterLastName = filters.filterLastName;
+        setSearchParams(params);
     }
 
     useEffect(() => {
-        fetchUsers();
-    }, [filters]);
+        const urlFilters = getFiltersFromParams();
+        setFilters(urlFilters);
+        fetchUsers(1, urlFilters);
+    }, [searchParams]);
 
     const handleUserClick = (user: ProfileShortDto) => {
         navigate(`/admin/users/${user.id}`);
@@ -69,7 +77,7 @@ export const AdminUsers = () => {
         <Container>
             <div className={styles.content}>
                 <Breadcrumbs />
-                <UsersFilter onSearch={handleSearch} isLoading={isLoading} />
+                <UsersFilter onSearch={handleSearch} isLoading={isLoading} filterValues={filters} />
                 <UsersList
                     users={users}
                     pagination={pagination || undefined}

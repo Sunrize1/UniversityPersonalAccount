@@ -32,6 +32,8 @@ import { Admin } from './pages/Admin/Admin';
 import { AdminUsers } from './pages/Admin/Users/AdminUsers';
 import { UserDetails } from './pages/Admin/Users/UserDetails/UserDetails';
 import { UsefulServices } from './pages/Admin/UsefulServices/UsefulServices';
+import { EventsForAdmin } from './pages/Admin/Events/EventsForAdmin';
+import { EventDetailsForAdmin } from './pages/Admin/Events/EventDetails/EventDetailsForAdmin';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
@@ -138,6 +140,16 @@ export const AppRouter = () => {
             <Route path='/admin/usefulservices' element={
               <ProtectedRoute>
                 <UsefulServices/>
+              </ProtectedRoute>
+            }/>
+            <Route path='/admin/events' element={
+              <ProtectedRoute>
+               <EventsForAdmin/>
+              </ProtectedRoute>
+            }/>
+            <Route path='/admin/events/:id' element={
+              <ProtectedRoute>
+               <EventDetailsForAdmin/>
               </ProtectedRoute>
             }/>
             

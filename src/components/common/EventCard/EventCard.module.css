@@ -67,10 +67,6 @@
   align-items: center;
   justify-content: center;
   color: var(--text-p2);
-  font-family: var(--p2-font-family);
-  font-size: var(--p2-font-size);
-  font-weight: var(--p2-font-weight);
-  line-height: var(--p2-line-height);
 }
 
 .eventDetails {

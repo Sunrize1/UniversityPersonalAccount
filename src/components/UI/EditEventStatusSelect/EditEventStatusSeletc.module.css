@@ -1,0 +1,59 @@
+.success {
+    background: var(--accent-success);
+    color: var(--text-white);
+}
+
+.success-light {
+    background: var(--accent-success-light);
+    color: var(--text-white);
+}
+
+.warning {
+    background: var(--accent-warning-yellow-light);
+    color: var(--text-white);
+}
+
+.black {
+    background: var(--text-black);
+    color: var(--text-white);
+}
+
+.error {
+    background: var(--accent-warning);
+    color: var(--text-white);
+    }
+
+.info {
+    background: var(--accent);
+    color: var(--text-white);
+}
+
+.default {
+    background: var(--badge-gray);
+    color: var(--text-white);
+} 
+
+.badge {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    padding: 6px 12px;
+    font-size: var(--p2-font-size);
+}
+.container {
+    position: relative;
+}
+
+.select {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

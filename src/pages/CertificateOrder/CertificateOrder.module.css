@@ -7,6 +7,12 @@
   min-height: 400px; 
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
 .loadingContainer {
   display: flex;
   justify-content: center;

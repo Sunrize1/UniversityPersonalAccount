@@ -6,7 +6,8 @@
   padding: 24px;
   gap: 16px;
   width: 100%;
-  border-bottom: 1px solid var(--text-gray);
+  border-bottom: 1px solid var(--surface-tertiary);
+
 }
 
 .card:last-child {
@@ -140,7 +141,8 @@
   width: 100%;
   height: 1px;
   border: none;
-  border-top: 1px solid var(--text-gray);
+  border-bottom: 1px solid var(--surface-tertiary);
+
   margin: 8px 0;
 }
 

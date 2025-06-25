@@ -2,19 +2,34 @@ import { LOCALES } from './locales';
 
 export const messages = {
   [LOCALES.RUSSIAN]: {
-    // LOGIN
+    // ===== НАВИГАЦИЯ И ОБЩИЕ =====
+    "/login": " ",
+    "/profile": "Профиль",
+    "/admin": "Администрирование",
+    "/certificates": "Справки",
+    "/events": "Мероприятия",
+    "/usefulservices": "Полезные сервисы",
+    "/admin/users": "Администрирование",
+    
+    // ===== АВТОРИЗАЦИЯ =====
     "login": "Вход в аккаунт",
     "email": "Электронная почта",
     "password": "Пароль",
     "rememberMe": "Запомнить меня",
     "enter": "Войти",
     "logout": "Выйти",
-
-    // PROFILE
-    "/login": " ",
-    "/profile": "Профиль",
-    "/admin" : "Администрирование",
+    
+    // ===== ОБЩИЕ ЭЛЕМЕНТЫ =====
     "loading": "Загрузка...",
+    "error": "Ошибка",
+    "save": "Сохранить",
+    "cancel": "Отменить",
+    "back": "Назад",
+    "update": "Обновить",
+    "main": "Главная",
+    "backToHome": "Вернуться на главную",
+    
+    // ===== ПРОФИЛЬ =====
     "avatarAlt": "аватар",
     "personalData": "Личные данные",
     "gender": "Пол",
@@ -24,12 +39,17 @@ export const messages = {
     "Phone": "Номер телефона",
     "Email": "Email",
     "SocialMedia": "Социальные сети",
+    "socialMedia": "Социальные сети",
+    
+    // Опыт работы
     "exp": "Стаж",
     "Common": "Общий стаж",
-    "Pedagogical": "Педогогический стаж",
+    "Pedagogical": "Педагогический стаж",
     "OnCurrentPlace": "На текущем месте работы",
     "experienceDuration":
       "{years, plural, one {# год} few {# года} many {# лет} other {# года}} {months, plural, one {# месяц} few {# месяца} many {# месяцев} other {# месяца}}",
+    
+    // Образование
     "education": "Образование",
     "educationLevel": "Уровень образования",
     "educationStatus": "Статус образования",
@@ -42,6 +62,8 @@ export const messages = {
     "educationProfile": "Профиль",
     "course": "Курс",
     "group": "Группа",
+    
+    // Работа
     "work": "Работа",
     "employment": "Вид занятости",
     "rate": "Ставка",
@@ -50,13 +72,13 @@ export const messages = {
     "startDate": "Дата начала",
     "endDate": "Дата конца",
     "present": "по настоящее время",
-    "Male": "Мужчина",
-    "Female": "Женщина",
-    "NotDefined": 'Не определен',
-    "socialMedia": "Социальные сети",
-
-    //CERTIFICATIONORDER
-    "/certificates": "Справки",
+    
+    // Пол
+    "male": "Мужчина",
+    "female": "Женщина",
+    "notDefined": "Не определен",
+    
+    // ===== СПРАВКИ =====
     "order": "Заказать",
     "orderCertificate": "Заказать справку",
     "ordering": "Заказываю...",
@@ -73,13 +95,14 @@ export const messages = {
     "certificateKindLabel": "Вид справки",
     "downloadCertificate": "Справку",
     "downloadSignature": "Подпись",
+    "certificates": "Справки",
     
-    // Certificate statuses
+    // Статусы справок
     "certificateStatusCreated": "Создана",
     "certificateStatusInProcess": "В обработке",
     "certificateStatusFinished": "Готова",
     
-    // Certificate types
+    // Типы справок
     "certificateTypeForPlaceWhereNeeded": "По месту требования",
     "certificateTypePensionForKazakhstan": "Для пенсии в Казахстане",
     "certificateTypeForPlaceOfWork": "По месту работы",
@@ -87,32 +110,15 @@ export const messages = {
     "certificateTypeForVisa": "Для визы",
     "certificateTypeForWorkBookCopy": "Копия трудовой книжки",
     
-    // Receive types
+    // Способы получения
     "receiveTypeElectronic": "Электронная",
     "receiveTypePaper": "Бумажная",
     
-    // Form labels
-    "educationLevelLabel": "Уровень образования",
-    "positionLabel": "Должность",
-    "statusLabel": "Статус",
-    "rateLabel": "Ставка",
-    "facultyLabel": "Факультет",
-    "workPlaceLabel": "Место работы",
-    "directionLabel": "Направление",
-    "positionTypeLabel": "Тип должности",
-    "groupLabel": "Группа",
-    "employmentTypeLabel": "Вид занятости",
-
-    //ROLES
+    // ===== РОЛИ =====
     "student": "Студент",
     "employee": "Сотрудник",
-
-    //BREADCRUMBS
-    "main": "Главная",
-    "certificates": "Справки",
-
-    //LINKS
-    "/usefulservices": "Полезные сервисы",
+    
+    // ===== ПОЛЕЗНЫЕ СЕРВИСЫ =====
     "forAll": "Для всех",
     "forStudents": "Для студентов",
     "forEmployees": "Для сотрудников",
@@ -121,16 +127,30 @@ export const messages = {
     "noLinksFound": "Полезные сервисы не найдены",
     "noLinksFoundText": "Попробуйте изменить фильтры или обратитесь к администратору",
     "goToService": "Перейти на сайт",
-
-    //EVENTS
-    "/events": "Мероприятия",
+    "description": "Описание",
+    "link": "Ссылка",
+    "type": "Тип",
+    "addService": "Добавить сервис",
+    "addUsefulService": "Добавление сервиса",
+    "editUsefulService": "Редактирование сервиса",
+    "title": "Название сервиса",
+    "category": "Тип",
+    "usefulServices": "Полезные сервисы",
+    
+    // ===== МЕРОПРИЯТИЯ =====
     "events": "Мероприятия",
     "eventDates": "Дата(ы) проведения",
     "eventFormat": "Формат мероприятия",
+    "eventTypeLabel": "Тип мероприятия",
+    "eventAudienceLabel": "Аудитория",
+    "eventDatesLabel": "Даты проведения",
+    "eventFormatLabel": "Формат мероприятия",
+    "eventTimeFromLabel": "Время начала",
+    "eventTimeToLabel": "Время окончания",
     "noEventsFound": "Мероприятия не найдены",
     "noEventsFoundText": "Попробуйте изменить фильтры или обратитесь к администратору",
     "eventFormatOnline": "Онлайн",
-    "eventFormatOffline": "Офлайн",
+    "eventFormatOffline": "Оффлайн",
     "eventsSearch": "Поиск",
     "eventNameLabel": "Название мероприятия",
     "eventDateLabel": "Дата проведения мероприятия",
@@ -138,8 +158,48 @@ export const messages = {
     "searchButton": "Найти",
     "searching": "Поиск...",
     "eventsLoadError": "Ошибка загрузки мероприятий",
-
-    //DATEPICKER
+    "allStatuses": "Все статусы",
+    "allFormats": "Все форматы",
+    "allTypes": "Все типы",
+    "resetFilters": "Сбросить фильтры",
+    "adminEventsSearch": "Поиск мероприятий",
+    "eventStatusLabel": "Статус мероприятия",
+    "eventStatusDraft": "Черновик",
+    "eventStatusActual": "Активное",
+    "eventStatusFinished": "Завершилось",
+    "eventStatusArchive": "Архив",
+    "eventTypeOpen": "Открытое",
+    "eventTypeClose": "Закрытое",
+    
+    // Детали мероприятия
+    "errorLoadingEvent": "Ошибка загрузки мероприятия",
+    "eventNotFound": "Мероприятие не найдено",
+    "backToEvents": "Вернуться к мероприятиям",
+    "eventLocation": "Место проведения",
+    "eventAuthor": "Организатор",
+    "eventDescription": "Описание",
+    "eventParticipants": "Участники",
+    "registrationDeadline": "Регистрация до",
+    "participate": "Буду участвовать",
+    "cancelParticipation": "Участвую",
+    "joinOnline": "Присоединиться онлайн",
+    "moreParticipants": "ещё",
+    "openInMaps": "Открыть в картах",
+    "getDirections": "Построить маршрут",
+    "showMap": "Показать карту",
+    "eventLocationDescription": "Нажмите на кнопки выше, чтобы открыть местоположение в картах",
+    "eventLink": "Ссылка на мероприятие",
+    
+    // Регистрация на мероприятие
+    "eventRegistration": "Регистрация на мероприятие",
+    "fullName": "ФИО",
+    "phone": "Телефон",
+    "additionalInformation": "Дополнительная информация",
+    "register": "Зарегистрироваться",
+    "nameIsRequired": "ФИО обязательно",
+    "phoneIsRequired": "Телефон обязателен",
+    
+    // ===== ДАТАПИКЕР =====
     "datePickerOk": "Ок",
     "datePickerCancel": "Отмена",
     "monthJanuary": "Январь",
@@ -161,79 +221,61 @@ export const messages = {
     "weekdayFriday": "Пт",
     "weekdaySaturday": "Сб",
     "weekdaySunday": "Вс",
-
-    //EVENT DETAILS
-    "error": "Ошибка",
-    "errorLoadingEvent": "Ошибка загрузки мероприятия",
-    "eventNotFound": "Мероприятие не найдено",
-    "backToEvents": "Вернуться к мероприятиям",
-    "eventLocation": "Место проведения",
-    "eventAuthor": "Организатор",
-    "eventDescription": "Описание",
-    "eventParticipants": "Участники",
-    "eventTypeOpen": "Открытое",
-    "eventTypeClose": "Закрытое",
-    "eventAuditoryAll": "Для всех",
-    "eventAuditoryStudents": "Для студентов",
-    "eventAuditoryEmployees": "Для сотрудников",
-    "registrationDeadline": "Регистрация до",
-    "participate": "Буду участвовать",
-    "cancelParticipation": "Участвую",
-    "joinOnline": "Присоединиться онлайн",
-    "moreParticipants": "ещё",
-    "openInMaps": "Открыть в картах",
-    "getDirections": "Построить маршрут",
-    "showMap": "Показать карту",
-    "eventLocationDescription": "Нажмите на кнопки выше, чтобы открыть местоположение в картах",
-    "eventLink": "Ссылка на мероприятие",
-
-    // EVENT REGISTRATION MODAL
-    "eventRegistration": "Регистрация на мероприятие",
-    "save": "Сохранить",
-    "back": "Назад",
-    "fullName": "ФИО",
-    "phone": "Телефон",
-    "additionalInformation": "Дополнительная информация",
-
-    // ERROR PAGES
-    "backToHome": "Вернуться на главную",
-
-    //IMAGE INPUT
-    "uploadImage" : "Загрузить изображение",
-  
     
-    // AVATAR UPDATE MODAL
+    // ===== ЗАГРУЗКА ИЗОБРАЖЕНИЙ =====
+    "uploadImage": "Загрузить изображение",
     "updateAvatar": "Обновить аватар",
     "zoom": "Масштаб:",
-
-    //ADMIN
-    "/admin/users": "Администрирование",
+    
+    // ===== АДМИНИСТРИРОВАНИЕ =====
     "users": "Пользователи",
-    "serviceDescription": "Равным образом постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание существенных финансовых и административных условий. ",
-    "usefulServices": "Полезные сервисы",
-
-    //ADMIN USERS
+    "serviceDescription": "Равным образом постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание существенных финансовых и административных условий.",
+    
+    // Администрирование пользователей
     "nameLabel": "Введите ФИО",
     "noUsersFound": "Пользователи не найдены",
     "noUsersFoundText": "Попробуйте изменить фильтры или обратитесь к администратору",
 
+    // Администрирование мероприятий
+    "Students": "Студент",
+    "ForAll": "Общий",
+    "Employees": "Сотрудник",
+    "isRegistrationRequired": "Необходима регистрация",
+    "yes": "Да",
+    "no": "Нет",
+    "eventType": "Тип Мероприятия",
+    "targetAuditory": "Целевая аудитория",
+    "address": "Адрес",
+    "longitude": "Долгота",
+    "latitude": "Широта",
+    "isDigest": "Включать мероприятия в дайджест",
+    "digestText": "Текст дайджеста",
+    "eventCreator": "Создал мероприятие",
+    "eventAuditoryEmployees": "Сотрудники",
+    "eventAuditoryAll": "Для всех",
+    "eventAuditoryStudents": "Студенты",
+    "filters": "Фильтры",
+    "innerParticipants": "Внутренние участники",
+    "externalParticipants": "Внешние участники",
+    "noParicipants": "Нет участников",
 
-    //ADMIN USEFULSERVICES
-    "description": "Описание",
-    "link": "Ссылка",
-    "type": "Тип",
-    "ForAll": "Для всех",
-    "Student": "Студент",
-    "Employee": "Сотрудник",
-    "addService": "Добавить сервис",
-    "addUsefulService": "Добавление сервиса",
-    "editUsefulService": "Редактирование сервиса",
-    "title": "Название сервиса",
-    "category": "Тип",
-    "cancel": "Отменить",
-    "update": "Обновить",
+
     
-    // Validation errors
+    
+    // ===== ФОРМЫ И ВАЛИДАЦИЯ =====
+    // Метки полей
+    "educationLevelLabel": "Уровень образования",
+    "positionLabel": "Должность",
+    "statusLabel": "Статус",
+    "rateLabel": "Ставка",
+    "facultyLabel": "Факультет",
+    "workPlaceLabel": "Место работы",
+    "directionLabel": "Направление",
+    "positionTypeLabel": "Тип должности",
+    "groupLabel": "Группа",
+    "employmentTypeLabel": "Вид занятости",
+    
+    // Ошибки валидации
     "titleRequired": "Название обязательно",
     "titleMinLength": "Название должно содержать минимум 3 символа",
     "titleMaxLength": "Название не должно превышать 100 символов",
@@ -247,22 +289,37 @@ export const messages = {
     "emailValidation": "Электронная почта должна содержать не менее 3 символов",
     "passwordValidation": "Пароль должен содержать не менее 3 символов",
     "noSpacesAllowed": "Пробелы не допускаются",
-
-
   },
+  
   [LOCALES.ENGLISH]: {
-    // LOGIN
+    // ===== NAVIGATION AND COMMON =====
+    "/login": " ",
+    "/profile": "Profile",
+    "/admin": "Administration",
+    "/certificates": "Certificates",
+    "/events": "Events",
+    "/usefulservices": "Useful services",
+    "/admin/users": "Administration",
+    
+    // ===== AUTHENTICATION =====
     "login": "Log in",
     "email": "Email",
     "password": "Password",
     "rememberMe": "Remember me",
     "enter": "ENTER",
     "logout": "Exit",
-    // PROFILE
-    "/login": " ",
-    "/profile": "Profile",
-    "/admin" : "Administration",
+    
+    // ===== COMMON ELEMENTS =====
     "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "update": "Update",
+    "main": "Main",
+    "backToHome": "Back to home",
+    
+    // ===== PROFILE =====
     "avatarAlt": "avatar",
     "personalData": "Personal Data",
     "gender": "Gender",
@@ -272,11 +329,17 @@ export const messages = {
     "Phone": "Phone",
     "Email": "Email",
     "SocialMedia": "Social Media",
+    "socialMedia": "Social Media",
+    
+    // Work experience
+    "exp": "Experience",
     "Common": "General experience",
     "Pedagogical": "Pedagogical experience",
     "OnCurrentPlace": "On current place",
     "experienceDuration":
       "{years, plural, one {# year} other {# years}} {months, plural, one {# month} other {# months}}",
+    
+    // Education
     "education": "Education",
     "educationLevel": "Education Level",
     "educationStatus": "Education Status",
@@ -288,8 +351,9 @@ export const messages = {
     "educationDirection": "Direction",
     "educationProfile": "Profile",
     "course": "Course",
-    "exp": "Expirience",
     "group": "Group",
+    
+    // Work
     "work": "Work",
     "employment": "Type of employment",
     "rate": "Rate",
@@ -298,12 +362,13 @@ export const messages = {
     "startDate": "Date of start",
     "endDate": "Date of end",
     "present": "Present",
+    
+    // Gender
     "Male": "Male",
     "Female": "Female",
-    "NotDefined": 'Not defined',
-    "socialMedia": "Social Media",
-    //CERTIFICATIONORDER
-    "/certificates": "Certifications",
+    "NotDefined": "Not defined",
+    
+    // ===== CERTIFICATES =====
     "order": "Order",
     "orderCertificate": "Order certificate",
     "ordering": "Ordering...",
@@ -320,6 +385,7 @@ export const messages = {
     "certificateKindLabel": "Certificate kind",
     "downloadCertificate": "Certificate",
     "downloadSignature": "Signature",
+    "certificates": "Certificates",
     
     // Certificate statuses
     "certificateStatusCreated": "Created",
@@ -338,42 +404,39 @@ export const messages = {
     "receiveTypeElectronic": "Electronic",
     "receiveTypePaper": "Paper",
     
-    // Form labels
-    "educationLevelLabel": "Education level",
-    "positionLabel": "Position",
-    "statusLabel": "Status",
-    "rateLabel": "Rate",
-    "facultyLabel": "Faculty",
-    "workPlaceLabel": "Work place",
-    "directionLabel": "Direction",
-    "positionTypeLabel": "Position type",
-    "groupLabel": "Group",
-    "employmentTypeLabel": "Employment type",
-    //ROLES
+    // ===== ROLES =====
     "student": "Student",
     "employee": "Employee",
-
-    //BREADCRUMBS
-    "main": "Main",
-    "certificates": "Certificates",
-
-    //LINKS
-    "/usefulservices": "Useful services",
-    "forAll": "For All",
-    "forStudents": "For Students",
-    "forEmployees": "For Employees",
-    "termsOfDistribution": "Terms of Distribution",
+    
+    // ===== USEFUL SERVICES =====
+    "forAll": "For all",
+    "forStudents": "For students",
+    "forEmployees": "For employees",
+    "termsOfDistribution": "Terms of distribution",
     "noImage": "No image",
     "noLinksFound": "No useful services found",
     "noLinksFoundText": "Try changing filters or contact administrator",
     "goToService": "Go to service",
-
-    //EVENTS
-    "/events": "Events",
+    "description": "Description",
+    "link": "Link",
+    "type": "Type",
+    "addService": "Add service",
+    "addUsefulService": "Add service",
+    "editUsefulService": "Edit service",
+    "title": "Title",
+    "category": "Type",
+    "usefulServices": "Useful services",
     
+    // ===== EVENTS =====
     "events": "Events",
     "eventDates": "Event dates",
     "eventFormat": "Event format",
+    "eventTypeLabel": "Event type",
+    "eventAudienceLabel": "Audience",
+    "eventDatesLabel": "Event dates",
+    "eventFormatLabel": "Event format",
+    "eventTimeFromLabel": "Start time",
+    "eventTimeToLabel": "End time",
     "noEventsFound": "No events found",
     "noEventsFoundText": "Try changing filters or contact administrator",
     "eventFormatOnline": "Online",
@@ -385,8 +448,48 @@ export const messages = {
     "searchButton": "Search",
     "searching": "Searching...",
     "eventsLoadError": "Error loading events",
-
-    //DATEPICKER
+    "allStatuses": "All statuses",
+    "allFormats": "All formats",
+    "allTypes": "All types",
+    "resetFilters": "Reset filters",
+    "adminEventsSearch": "Events search",
+    "eventStatusLabel": "Event status",
+    "eventStatusDraft": "Draft",
+    "eventStatusActual": "Actual",
+    "eventStatusFinished": "Finished",
+    "eventStatusArchive": "Archive",
+    "eventTypeOpen": "Open",
+    "eventTypeClose": "Closed",
+    
+    // Event details
+    "errorLoadingEvent": "Error loading event",
+    "eventNotFound": "Event not found",
+    "backToEvents": "Back to events",
+    "eventLocation": "Event location",
+    "eventAuthor": "Organizer",
+    "eventDescription": "Event description",
+    "eventParticipants": "Participants",
+    "registrationDeadline": "Registration until",
+    "participate": "Participate",
+    "cancelParticipation": "Participating",
+    "joinOnline": "Join online",
+    "moreParticipants": "more",
+    "openInMaps": "Open in maps",
+    "getDirections": "Get directions",
+    "showMap": "Show map",
+    "eventLocationDescription": "Click buttons above to open location in maps",
+    "eventLink": "Event link",
+    
+    // Event registration
+    "eventRegistration": "Event registration",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "additionalInformation": "Additional information",
+    "register": "Register",
+    "nameIsRequired": "Full name is required",
+    "phoneIsRequired": "Phone is required",
+    
+    // ===== DATEPICKER =====
     "datePickerOk": "Ok",
     "datePickerCancel": "Cancel",
     "monthJanuary": "January",
@@ -408,78 +511,56 @@ export const messages = {
     "weekdayFriday": "Fr",
     "weekdaySaturday": "Sa",
     "weekdaySunday": "Su",
-
-    //EVENT DETAILS
-    "error": "Error",
-    "errorLoadingEvent": "Error loading event",
-    "eventNotFound": "Event not found",
-    "backToEvents": "Back to events",
-    "eventLocation": "Event location",
-    "eventAuthor": "Organizer",
-    "eventDescription": "Event description",
-    "eventParticipants": "Participants",
-    "eventTypeOpen": "Open",
-    "eventTypeClose": "Closed",
-    "eventAuditoryAll": "For everyone",
-    "eventAuditoryStudents": "For students",
-    "eventAuditoryEmployees": "For employees",
-    "registrationDeadline": "Registration until",
-    "participate": "Participate",
-    "cancelParticipation": "Participating",
-    "joinOnline": "Join online",
-    "moreParticipants": "more",
-    "openInMaps": "Open in maps",
-    "getDirections": "Get directions",
-    "showMap": "Show map",
-    "eventLocationDescription": "Click buttons above to open location in maps",
-    "eventLink": "Event link",
-
-    // EVENT REGISTRATION MODAL
-    "eventRegistration": "Event Registration",
-    "save": "Save",
-    "fullName": "Full Name",
-    "phone": "Phone",
-    "back": "Back",
-    "additionalInformation": "Additional Information",
-    "register": "Register",
-    "cancel": "Cancel",
-    "nameIsRequired": "Full name is required",
-    "phoneIsRequired": "Phone is required",
-
-     // ERROR PAGES
-     "backToHome": "Back to home",
-
-     //IMAGE INPUT
-    "uploadImage" : "Upload image",
-
-
-    // AVATAR UPDATE MODAL
+    
+    // ===== IMAGE UPLOAD =====
+    "uploadImage": "Upload image",
     "updateAvatar": "Update avatar",
     "zoom": "Zoom:",
-
-    // ADMIN
-    "/admin/users": "Administration",
+    
+    // ===== ADMINISTRATION =====
     "users": "Users",
-    "serviceDescription": "Similarly, the constant quantitative growth and the scope of our activity largely determines the creation of significant financial and administrative conditions. ",
-    "usefulServices": "Useful services",
-
-    //ADMIN USERS
+    "serviceDescription": "Similarly, the constant quantitative growth and the scope of our activity largely determines the creation of significant financial and administrative conditions.",
+    
+    // User administration
     "nameLabel": "Name",
     "noUsersFound": "No users found",
     "noUsersFoundText": "Try changing filters or contact administrator",
 
-    //ADMIN USEFULSERVICES
-    "description": "Description",
-    "link": "Link",
-    "type": "Type",
-    "ForAll": "For all",
-    "Student": "Student",
-    "Employee": "Employee",
-    "addService": "Add service",
-    "addUsefulService": "Add service",
-    "editUsefulService": "Edit service",
-    "title": "Title",
-    "category": "Type",
+     // Events administration
+     "Students": "Student",
+     "ForAll": "For all",
+     "Employees": "Employee",
+     "isRegistrationRequired": "Is registration required",
+     "yes": "Yes",
+     "no": "No",
+     "eventType": "Event type",
+     "targetAuditory": "Target auditory",
+     "address": "Address",
+     "longitude": "Longitude",
+     "latitude": "Latitude",
+     "isDigest": "Add event to digest",
+     "digestText": "Digest text",
+     "eventCreator": "Creator of event",
+     "eventAuditoryEmployees": "Employees",
+     "eventAuditoryAll": "For all",
+     "eventAuditoryStudents": "Student",
+     "filters": "Filters",
+     "innerParticipants": "Inner participants",
+     "externalParticipants": "External participants",
+     "noParicipants": "No participants found",
+    
+    // ===== FORMS AND VALIDATION =====
+    // Field labels
+    "educationLevelLabel": "Education level",
+    "positionLabel": "Position",
+    "statusLabel": "Status",
+    "rateLabel": "Rate",
+    "facultyLabel": "Faculty",
+    "workPlaceLabel": "Work place",
+    "directionLabel": "Direction",
+    "positionTypeLabel": "Position type",
+    "groupLabel": "Group",
+    "employmentTypeLabel": "Employment type",
     
     // Validation errors
     "titleRequired": "Title is required",

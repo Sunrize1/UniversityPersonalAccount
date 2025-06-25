@@ -22,8 +22,8 @@ export const RolePicker: React.FC<RolePickerProps> = ({
       <div className={styles.budget}>
         <div className={styles.frame}>
           {options.map((option, index) => (
-            <React.Fragment key={option.id}>
               <div 
+                key={option.id}
                 className={`${styles.menuItem} ${activeRole === option.id ? styles.menuItemActive : ''}`}
                 onClick={() => handleRoleClick(option.id)}
               >
@@ -39,10 +39,6 @@ export const RolePicker: React.FC<RolePickerProps> = ({
                   </div>
                 </div>
               </div>
-              {index < options.length - 1 && (
-                <div className={styles.separator} />
-              )}
-            </React.Fragment>
           ))}
         </div>
       </div>

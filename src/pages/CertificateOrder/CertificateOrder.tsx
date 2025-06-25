@@ -66,33 +66,35 @@ export const CertificateOrder = () => {
   
   return (
     <Container>
+     <div className={styles.content}>
       <Breadcrumbs />
-      <div className={styles.certificateOrder}>
-        <RoleSelector
-          options={roleOptions}
-          selectedRole={getSelectedRoleString()}
-          onRoleChange={handleRoleChange}
-          hasMultipleRoles={roleInfo.hasMultipleRoles}
-        />
-        
-        {isLoading && (
-          <div className={styles.loadingContainer}>
-            <Spinner />
-          </div>
-        )}
-        
-        {shouldShowInfo && (
-          <div 
-            className={`${styles.infoContainer}`}
-            key={selectedRole} 
-          >
-            <CertificateOrderInfo 
-              {...infoProps}
-              onClose={() => setIsInfoOpen(false)} 
-            />
-          </div>
-        )}
-      </div>
+        <div className={styles.certificateOrder}>
+          <RoleSelector
+            options={roleOptions}
+            selectedRole={getSelectedRoleString()}
+            onRoleChange={handleRoleChange}
+            hasMultipleRoles={roleInfo.hasMultipleRoles}
+          />
+          
+          {isLoading && (
+            <div className={styles.loadingContainer}>
+              <Spinner />
+            </div>
+          )}
+          
+          {shouldShowInfo && (
+            <div 
+              className={`${styles.infoContainer}`}
+              key={selectedRole} 
+            >
+              <CertificateOrderInfo 
+                {...infoProps}
+                onClose={() => setIsInfoOpen(false)} 
+              />
+            </div>
+          )}
+        </div>
+     </div>
     </Container>
   );
 };

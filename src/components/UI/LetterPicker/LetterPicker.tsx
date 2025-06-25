@@ -3,11 +3,22 @@ import styles from './LetterPicker.module.css';
 import ChevronLeftIcon from '../../../assets/icons/Arrow/black/Chevron_Left.svg?react';
 import ChevronRightIcon from '../../../assets/icons/Arrow/black/Chevron_Right.svg?react';
 import MinusIcon from '../../../assets/icons/Edit/black/Remove_Minus.svg?react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export const LetterPicker = ({ letters, onLetterClick }: LetterPickerProps) => {
+export const LetterPicker = ({ letters, onLetterClick, selectedLetter }: LetterPickerProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [currentLetterIndex, setCurrentLetterIndex] = useState<number>();
+    const [currentLetterIndex, setCurrentLetterIndex] = useState<number | undefined>(
+        selectedLetter ? letters.indexOf(selectedLetter) : undefined
+    );
+
+    useEffect(() => {
+        if (selectedLetter) {
+            setCurrentLetterIndex(letters.indexOf(selectedLetter));
+            setIsOpen(true);
+        } else {
+            setCurrentLetterIndex(undefined);
+        }
+    }, [selectedLetter, letters]);
 
     const handleNextClick = () => {
         if(currentLetterIndex == letters.length - 1 || currentLetterIndex === undefined) {
@@ -34,7 +45,10 @@ export const LetterPicker = ({ letters, onLetterClick }: LetterPickerProps) => {
         <div className={styles.letterPicker}>
             <button type="button" disabled={!isOpen} className={styles.leftButton} onClick={handlePreviousClick}><ChevronLeftIcon /></button>
             {isOpen ? letters.map((letter, index) => (
-                currentLetterIndex === index ? (
+                (selectedLetter
+                    ? selectedLetter === letter
+                    : currentLetterIndex === index
+                ) ? (
                     <span className={styles.selectedLetter} key={letter}>{letter}</span>
                 ) : (
                     <button className={styles.letter} key={letter} onClick={() => handleLetterClick(index)}>

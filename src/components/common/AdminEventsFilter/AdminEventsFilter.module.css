@@ -1,0 +1,96 @@
+.adminEventsFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: var(--text-white);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.filtersHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filtersButton {
+  width: 100px;
+}
+
+.filterCol {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mainFilters {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.nameSearch {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.searchButton {
+  max-width: 236px;
+  align-self: flex-start;
+  height: 49px;
+}
+
+.datePicker {
+  min-width: 200px;
+}
+
+.additionalFilters {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+
+.filterActions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid var(--surface-tertiary);
+}
+
+.resetButton {
+  min-width: 120px;
+}
+
+@media (max-width: 600px) {
+  .additionalFilters {
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 375px) {
+  .nameSearch {
+    gap: 0px;
+    flex-direction: column;
+  }
+  
+  .searchButton {
+   max-width: 100%;
+  }
+
+}

@@ -22,4 +22,8 @@ export interface EventsFilterForm {
 export interface EventsFilterProps {
   onSearch: (filters: { name: string; eventDate: string }) => void;
   isLoading?: boolean;
+  filterValues?: {
+    name: string;
+    date: string;
+  };
 }

@@ -18,14 +18,25 @@ export const Links = () => {
     const userRoles = user?.userTypes || [];
     const hasStudentRole = userRoles.includes(UserType.Student);
     const hasEmployeeRole = userRoles.includes(UserType.Employee);
-    const selectedCategory = hasStudentRole ? UsefulServiceCategory.Students : hasEmployeeRole ? UsefulServiceCategory.Employees : UsefulServiceCategory.ForAll;
+
+    let categories: UsefulServiceCategory[];
+    if (hasStudentRole && hasEmployeeRole) {
+        categories = [UsefulServiceCategory.ForAll, UsefulServiceCategory.Students, UsefulServiceCategory.Employees];
+    } else if (hasStudentRole) {
+        categories = [UsefulServiceCategory.ForAll, UsefulServiceCategory.Students];
+    } else if (hasEmployeeRole) {
+        categories = [UsefulServiceCategory.ForAll, UsefulServiceCategory.Employees];
+    } else {
+        categories = [UsefulServiceCategory.ForAll, UsefulServiceCategory.Students, UsefulServiceCategory.Employees];
+    }
+
     const [links, setLinks] = useState<UsefulService[]>([]);
     const [pagination, setPagination] = useState<Pagination | undefined>();
     const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-                setBreadcrumbItems([
+        setBreadcrumbItems([
             {
                 id: "home",
                 label: "Главная",
@@ -37,12 +48,12 @@ export const Links = () => {
                 path: "/links"
             }
         ]);
-      }, [setBreadcrumbItems]);
+    }, [setBreadcrumbItems]);
 
-    const fetchLinks = async (page: number = 1, category: UsefulServiceCategory = UsefulServiceCategory.ForAll) => {
+    const fetchLinks = async (page: number = 1, categories: UsefulServiceCategory[] = [UsefulServiceCategory.ForAll, UsefulServiceCategory.Students, UsefulServiceCategory.Employees]) => {
         setIsLoading(true);
         try {
-            const response = await getUsefulServices(page, 10, category);
+            const response = await getUsefulServices(page, 10, categories);
             setLinks(response.data.results);
             setPagination(response.data.metaData);
         } catch (error) {
@@ -56,7 +67,7 @@ export const Links = () => {
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
-        fetchLinks(page, selectedCategory);
+        fetchLinks(page, categories);
     };
 
     const handleLinkClick = (url: string) => {
@@ -64,8 +75,8 @@ export const Links = () => {
     };
 
     useEffect(() => {
-        fetchLinks(currentPage, selectedCategory);
-    }, [currentPage, selectedCategory]);
+        fetchLinks(currentPage, categories);
+    }, [currentPage, userRoles]);
 
     return (
         <Container>

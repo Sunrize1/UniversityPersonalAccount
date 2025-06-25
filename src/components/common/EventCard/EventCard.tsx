@@ -1,38 +1,45 @@
-import { FC } from 'react';
-import { useIntl } from 'react-intl';
+import { FC, ReactNode } from 'react';
+import { FormattedDate, useIntl } from 'react-intl';
 import { EventCardProps } from '../../../types/components/common/EventTypes';
 import { EventFormat } from '../../../types/api/eventsTypes';
 import styles from './EventCard.module.css';
 import { API_BASE_URL } from '../../../api/instance';
+import dayjs from 'dayjs';
 
 export const EventCard: FC<EventCardProps> = ({ event, onClick }) => {
   const intl = useIntl();
 
-  const formatDate = (dateTimeFrom: string, dateTimeTo: string, isTimeFromNeeded: boolean, isTimeToNeeded: boolean) => {
-    const fromDate = new Date(dateTimeFrom);
-    const toDate = new Date(dateTimeTo);
-    
-    const formatTime = (date: Date) => 
-      date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-    
-    const formatDateOnly = (date: Date) => 
-      date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
-
-    const isSameDay = fromDate.toDateString() === toDate.toDateString();
-
+  const formatDate = (
+    dateTimeFrom: string,
+    dateTimeTo: string,
+    isTimeFromNeeded: boolean,
+    isTimeToNeeded: boolean
+  ): ReactNode => {
+    const from = dayjs(dateTimeFrom);
+    const to = dayjs(dateTimeTo);
+    const isSameDay = from.isSame(to, 'day');
     if (isSameDay) {
-      const dateStr = formatDateOnly(fromDate);
-      if (isTimeFromNeeded && isTimeToNeeded) {
-        return `${dateStr} (${formatTime(fromDate)} - ${formatTime(toDate)})`;
-      } else if (isTimeFromNeeded) {
-        return `${dateStr} (${formatTime(fromDate)})`;
-      } else {
-        return dateStr;
-      }
+      return <>
+        <FormattedDate value={dateTimeFrom} year="numeric" month="2-digit" day="2-digit" />
+        {isTimeFromNeeded && isTimeToNeeded && (
+          <> ({from.format('HH:mm')} - {to.format('HH:mm')})</>
+        )}
+        {isTimeFromNeeded && !isTimeToNeeded && (
+          <> ({from.format('HH:mm')})</>
+        )}
+      </>;
     } else {
-      const fromStr = `${formatDateOnly(fromDate)}${isTimeFromNeeded ? ` (${formatTime(fromDate)})` : ''}`;
-      const toStr = `${formatDateOnly(toDate)}${isTimeToNeeded ? ` (${formatTime(toDate)})` : ''}`;
-      return `${fromStr} - ${toStr}`;
+      return <>
+        <FormattedDate value={dateTimeFrom} year="numeric" month="2-digit" day="2-digit" />
+        {isTimeFromNeeded && (
+          <> ({from.format('HH:mm')})</>
+        )}
+        {' - '}
+        <FormattedDate value={dateTimeTo} year="numeric" month="2-digit" day="2-digit" />
+        {isTimeToNeeded && (
+          <> ({to.format('HH:mm')})</>
+        )}
+      </>;
     }
   };
 

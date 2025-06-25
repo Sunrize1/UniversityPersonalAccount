@@ -6,9 +6,10 @@ import { fetchProfileThunk } from "../../store/userSlice/userThunks";
 import { StatusEnum } from "../../types/redux/StatusEnum";
 import { API_BASE_URL } from "../../api/instance";
 import { ProfileInfo } from "../../components/common/ProfileInfo/ProfileInfo";
-import { FormattedMessage } from "react-intl";
+import { FormattedDate, FormattedMessage } from "react-intl";
 import { Spinner } from "../../components/UI/Spinner/Spinner";
 import { AvatarUpdateModal } from "../../components/common/AvatarUpdateModal/AvatarUpdateModal";
+import { Gender } from "../../types/api/profileResponse";
 
 export const Profile = () => {
 
@@ -26,6 +27,19 @@ export const Profile = () => {
 
   const handleAvatarError = () => {
     setIsAvatarLoading(false); 
+  };
+
+  const getGenderText = (gender: Gender | undefined) => {
+    switch (gender) {
+      case Gender.Male:
+        return "male";
+      case Gender.Female:
+        return "female";
+      case Gender.NotDefined:
+        return "notDefined";
+      default:
+        return "notDefined";
+    }
   };
 
   useEffect(() => {
@@ -96,7 +110,7 @@ export const Profile = () => {
                   <FormattedMessage id="gender" defaultMessage="Пол" />
                 </p>
                 <p className={styles.value}>
-                {user?.gender ? user.gender : '-'}
+                <FormattedMessage id={getGenderText(user?.gender)}/>
                 </p>
               </div>
               <div className={styles.listItem}>
@@ -104,7 +118,7 @@ export const Profile = () => {
                   <FormattedMessage id="birthDate" defaultMessage="Дата рождения" />
                 </p>
                 <p className={styles.value}>
-                  {user?.birthDate ? user.birthDate.toString() : '-'}
+                  <FormattedDate value={user?.birthDate} year="numeric" month="2-digit" day="2-digit"/> 
                 </p>
               </div>
               <div className={styles.listItem}>

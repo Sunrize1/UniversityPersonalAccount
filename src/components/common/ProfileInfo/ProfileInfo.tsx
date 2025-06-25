@@ -10,6 +10,7 @@ import { getEmployee } from '../../../api/requests/getEmployee';
 import { showNotification } from '../../../utils/notification';
 import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
 import { FormattedMessage } from 'react-intl';
+import { Spinner } from '../../UI/Spinner/Spinner';
 
 export const ProfileInfo = () => {
   const dispatch = useAppDispatch();
@@ -57,7 +58,7 @@ export const ProfileInfo = () => {
   };
 
   const renderEducation = () => {
-    if (!studentData) return <p><FormattedMessage id="loading" defaultMessage="Данные загружаются..." /></p>;
+    if (!studentData) return <Spinner/>;
     return (
       <div className={styles.educationContainer}>
         {studentData.educationEntries.map((entry) => (

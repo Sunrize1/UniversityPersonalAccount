@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 24px;
+  text-align: center;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.emptyStateTitle {
+  font-weight: 600;
+  color: var(--text-black);
+  margin: 0;
+}
+
+.emptyStateText {
+  color: var(--text-p2);
+  margin: 0;
+}
+

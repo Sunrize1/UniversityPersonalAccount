@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'react-intl';
+import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Badge } from '../../../UI/Badge/Badge';
 import { FilterChip } from '../../../UI/FilterChip/FilterChip';
 import { Spinner } from '../../../UI/Spinner/Spinner';
@@ -8,6 +8,7 @@ import { CertificateDto, CertificateStatus } from '../../../../types/api/certifi
 import { UserType } from '../../../../types/api/profileResponse';
 import { getStatusText, getStatusVariant, getTypeText, getReceiveTypeText } from '../../../../utils/certificateUtils';
 import styles from './CertificatesList.module.css';
+import dayjs from 'dayjs';
 
 interface CertificatesListProps {
   certificates: CertificateDto[];
@@ -48,7 +49,7 @@ export const CertificatesList = ({
         <div key={certificate.id} className={styles.certificateItem}>
           <div className={styles.certificateContent}>
             <div className={styles.certificateTitle}>
-              <FormattedMessage id="certificateFrom" /> {new Date(certificate.dateOfForming).toLocaleString('ru-RU')}
+              <FormattedMessage id='certificateFrom'/> <FormattedDate value={certificate.dateOfForming} year="numeric" month="2-digit" day="2-digit" hour="2-digit" minute="2-digit" second="2-digit" />
             </div>
             <div className={styles.certificateInfo}>
               <p className={styles.certificateDate}>
