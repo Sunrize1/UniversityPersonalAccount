@@ -3,8 +3,14 @@ import ErrorImageUp from '../../../assets/images/error_stripe_up.svg?react';
 import ErrorImageDown from '../../../assets/images/error_stripe_down.svg?react';
 import styles from './500.module.css';
 import { Button } from '../../../components/UI/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const ServerErrorPage: React.FC = () => {
+  const navigate = useNavigate()
+  const handleButtonClick = () => {
+    navigate('/events')
+  }
+  
   return (
     <div className={styles.container}>
       <div className={styles.mainContent}>
@@ -18,7 +24,7 @@ export const ServerErrorPage: React.FC = () => {
             </h1>
           </div>
           
-          <Button className={styles.button} variant="primary">
+          <Button className={styles.button} variant="primary" onClick={handleButtonClick}>
             backToHome
           </Button>
         </div>

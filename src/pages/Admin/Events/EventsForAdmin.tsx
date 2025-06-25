@@ -37,9 +37,9 @@ export const EventsForAdmin: FC = () => {
 
   useEffect(() => {
     dispatch(setBreadcrumbs([
-    { id: '1', label: 'Главная', path: '/events' },
-      { id: '2', label: 'Администрирование', path: '/admin' },
-      { id: '3', label: 'Мероприятия', path: '/admin/events' }
+    { id: '1', label: intl.formatMessage({id: 'main'}), path: '/events' },
+      { id: '2', label: intl.formatMessage({id: '/admin'}), path: '/admin' },
+      { id: '3', label: intl.formatMessage({id: '/events'}), path: '/admin/events' }
     ]));
   }, [dispatch]);
 

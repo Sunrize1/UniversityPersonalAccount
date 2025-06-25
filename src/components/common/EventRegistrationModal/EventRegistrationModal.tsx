@@ -58,11 +58,11 @@ export const EventRegistrationModal: FC<EventRegistrationModalProps> = ({
         additionalInfo: data.additionalInfo
       });
       
-      showNotification(dispatch, 'Регистрация успешно отправлена', NotificationTypeEnum.SUCCESS, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
       onSuccess();
       handleCancel();
     } catch (error) {
-      showNotification(dispatch, 'Ошибка при регистрации', NotificationTypeEnum.ERROR, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
     } finally {
       setIsSubmitting(false);
     }

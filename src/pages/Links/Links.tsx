@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { UserType } from "../../types/api/profileResponse";
 import { showNotification } from "../../utils/notification";
 import { NotificationTypeEnum } from "../../types/redux/NotificationTypeEnum";
+import { useIntl } from "react-intl";
 
 export const Links = () => {
     const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ export const Links = () => {
     const userRoles = user?.userTypes || [];
     const hasStudentRole = userRoles.includes(UserType.Student);
     const hasEmployeeRole = userRoles.includes(UserType.Employee);
+    const intl = useIntl();
 
     let categories: UsefulServiceCategory[];
     if (hasStudentRole && hasEmployeeRole) {
@@ -39,12 +41,12 @@ export const Links = () => {
         setBreadcrumbItems([
             {
                 id: "home",
-                label: "Главная",
-                path: "/"
+                label: intl.formatMessage({id: 'main'}),
+                path: "/events"
             },
             {
                 id: "links",
-                label: "Полезные сервисы",
+                label: intl.formatMessage({id: '/usefulservices'}),
                 path: "/links"
             }
         ]);
@@ -57,7 +59,7 @@ export const Links = () => {
             setLinks(response.data.results);
             setPagination(response.data.metaData);
         } catch (error) {
-            showNotification(dispatch, "Ошибка при загрузке полезных сервисов", NotificationTypeEnum.ERROR, 5000);
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
             setLinks([]);
             setPagination(undefined);
         } finally {

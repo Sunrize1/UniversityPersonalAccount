@@ -15,10 +15,12 @@ import { UsefulServiceModal } from "../../../components/common/UsefulServiceModa
 import { EditCreateUsefulServiceRequest } from "../../../types/api/CreateUsefulServiceRequest";
 import { FileDto } from "../../../types/api/certificateTypes";
 import styles from "./UsefulServices.module.css"
+import { useIntl } from "react-intl";
 
 export const UsefulServices = () => {
     const dispatch = useAppDispatch();
     const { setBreadcrumbItems } = useBreadcrumbs();
+    const intl = useIntl();
     const [links, setLinks] = useState<UsefulService[]>([]);
     const [pagination, setPagination] = useState<Pagination | undefined>();
     const [isLoading, setIsLoading] = useState(false);
@@ -30,9 +32,9 @@ export const UsefulServices = () => {
 
     useEffect(() => {
         setBreadcrumbItems([
-            {id: 'main', label: "Главная", path: "/events"},
-            { id: 'admin', label: 'Администрирование', path: '/admin' },
-             { id: 'usefulservices', label: 'Полезные сервисы', path: '/admin/usefulservices' }
+            {id: 'main', label: intl.formatMessage({id: 'main'}), path: "/events"},
+            { id: 'admin', label: intl.formatMessage({id: '/admin'}), path: '/admin' },
+             { id: 'usefulservices', label: intl.formatMessage({id: '/usefulservices'}), path: '/admin/usefulservices' }
         ]);
     }, [setBreadcrumbItems]);
     
@@ -43,7 +45,7 @@ export const UsefulServices = () => {
             setLinks(response.data.results);
             setPagination(response.data.metaData);
         } catch (error) {
-            showNotification(dispatch, "Ошибка при загрузке полезных сервисов", NotificationTypeEnum.ERROR, 5000);
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
             setLinks([]);
             setPagination(undefined);
         } finally {

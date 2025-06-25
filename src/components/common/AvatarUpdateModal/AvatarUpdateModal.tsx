@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Cropper from 'react-easy-crop';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Button } from '../../UI/Button/Button';
 import { uploadFile } from '../../../api/requests/uploadFile';
 import { updateAvatar } from '../../../api/requests/avatarUpdate';
@@ -68,6 +68,7 @@ export const AvatarUpdateModal: React.FC<AvatarUpdateModalProps> = ({
   onClose,
 }) => {
   const dispatch = useAppDispatch();
+  const intl = useIntl();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -108,12 +109,12 @@ export const AvatarUpdateModal: React.FC<AvatarUpdateModalProps> = ({
       await updateAvatar(fileId);
       
       dispatch(fetchProfileThunk());
-      showNotification(dispatch, 'Аватар успешно обновлен', NotificationTypeEnum.SUCCESS);
+      showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS);
       
       handleClose();
     } catch (error) {
       console.error('Ошибка при обновлении аватара:', error);
-      showNotification(dispatch, 'Ошибка при обновлении аватара', NotificationTypeEnum.ERROR);
+      showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR);
     } finally {
       setIsUploading(false);
     }

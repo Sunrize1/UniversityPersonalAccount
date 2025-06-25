@@ -289,6 +289,16 @@ export const messages = {
     "emailValidation": "Электронная почта должна содержать не менее 3 символов",
     "passwordValidation": "Пароль должен содержать не менее 3 символов",
     "noSpacesAllowed": "Пробелы не допускаются",
+
+    // Уведомления
+    "loadError": "Ошибка при загрузке данных",
+    "success": "Операция выполнена успешно",
+    "notAllowed": "Недостаточно прав",
+    "notificationError": "Ошибка",
+    "notificationSuccess": "Успех",
+    "notificationInfo": "Информация",
+    "notificationWarning": "Предупреждение",
+    "notificationDefault": "Уведомление"
   },
   
   [LOCALES.ENGLISH]: {
@@ -366,7 +376,7 @@ export const messages = {
     // Gender
     "Male": "Male",
     "Female": "Female",
-    "NotDefined": "Not defined",
+    "notDefined": "Not defined",
     
     // ===== CERTIFICATES =====
     "order": "Order",
@@ -576,5 +586,15 @@ export const messages = {
     "emailValidation": "Email must be at least 3 characters long",
     "passwordValidation": "Password must be at least 3 characters long",
     "noSpacesAllowed": "Spaces are not allowed",
+
+    // NOTIFICATIONS
+    "loadError": "Error during data loading",
+    "success": "Operation done succesfuly",
+    "notAllowed": "Not enough rights",
+    "notificationError": "Error",
+    "notificationSuccess": "Success",
+    "notificationInfo": "Info",
+    "notificationWarning": "Warning",
+    "notificationDefault": "Notification"
   },
 };

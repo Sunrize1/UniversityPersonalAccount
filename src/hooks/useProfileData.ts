@@ -6,6 +6,7 @@ import { getEmployee } from '../api/requests/getEmployee';
 import { useAppDispatch } from '../store/hooks';
 import { showNotification } from '../utils/notification';
 import { NotificationTypeEnum } from '../types/redux/NotificationTypeEnum';
+import { useIntl } from 'react-intl';
 
 interface UseProfileDataProps {
   hasStudentRole: boolean;
@@ -14,6 +15,7 @@ interface UseProfileDataProps {
 
 export const useProfileData = ({ hasStudentRole, hasEmployeeRole }: UseProfileDataProps) => {
   const dispatch = useAppDispatch();
+  const intl = useIntl();
   const [studentProfile, setStudentProfile] = useState<StudentProfile | null>(null);
   const [employeeProfile, setEmployeeProfile] = useState<EmployeeProfile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -59,14 +61,14 @@ export const useProfileData = ({ hasStudentRole, hasEmployeeRole }: UseProfileDa
 
         await Promise.all(promises);
       } catch (error) {
-        showNotification(dispatch, 'Ошибка загрузки данных', NotificationTypeEnum.ERROR, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
       } finally {
         setIsLoading(false);
       }
     };
 
     loadInitialData();
-  }, [hasStudentRole, hasEmployeeRole, loadedRoles, dispatch]);
+  }, [hasStudentRole, hasEmployeeRole, loadedRoles, dispatch, intl]);
 
   return {
     studentProfile,

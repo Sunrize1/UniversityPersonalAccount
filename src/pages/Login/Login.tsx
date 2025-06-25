@@ -12,10 +12,12 @@ import { showNotification } from '../../utils/notification';
 import { NotificationTypeEnum } from '../../types/redux/NotificationTypeEnum';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 export const Login = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const intl = useIntl();
 
     
     const methods = useForm<LoginInput>({
@@ -33,13 +35,13 @@ export const Login = () => {
         try {
             const result = await dispatch(loginThunk(data)).unwrap();
             if(result.loginSucceeded) {
-                showNotification(dispatch, 'Успешный вход', NotificationTypeEnum.SUCCESS, 5000);
+                showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
                 navigate('/profile', { replace: true });
             } else {
-                showNotification(dispatch, 'Неверный логин или пароль', NotificationTypeEnum.ERROR, 5000);
+                showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
             }
           } catch (err) {
-            showNotification(dispatch, 'Ошибка входа', NotificationTypeEnum.ERROR, 5000);
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
           } 
     }
     

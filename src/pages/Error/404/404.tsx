@@ -3,8 +3,14 @@ import styles from './404.module.css';
 import ErrorImageUp from '../../../assets/images/error_stripe_up.svg?react';
 import ErrorImageDown from '../../../assets/images/error_stripe_down.svg?react';
 import { Button } from '../../../components/UI/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const NotFoundPage: React.FC = () => {
+  const navigate = useNavigate()
+  const handleButtonClick = () => {
+    navigate('/events')
+  }
+
   return (
     <div className={styles.container}>
       <div className={`${styles.errorStripe} ${styles.errorStripeTop}`}>
@@ -23,7 +29,7 @@ export const NotFoundPage: React.FC = () => {
               Страница не найдена
             </h2>
           </div>
-          <Button className={styles.button} variant="primary">
+          <Button className={styles.button} variant="primary" onClick={handleButtonClick}>
             backToHome
           </Button>
         </div>

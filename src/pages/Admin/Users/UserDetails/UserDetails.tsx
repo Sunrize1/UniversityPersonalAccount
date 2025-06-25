@@ -11,6 +11,7 @@ import { NotificationTypeEnum } from "../../../../types/redux/NotificationTypeEn
 import { Breadcrumbs } from "../../../../components/common/Breadcrumbs/Breadcrumbs";
 import { useBreadcrumbs } from "../../../../hooks/useBreadcrumbs";
 import { UserInfo } from "../../../../components/common/UserInfo/UserInfo";
+import { useIntl } from "react-intl";
 
 export const UserDetails = () => {
 
@@ -18,6 +19,7 @@ export const UserDetails = () => {
   const { setBreadcrumbItems} = useBreadcrumbs();
   const [user, setUser] = useState<ProfileResponse>()
   const { id } = useParams<{ id: string }>();
+  const intl = useIntl();
 
 
   const fetchProfile = async () => {
@@ -27,15 +29,15 @@ export const UserDetails = () => {
         setUser(data.data)
         renderBreadcrumbs(data.data.lastName, data.data.firstName, data.data.patronymic);
     } catch (error) {
-        showNotification(dispatch, "Ошибка при загрузке данных пользователя", NotificationTypeEnum.ERROR)
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR)
     } 
   }
 
   const renderBreadcrumbs = (lastName: string, firstName: string, patronymic: string) => {
     setBreadcrumbItems([
-      {id: 'main', label: "Главная", path: "/events"},
-      { id: 'admin', label: 'Администрирование', path: '/admin' },
-      { id: 'users', label: 'Пользователи', path: '/admin/users' },
+      {id: 'main', label: intl.formatMessage({id: 'main'}), path: "/events"},
+      { id: 'admin', label: intl.formatMessage({id: '/admin'}), path: '/admin' },
+      { id: 'users', label: intl.formatMessage({id: 'users'}), path: '/admin/users' },
       {id: 'user', label: lastName + " " + firstName + " " + patronymic, path: '/admin/users'},
      ])
   };

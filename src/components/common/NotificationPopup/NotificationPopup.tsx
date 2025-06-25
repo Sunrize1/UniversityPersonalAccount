@@ -9,24 +9,26 @@ import XIconGreen from '../../../assets/icons/Edit/red/XIcon_green.svg?react'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { removeNotification } from '../../../store/notificationSlice/notificationSlice';
 import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
+import { useIntl } from 'react-intl';
 import styles from './NotificationPopup.module.css';
 
 export const NotificationPopup = () => {
     const dispatch = useAppDispatch();
     const notifications = useAppSelector(state => state.notification.notifications);
+    const intl = useIntl();
 
     const translateNotificationType = (type: NotificationTypeEnum) => {
         switch (type) {
             case NotificationTypeEnum.ERROR:
-                return 'Ошибка';
+                return intl.formatMessage({ id: 'notificationError' });
             case NotificationTypeEnum.SUCCESS:
-                return 'Успех';
+                return intl.formatMessage({ id: 'notificationSuccess' });
             case NotificationTypeEnum.INFO:
-                return 'Информация';
+                return intl.formatMessage({ id: 'notificationInfo' });
             case NotificationTypeEnum.WARNING:
-                return 'Предупреждение';
+                return intl.formatMessage({ id: 'notificationWarning' });
             default:
-                return 'Уведомление';
+                return intl.formatMessage({ id: 'notificationDefault' });
         }
     }
 

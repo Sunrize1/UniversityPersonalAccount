@@ -10,10 +10,12 @@ import { Spinner } from "../../components/UI/Spinner/Spinner";
 import { useRoleManagement } from "../../hooks/useRoleManagement";
 import { useProfileData } from "../../hooks/useProfileData";
 import { mapEducationToTabInfo, mapPostToTabInfo } from "../../utils/dataMappers";
+import { useIntl } from "react-intl";
 
 export const CertificateOrder = () => {
   const { setBreadcrumbItems } = useBreadcrumbs();
   const [isInfoOpen, setIsInfoOpen] = useState(true);
+  const intl = useIntl();
   
   const { selectedRole, roleInfo, roleOptions, handleRoleChange, getSelectedRoleString } = useRoleManagement();
   const { studentProfile, employeeProfile, isLoading } = useProfileData({
@@ -25,12 +27,12 @@ export const CertificateOrder = () => {
     setBreadcrumbItems([
       {
         id: "home",
-        label: "Главная",
+        label: intl.formatMessage({id: 'main'}),
         path: "/events"
       },
       {
         id: "certificates",
-        label: "Справки",
+        label: intl.formatMessage({id: '/certificates'}),
         path: "/certificates"
       }
     ]);

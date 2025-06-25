@@ -11,12 +11,14 @@ import { getEventDetailsForAdmin } from "../../../../api/requests/getEventDetail
 import { showNotification } from "../../../../utils/notification"
 import { NotificationTypeEnum } from "../../../../types/redux/NotificationTypeEnum"
 import { Spinner } from "../../../../components/UI/Spinner/Spinner"
+import { useIntl } from "react-intl"
 
 export const EventDetailsForAdmin = () => {
     const dispatch = useAppDispatch();
     const { setBreadcrumbItems} = useBreadcrumbs();
     const [event, setEvent] = useState<EventFullDto>()
     const { id } = useParams<{ id: string }>();
+    const intl = useIntl();
 
     
   const fetchEvent = async () => {
@@ -26,7 +28,7 @@ export const EventDetailsForAdmin = () => {
         setEvent(data.data)
         renderBreadcrumbs(data.data.title);
         } catch (error) {
-            showNotification(dispatch, "Ошибка при загрузке мероприятия", NotificationTypeEnum.ERROR)
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR)
         } 
     }
 
@@ -42,9 +44,9 @@ export const EventDetailsForAdmin = () => {
 
     const renderBreadcrumbs = (eventTitle: string) => {
         setBreadcrumbItems([
-          {id: '1', label: "Главная", path: "/events"},
-          { id: '2', label: 'Администрирование', path: '/admin' },
-          { id: '3', label: 'Мероприятия', path: '/admin/events' },
+          {id: '1', label: intl.formatMessage({id: 'main'}), path: "/events"},
+          { id: '2', label: intl.formatMessage({id: '/admin'}), path: '/admin' },
+          { id: '3', label: intl.formatMessage({id: '/events'}), path: '/admin/events' },
           { id: '4', label: eventTitle, path: '/admin/events' },
          ])
       };

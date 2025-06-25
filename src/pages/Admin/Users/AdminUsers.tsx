@@ -12,6 +12,7 @@ import { Breadcrumbs } from "../../../components/common/Breadcrumbs/Breadcrumbs"
 import { UsersList } from "../../../components/common/UsersList/UsersList";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { UsersFilter } from "../../../components/common/UsersFilter/UsersFilter";
+import { useIntl } from "react-intl";
 
 export const AdminUsers = () => {
     const { setBreadcrumbItems } = useBreadcrumbs();
@@ -21,6 +22,7 @@ export const AdminUsers = () => {
     const [users, setUsers] = useState<ProfileShortDto[]>([]);
     const [pagination, setPagination] = useState<Pagination | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const intl = useIntl();
     const getFiltersFromParams = () => ({
         name: searchParams.get('name') || '',
         email: searchParams.get('email') || '',
@@ -30,9 +32,9 @@ export const AdminUsers = () => {
 
     useEffect(() => {
         setBreadcrumbItems([
-            {id: 'main', label: "Главная", path: "/events"},
-            { id: 'admin', label: 'Администрирование', path: '/admin' },
-            { id: 'users', label: 'Пользователи', path: '/admin/users' }
+            {id: 'main', label: intl.formatMessage({id: 'main'}), path: "/events"},
+            { id: 'admin', label: intl.formatMessage({id: '/admin'}), path: '/admin' },
+            { id: 'users', label: intl.formatMessage({id: 'users'}), path: '/admin/users' }
         ]);
     }, [setBreadcrumbItems]);
 
@@ -44,7 +46,7 @@ export const AdminUsers = () => {
             setUsers(usersResponse.results);
             setPagination(usersResponse.metaData);
         } catch (error) {
-            showNotification(dispatch, "Ошибка при загрузке пользователей", NotificationTypeEnum.ERROR)
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR)
         } finally {
             setIsLoading(false);
         }

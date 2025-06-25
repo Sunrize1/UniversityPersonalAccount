@@ -20,6 +20,7 @@ import { ImageInput } from '../../UI/ImageInput/ImageInput';
 
 export const UsefulServiceModal = ({isOpen, onClose, onServciceCreated, serviceData, image, serviceId} : UsefulServiceModalProps) => {
     const dispatch = useAppDispatch();
+    const intl = useIntl();
     
     const isEditMode = !!serviceData && !!serviceId;
     
@@ -73,18 +74,17 @@ export const UsefulServiceModal = ({isOpen, onClose, onServciceCreated, serviceD
             
             if (isEditMode && serviceId) {
                 await updateUsefulService({ ...data, logoId }, serviceId);
-                showNotification(dispatch, 'Полезный сервис успешно обновлен', NotificationTypeEnum.SUCCESS, 5000);
+                showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
             } else {
                 await createUsefulService({ ...data, logoId });
-                showNotification(dispatch, 'Полезный сервис успешно создан', NotificationTypeEnum.SUCCESS, 5000);
+                showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
             }
             
             reset();
             setSelectedFile(undefined);
             onServciceCreated();
         } catch (error) {
-            const action = isEditMode ? 'обновлении' : 'создании';
-            showNotification(dispatch, `Ошибка при ${action} полезного сервиса`, NotificationTypeEnum.ERROR, 5000);
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
         }
     };
 

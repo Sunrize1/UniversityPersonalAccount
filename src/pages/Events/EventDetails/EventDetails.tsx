@@ -38,7 +38,7 @@ export const EventDetails: FC = () => {
         setEvent(eventResponse.data);
 
         dispatch(setBreadcrumbs([
-          { id: '1', label: 'Главная', path: '/events' },
+          { id: '1', label: intl.formatMessage({id: 'main'}), path: '/events' },
           { id: '2', label: eventResponse.data.title, path: `/events/${id}` }
         ]));
 

@@ -82,11 +82,11 @@ export const EventInfo: FC<EventInfoProps> = ({
           await innerEventRegister({
             eventId: event.id
           });
-          showNotification(dispatch, 'Регистрация успешна', NotificationTypeEnum.SUCCESS, 5000);
+          showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
           onParticipationChange?.(true);
         }
       } catch (error) {
-        showNotification(dispatch, 'Ошибка регистрации', NotificationTypeEnum.ERROR, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
       }
     } else {
       setIsModalOpen(true);

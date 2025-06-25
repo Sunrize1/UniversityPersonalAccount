@@ -40,12 +40,12 @@ export const Events = () => {
         setBreadcrumbItems([
           {
             id: "home",
-            label: "Главная",
-            path: "/"
+            label: intl.formatMessage({id: 'main'}),
+            path: "/events"
           },
           {
             id: "events",
-            label: "Мероприятия",
+            label: intl.formatMessage({id: '/events'}),
             path: "/events"
           }
         ]);

@@ -15,25 +15,15 @@ import styles from './admin.module.css';
 
 
 export const Admin = () => {
-    const dispatch = useAppDispatch();
     const intl = useIntl();
-    const userTypes = useAppSelector(state => state.user.user?.userTypes);
     const navigate = useNavigate();
     const { setBreadcrumbItems } = useBreadcrumbs();
 
-    const isAdmin = userTypes?.length === 0;
-
-    useEffect(() => {
-        if (!isAdmin) {
-            navigate('/events')
-            showNotification(dispatch, "Недостаточно прав", NotificationTypeEnum.WARNING)
-        }
-    }, [isAdmin]);
 
     useEffect(() => {
         setBreadcrumbItems([
-            {id: 'main', label: "Главная", path: "/events"},
-            { id: 'admin', label: 'Администрирование', path: '/admin' },
+            {id: 'main', label: intl.formatMessage({id: 'main'}), path: "/events"},
+            { id: 'admin', label: intl.formatMessage({id: '/admin'}), path: '/admin' },
         ]);
     }, [setBreadcrumbItems]);
 

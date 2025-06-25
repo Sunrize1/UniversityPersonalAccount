@@ -36,10 +36,10 @@ export const UsefulServiceCard = ({link, onAction, onEdit}: UsefulServiceCardPro
     const handleDeleteButtonClick = async () => {
       try {
         const data = await deleteUsefulService(link.id)
-        showNotification(dispatch, 'Полезный сервис успешно удален', NotificationTypeEnum.SUCCESS, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
         if(onAction) onAction();
       } catch (error) {
-        showNotification(dispatch, 'Ошибка при удалении полезного сервиса', NotificationTypeEnum.ERROR, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
       }
 
     }

@@ -18,9 +18,11 @@ import {
 import { CertificateOrderProps, CertificateOrderFormData, TabInfoData } from '../../../types/components/common/CertificateOrderTypes';
 import { CertificateOrderForm } from './CertificateOrderForm/CertificateOrderForm';
 import { CertificatesList } from './CertificatesList/CertificatesList';
+import { useIntl } from 'react-intl';
 
 export const CertificateOrderInfo = ({ userType, studentData, employeeData, tabsData, onClose }: CertificateOrderProps) => {
   const dispatch = useAppDispatch();
+  const intl = useIntl();
   const [activeTab, setActiveTab] = useState<string>(tabsData[0]?.id || '');
   const [certificates, setCertificates] = useState<CertificateDto[]>([]);
   const [isLoadingCertificates, setIsLoadingCertificates] = useState(false);
@@ -42,7 +44,7 @@ export const CertificateOrderInfo = ({ userType, studentData, employeeData, tabs
       const response = await getCertificates(userType, ownerId);
       setCertificates(response.data);
     } catch (error) {
-      showNotification(dispatch, 'Ошибка загрузки справок', NotificationTypeEnum.ERROR, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
     } finally {
       setIsLoadingCertificates(false);
     }
@@ -54,7 +56,7 @@ export const CertificateOrderInfo = ({ userType, studentData, employeeData, tabs
 
   const handleOrder = async (data: CertificateOrderFormData) => {
     if (!ownerId || !activeTab || !userType) {
-      showNotification(dispatch, 'Ошибка: не выбрана запись для справки', NotificationTypeEnum.ERROR, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
       return;
     }
 
@@ -78,11 +80,11 @@ export const CertificateOrderInfo = ({ userType, studentData, employeeData, tabs
       };
 
       await createCertificate(requestData);
-      showNotification(dispatch, 'Справка успешно заказана', NotificationTypeEnum.SUCCESS, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 5000);
       
       await loadCertificates();
     } catch (error) {
-      showNotification(dispatch, 'Ошибка при заказе справки', NotificationTypeEnum.ERROR, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
     } finally {
       setIsCreatingCertificate(false);
     }
@@ -92,20 +94,20 @@ export const CertificateOrderInfo = ({ userType, studentData, employeeData, tabs
     try {
       const certificate = certificates.find(cert => cert.id === certificateId);
       if (!certificate) {
-        showNotification(dispatch, 'Справка не найдена', NotificationTypeEnum.ERROR, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
         return;
       }
 
       const file = fileType === 'certificate' ? certificate.certificateFile : certificate.signatureFile;
       if (!file) {
-        showNotification(dispatch, 'Файл не найден', NotificationTypeEnum.ERROR, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
         return;
       }
 
       await downloadFile(file.id, file.name, file.extension);
-      showNotification(dispatch, 'Файл успешно скачан', NotificationTypeEnum.SUCCESS, 3000);
+      showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS, 3000);
     } catch (error) {
-      showNotification(dispatch, 'Ошибка скачивания файла', NotificationTypeEnum.ERROR, 5000);
+      showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
     }
   };
 

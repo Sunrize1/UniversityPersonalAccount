@@ -11,6 +11,7 @@ import { showNotification } from '../../../utils/notification';
 import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
 import { FormattedMessage } from 'react-intl';
 import { Spinner } from '../../UI/Spinner/Spinner';
+import { useIntl } from 'react-intl';
 
 export const ProfileInfo = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +25,8 @@ export const ProfileInfo = () => {
 
   const hasStudentRole = userTypes.includes(UserType.Student);
   const hasEmployeeRole = userTypes.includes(UserType.Employee);
+
+  const intl = useIntl();
 
   useEffect(() => {
     if (hasStudentRole) {
@@ -47,7 +50,7 @@ export const ProfileInfo = () => {
           setEmployeeData(data);
         }
       } catch (error) {
-        showNotification(dispatch, 'Ошибка загрузки данных', NotificationTypeEnum.ERROR, 5000);
+        showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR, 5000);
       }
     };
     fetchData();

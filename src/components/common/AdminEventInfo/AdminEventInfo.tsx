@@ -106,9 +106,9 @@ export const AdminEventInfo = ({ event, onEdit }: AdminEventInfoProps) => {
         try {
            const data = await editEventStatus(event.id, status)
            onEdit();
-           showNotification(dispatch, "Статус мероприятия успешно изменен", NotificationTypeEnum.SUCCESS)
+           showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS)
         } catch (error) {
-            showNotification(dispatch, "Ошибка при изменени статуса мероприятия", NotificationTypeEnum.ERROR)
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR)
         }
     }
 
@@ -116,9 +116,9 @@ export const AdminEventInfo = ({ event, onEdit }: AdminEventInfoProps) => {
         try{
             const data = await deleteEvent(event.id)
             navigate('/admin/events')
-            showNotification(dispatch, "Мероприятие успешно удалено", NotificationTypeEnum.SUCCESS)
+            showNotification(dispatch, intl.formatMessage({ id: 'success' }), NotificationTypeEnum.SUCCESS)
         } catch  (error) {
-            showNotification(dispatch, "Ошибка при удалении мероприятия", NotificationTypeEnum.ERROR)
+            showNotification(dispatch, intl.formatMessage({ id: 'loadError' }), NotificationTypeEnum.ERROR)
         }
     }
 

@@ -34,6 +34,7 @@ import { UserDetails } from './pages/Admin/Users/UserDetails/UserDetails';
 import { UsefulServices } from './pages/Admin/UsefulServices/UsefulServices';
 import { EventsForAdmin } from './pages/Admin/Events/EventsForAdmin';
 import { EventDetailsForAdmin } from './pages/Admin/Events/EventDetails/EventDetailsForAdmin';
+import { AdminProtectedRoute } from './components/common/ProtectedRoute/AdminProtectedRoute';
 
 export const AppRouter = () => {
   const language = useAppSelector(state => state.user.language);
@@ -124,32 +125,44 @@ export const AppRouter = () => {
             } />
             <Route path="/admin" element={
               <ProtectedRoute>
-                <Admin />
+                <AdminProtectedRoute>
+                  <Admin />
+                </AdminProtectedRoute>
               </ProtectedRoute>
             } />
             <Route path="/admin/users" element={
               <ProtectedRoute>
+               <AdminProtectedRoute>
                 <AdminUsers />
+               </AdminProtectedRoute>
               </ProtectedRoute>
             } />
             <Route path="/admin/users/:id" element={
               <ProtectedRoute>
-                <UserDetails />
+                <AdminProtectedRoute>
+                  <UserDetails />
+                </AdminProtectedRoute>
               </ProtectedRoute>
             } />
             <Route path='/admin/usefulservices' element={
               <ProtectedRoute>
-                <UsefulServices/>
+                <AdminProtectedRoute>
+                  <UsefulServices/>
+                </AdminProtectedRoute>
               </ProtectedRoute>
             }/>
             <Route path='/admin/events' element={
               <ProtectedRoute>
-               <EventsForAdmin/>
+               <AdminProtectedRoute>
+                <EventsForAdmin/>
+               </AdminProtectedRoute>
               </ProtectedRoute>
             }/>
             <Route path='/admin/events/:id' element={
               <ProtectedRoute>
-               <EventDetailsForAdmin/>
+               <AdminProtectedRoute>
+                <EventDetailsForAdmin/>
+               </AdminProtectedRoute>
               </ProtectedRoute>
             }/>
             
