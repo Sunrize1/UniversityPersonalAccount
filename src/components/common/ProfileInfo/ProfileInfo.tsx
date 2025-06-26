@@ -9,7 +9,7 @@ import { getStudent } from '../../../api/requests/getStudent';
 import { getEmployee } from '../../../api/requests/getEmployee';
 import { showNotification } from '../../../utils/notification';
 import { NotificationTypeEnum } from '../../../types/redux/NotificationTypeEnum';
-import { FormattedMessage } from 'react-intl';
+import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Spinner } from '../../UI/Spinner/Spinner';
 import { useIntl } from 'react-intl';
 
@@ -217,11 +217,11 @@ export const ProfileInfo = () => {
               <div className={styles.row}>
                 <div className={styles.column}>
                   <p className={'p2' + ' ' + styles.label}><FormattedMessage id="startDate" /></p>
-                  <p className={styles.value}>{post.dateStart}</p>
+                  <p className={styles.value}><FormattedDate value={post.dateStart} year="numeric" month="2-digit" day="2-digit"/> </p>
                 </div>
                 <div className={styles.column}>
                   <p className={'p2' + ' ' + styles.label}><FormattedMessage id="endDate" /></p>
-                  <p className={styles.value}>{post.dateEnd || <FormattedMessage id="present" defaultMessage="по настоящее время" />}</p>
+                  <p className={styles.value}>{post.dateEnd ? <FormattedDate value={post.dateEnd} year="numeric" month="2-digit" day="2-digit"/>  : <FormattedMessage id="present" defaultMessage="по настоящее время" />}</p>
                 </div>
               </div>
             </div>

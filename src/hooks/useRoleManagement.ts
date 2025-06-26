@@ -38,7 +38,7 @@ export const useRoleManagement = () => {
         setSelectedRole(UserType.Employee);
       }
     } else {
-      setSelectedRole(UserType.Student);
+      setSelectedRole(UserType.Employee);
     }
   }, [roleInfo]);
 

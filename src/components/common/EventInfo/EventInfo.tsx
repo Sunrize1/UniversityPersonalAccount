@@ -67,6 +67,16 @@ export const EventInfo: FC<EventInfoProps> = ({
     }
   };
 
+  const isRegistrationAllowed = () => {
+      if(event.isRegistrationRequired && !isParticipating) {
+        const date = new Date()
+        const endDate = new Date(event.registrationLastDate)
+        return date > endDate ? false : true
+      } else {
+        return false;
+      }
+  }
+
   const getFormatText = (format: EventFormat) => {
     return format === EventFormat.Online 
       ? intl.formatMessage({ id: 'eventFormatOnline' })
@@ -110,7 +120,7 @@ export const EventInfo: FC<EventInfoProps> = ({
             variant={isParticipating ? "outline" : "primary"}
             onClick={handleParticipationClick}
             className={styles.participateButton}
-            disabled={isParticipating}
+            disabled={!isRegistrationAllowed()}
           >
             {isParticipating ? 'cancelParticipation' : 'participate'}
           </Button>
