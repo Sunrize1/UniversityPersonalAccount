@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# 🎓 Личный кабинет студента и сотрудника университета
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Полнофункциональная web-платформа для управления университетскими процессами*
 
-Currently, two official plugins are available:
+## 🔧 Технологический стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Frontend:**
+- React + TypeScript
+- Redux Toolkit с Redux Persist
+- React Intl
+- React easy crop
+- Leaflet для интерактивных карт
+- React Hook Form 
+- Vite 
 
-## Expanding the ESLint configuration
+**Архитектура:**
+- Feature-based структура
+- Централизованное управление состоянием
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Ключевые особенности
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 👥 Система пользователей
+- Работа с access/refresh токенами
+- Загрузка и кроп изображения аватара на сервер
+- ![Снимок экрана 2025-06-27 074400](https://github.com/user-attachments/assets/dfd96b63-aa99-469b-aed8-0e3b3a25de29)
+- ![Снимок экрана 2025-06-27 074537](https://github.com/user-attachments/assets/3a4becee-b082-4088-8fea-36bcde06dc6a)
+- ![Снимок экрана 2025-06-27 080454](https://github.com/user-attachments/assets/4fadcef6-58eb-4a69-a650-5e30b9e3b756)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🏛️ Административная панель
+- СRUD мероприятий и полезных сервисов
+- Поиск с фильтрами данных с API, пагинация
+- ![Снимок экрана 2025-06-27 075124](https://github.com/user-attachments/assets/29157654-dcb5-46b3-8798-a5b1855bc733)
+- ![Снимок экрана 2025-06-27 075545](https://github.com/user-attachments/assets/dfc9a6ef-e38f-4813-8b96-d7de6acf103a)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📅 Мероприятия
+- Интерактивная карта событий с геолокацией
+- Календарь с фильтрацией по датам
+- ![Снимок экрана 2025-06-27 075441](https://github.com/user-attachments/assets/37759ad0-1300-41cb-9fdd-46768bb05461)
+- ![Снимок экрана 2025-06-27 075453](https://github.com/user-attachments/assets/5e19154d-7d37-4bd0-81a2-d6e301e9ac55)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### 📋 Заказ справок
+![Снимок экрана 2025-06-27 074816](https://github.com/user-attachments/assets/347b8925-fb2e-4a60-9aa5-b4b2edd4b568)
+![Снимок экрана 2025-06-27 074928](https://github.com/user-attachments/assets/83949997-239e-48db-b45b-cb593a8eb021)
+![Снимок экрана 2025-06-27 074948](https://github.com/user-attachments/assets/0387d7ce-dd59-4eae-97a6-1003d9252b9d)
+
+
+## 📊 Технические достижения
+
+- **15+ переиспользуемых UI компонентов** с полной типизацией
+- **Адаптивная верстка** с поддержкой мобильных устройств
+
+## 🎯 Результаты
+
+- Цифровизация университетских процессов
+- Повысил свои компетенции Frontend-разработчика, Изучил много теоретической базы в процессе создания проекта и применил ее на практике.
+
